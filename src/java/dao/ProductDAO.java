@@ -72,6 +72,29 @@ public class ProductDAO extends DBContext {
         return product;
     }
 
+    public Product getProductTop1() {
+        Product product = new Product();
+        try {
+            String sql = "select top 1 * from Products order by id desc";
+            PreparedStatement ps = getConnection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                product.setId(rs.getInt("Id"));
+                product.setName(rs.getString("Name"));
+                product.setCategory_id(rs.getInt("Category_Id"));
+                product.setPrice(rs.getInt("Price"));
+                product.setDescription(rs.getString("Description"));
+                product.setQuantity(rs.getInt("Quantity"));
+                product.setStatus(rs.getInt("Status"));
+                product.setImage(rs.getString("Image"));
+                product.setNote(rs.getString("Note"));
+            }
+        } catch (Exception e) {
+            System.err.println("Get Product Fail: " + e.getMessage());
+        }
+        return product;
+    }
+    
     public ArrayList<Product> getAllProduct() {
         ArrayList<Product> list = new ArrayList<>();
         String sql = "SELECT * FROM Products";
@@ -192,9 +215,7 @@ public class ProductDAO extends DBContext {
 
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-        ArrayList<Product> list = dao.getAllProductByCategory(1);
-        for(Product pro : list){
-            System.out.println(pro);
-        }
+        Product pro = dao.getProductDetail(1);
+        System.out.println(pro);
     }
 }

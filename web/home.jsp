@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,7 +9,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Home</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/prettyPhoto.css" rel="stylesheet">
         <link href="css/price-range.css" rel="stylesheet">
@@ -24,33 +25,30 @@
                     <div class="col-sm-3">
                         <div class="left-sidebar">
                             <h2 style="margin-top: .7rem;">Danh mục</h2>
-
                             <div class="panel-group category-products" id="accordian"><!--category-products-->
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordian" href="#sportswear" class="collapsed">
-                                                <span class="badge pull-right"><i class="fa fa-plus"></i></span>
-                                                Balo
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="sportswear" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <c:forEach items="${cate}" var="c">
-                                                <ul>
+                                    <c:forEach items="${cate}" var="c">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordian" href="#sportswear" class="collapsed">
                                                     <li><a href="categoryService?id=${c.id}">${c.category} </a></li>
-                                                </ul> 
-                                            </c:forEach>
+                                                </a>
+                                            </h4>
                                         </div>
-                                    </div>
+                                    </c:forEach>
                                 </div>
                             </div><!--/category-products-->
 
                             <!--LAST PRODUCT-->
+                            <div class="title text-center">
+                                <p style="color: #FE980F; font-size: 18px; font-weight: 700;">Sản phẩm bán chạy nhất</p>
+                                <a href="productservices?service=details&id=${newproduct.id}"><img src="image/${newproduct.image}" style="width: 240px; padding-left:  0px;" /></a>
+                            </div>
+
                             <div class="shipping text-center"><!--shipping-->
                                 <img src="images/home/shipping.jpg" alt="" />
                             </div><!--/shipping-->
+                            
                         </div>
                     </div>
 
@@ -58,14 +56,14 @@
                         <div class="features_items"><!--features_items-->
                             <h2 class="title text-center" style="margin-top: .7rem;">Sản phẩm mới nhất</h2>
                             <c:forEach items="${listproduct}" var="p">
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <img src="image/${p.image}" alt="" />
-                                                <h2>${p.price}</h2>
-                                                <p><a href="ProductDetails?id=${p.id}">${p.name}</a></p>
-                                                <a href="service=addtocart?id=${p.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                                <h2><fmt:formatNumber value="${p.price}"/><sup>đ</sup></h2>
+                                                <p><a href="productservices?service=details&id=${p.id}">${p.name}</a></p>
+                                                <a href="addtocart?service=taketocart&id=${p.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
                                             </div>
                                         </div>
                                     </div>

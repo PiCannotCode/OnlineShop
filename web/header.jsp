@@ -13,7 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/prettyPhoto.css" rel="stylesheet">
         <link href="css/price-range.css" rel="stylesheet">
@@ -59,7 +59,7 @@
                         <div class="col-sm-9">
                             <div class="mainmenu pull-left">
                                 <ul class="nav navbar-nav collapse navbar-collapse">
-                                    <li><a href="home.jsp" class="active">Trang chủ</a></li>
+                                    <li><a href="home" class="active">Trang chủ</a></li>
                                 </ul>
                             </div>
                         </div>

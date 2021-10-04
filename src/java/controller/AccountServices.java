@@ -66,7 +66,7 @@ public class AccountServices extends HttpServlet {
                         response.sendRedirect("productservices?service=list");
                     }
                 } else {
-                    request.setAttribute("message", "Wrong email or password");
+                    request.setAttribute("message", "Tài khoản email hoặc mật khẩu không đúng");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 }
             }
@@ -93,7 +93,7 @@ public class AccountServices extends HttpServlet {
                 int idAccountDetail = 0;
                 // Check mail
                 if (new AccountDAO().checkEmail(email)) {
-                    request.setAttribute("message", "Email already exist");
+                    request.setAttribute("message", "Tài khoản email đã tồn tại");
                     request.getRequestDispatcher("register.jsp").forward(request, response);
                 } else {
                     // Check pass
@@ -104,12 +104,12 @@ public class AccountServices extends HttpServlet {
                             Account account = new Account(email, pass, idAccountDetail, 2, 1);
                             if (new AccountDAO().addAccount(account)) {
                                 System.out.println(account); // Test datas
-                                request.setAttribute("message", "Regist successful");
+                                request.setAttribute("message", "Đăng ký thành công");
                                 request.getRequestDispatcher("register.jsp").forward(request, response);
                             }
                         }
                     } else {
-                        request.setAttribute("message", "Pass and Repass not match");
+                        request.setAttribute("message", "Nhập lại mật khẩu không khớp");
                         request.getRequestDispatcher("register.jsp").forward(request, response);
                     }
                 }
@@ -121,9 +121,9 @@ public class AccountServices extends HttpServlet {
                 String message = "";
                 if (new AccountDAO().checkEmail(email)) {
                     System.out.println(email);
-                    message = "Check new pass in your mail !";
+                    message = "Kiểm tra ngay email của bạn !";
                 } else {
-                    message = "Email not exits !";
+                    message = "Email không tồn tại !";
                 }
                 request.setAttribute("message", message);
                 request.getRequestDispatcher("reset-password.jsp").forward(request, response);

@@ -41,12 +41,12 @@ public class Addtocart extends HttpServlet {
             String service = request.getParameter("service");
 
             // ADDTOCART
-            if (service.equals("addtocart")) {
+            if (service.equals("taketocart")) {
                 // CHECK USER LOGIN
                 try {
                     String id = session.getAttribute("currentAccount").toString();
                 } catch (NullPointerException e) {
-                    response.sendRedirect("servicesaccount?service=login");
+                    response.sendRedirect("login.jsp");
                     return;
                 }
 
@@ -66,7 +66,7 @@ public class Addtocart extends HttpServlet {
                     request.getRequestDispatcher("cart.jsp").forward(request, response);
                 }
             }
-            
+
             // TAKE 1 ITEM FROM CART
             if (service.equals("takefromcart")) {
                 String id = request.getParameter("id");

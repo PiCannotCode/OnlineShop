@@ -61,7 +61,7 @@ public class ProductServices extends HttpServlet {
                 ProductDAO productDAO = new ProductDAO();
                 Product product = productDAO.getProductDetail(id);
                 request.setAttribute("product", product);
-                request.getRequestDispatcher("ProductDetails.jsp").forward(request, response);
+                request.getRequestDispatcher("product-detail.jsp").forward(request, response);
             }
 
             // ADD PRODUCT

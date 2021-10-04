@@ -45,7 +45,10 @@ public class Home extends HttpServlet {
             // Data Product
             ProductDAO productDAO = new ProductDAO();
             ArrayList<Product> listProduct = productDAO.getAllProduct();
+            Product product = productDAO.getProductTop1();
             
+            
+            request.setAttribute("newproduct", product);
             request.setAttribute("listproduct", listProduct);
             request.setAttribute("cate", list);
             request.getRequestDispatcher("home.jsp").forward(request, response);

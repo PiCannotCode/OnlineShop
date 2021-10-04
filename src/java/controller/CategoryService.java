@@ -45,7 +45,9 @@ public class CategoryService extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             ProductDAO productDAO = new ProductDAO();
             ArrayList<Product> listProductCategory = productDAO.getAllProductByCategory(id);
-
+            Product product = productDAO.getProductTop1();
+            
+            request.setAttribute("newproduct", product);
             request.setAttribute("cate", list);
             request.setAttribute("listproduct", listProductCategory);
             request.getRequestDispatcher("home.jsp").forward(request, response);
