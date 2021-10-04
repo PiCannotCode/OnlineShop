@@ -1,0 +1,47 @@
+
+#intro {
+    width: 100%;
+    height: 100%;
+    display: table;
+    position: absolute;
+}
+
+#intro .middle {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1000;
+}
+
+#intro .middle .login-panel{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 320px;
+    max-width: 340px;
+    border: 1.8px solid black;
+    border-radius: .5rem;
+    padding: 1.2rem 1.75rem 1rem;
+}
+.btn-sm {
+    background: #fff;
+    font-size: 14px;
+    color: #f96332;
+    width: 100%;
+    font-weight: 500;
+    border: 2px solid #afafaf;
+    border-radius: .3rem;
+    padding: 0.4rem;
+    
+}
+p{
+    text-align:center; 
+    font-size: 23px; 
+    color: #f96332;
+}
+
+.form-control{
+    border: 2px solid #afafaf;
+    border-radius: 0.3rem;
+    margin: .5rem 0rem;
+}
