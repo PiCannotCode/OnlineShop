@@ -4,6 +4,10 @@
     Author     : SANG
 --%>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page import="entity.Product"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,31 +49,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="cart_product">
-                                    <a href=""><img src="images/cart/one.png" alt=""></a>
-                                </td>
-                                <td class="cart_description">
-                                    <h4><a href="">Colorblock Scuba</a></h4>
-                                    <p>Web ID: 1089772</p>
-                                </td>
-                                <td class="cart_price">
-                                    <p>$59</p>
-                                </td>
-                                <td class="cart_quantity">
-                                    <div class="cart_quantity_button">
-                                        <a class="cart_quantity_up" href=""> + </a>
-                                        <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                        <a class="cart_quantity_down" href=""> - </a>
-                                    </div>
-                                </td>
-                                <td class="cart_total">
-                                    <p class="cart_total_price">$59</p>
-                                </td>
-                                <td class="cart_delete">
-                                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                                </td>
-                            </tr>
+                            <c:forEach items="${listCart}" var="l">
+                                <tr>
+                                    <td class="cart_description">
+                                        <h4><a href="productservices?service=details&id=${l.productId}">${l.name}</a></h4>
+                                    </td>
+                                    <td class="cart_price">
+                                        <fmt:formatNumber type="number" value="${l.unitPrice}"/><sup>dd</sup>
+                                    </td>
+                                    <td class="cart_quantity">
+                                        <div class="cart_quantity_button">
+                                            <a class="cart_quantity_up" href="addtocart?service=taketocart&id=${l.productId}"> + </a>
+                                            ${l.quantity}
+                                            <!--dấu trừ chưa được-->
+                                            <a class="cart_quantity_down" href="addtocart?service=takefromcart&id=${l.productId}"> - </a>
+                                        </div>
+                                    </td>
+                                    <td class="cart_total">
+                                        <p class="cart_total_price">
+                                            <fmt:formatNumber type="number" value="${l.unitPrice * l.quantity}"/><sup>dd</sup>
+                                        </p>
+                                    </td>
+                                    <td class="cart_delete">
+                                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
                 </div>

@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import entity.Cart;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -50,28 +53,56 @@ public class Addtocart extends HttpServlet {
                     return;
                 }
 
-                String id = request.getParameter("id");
-                Product pro = (Product) session.getAttribute(id);
-
-                // DOES NOT HAVE THIS PRODUCT (OR KEY, VALUE) YET;
-                if (pro == null) {
-                    Product product = new ProductDAO().getProductDetail(Integer.parseInt("id"));
-                    product.setQuantity(1);
-                    session.setAttribute(id, product);
-                    request.getRequestDispatcher("cart.jsp").forward(request, response);
-                } else {
-                    // THE CART HAVE THIS PRODUCT ALREADY
-                    // AND ADD 1 TO NUMBER OF ITEMS
-                    pro.setQuantity(pro.getQuantity() + 1);
-                    request.getRequestDispatcher("cart.jsp").forward(request, response);
+                // LIST<CART>
+                int id = Integer.parseInt(request.getParameter("id"));
+                Product pro  = new ProductDAO().getProductDetail(id);
+                Cart cart = new Cart(id, pro.getName(), pro.getPrice(), 1);
+                
+                session = request.getSession();
+                List<Cart> list = null;
+                list = (ArrayList<Cart>) session.getAttribute("listCart");
+                
+                boolean flag = true;
+                if (list == null) {
+                    list = new ArrayList<>();
+                    list.add(cart);
+                    session.setAttribute("listCart", list);
+                }else{
+                    for (Cart c : list) {
+                        if (c.getProductId()== id) {
+                            c.setQuantity(c.getQuantity() + 1);
+                            flag = false;
+                        }
+                    }
+                    if (flag) {
+                        list.add(cart);
+                        flag = true;
+                    }
+                    session.setAttribute("listCart", list);
                 }
+                
+//                int id = Integer.parseInt(request.getParameter("id"));
+//                Product pro = session.getAttribute(id);
+//
+//                // DOES NOT HAVE THIS PRODUCT (OR KEY, VALUE) YET;
+//                if (pro == null) {
+//                    Product pro2 = new ProductDAO().getProductDetail(id);
+//                    pro2.setQuantity(1);
+//                    session.setAttribute(id, pro2);
+//                    request.getRequestDispatcher("cart.jsp").forward(request, response);
+//                } else {
+//                    // THE CART HAVE THIS PRODUCT ALREADY
+//                    // AND ADD 1 TO NUMBER OF ITEMS
+//                    pro.setQuantity(pro.getQuantity() + 1);
+//                    request.getRequestDispatcher("cart.jsp").forward(request, response);
+//                }
             }
 
             // TAKE 1 ITEM FROM CART
             if (service.equals("takefromcart")) {
                 String id = request.getParameter("id");
                 Product pro = (Product) session.getAttribute(id);
-
+                // Đang bị lỗi dấu trừ
                 if (pro.getQuantity() == 1) {
                     session.removeAttribute(id);
                     response.sendRedirect("cart.jsp");
