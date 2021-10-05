@@ -59,7 +59,7 @@
                         <div class="col-sm-9">
                             <div class="mainmenu pull-left">
                                 <ul class="nav navbar-nav collapse navbar-collapse">
-                                    <li><a href="home" class="active">Trang chủ</a></li>
+                                    <li><a style="color: #FE980F" href="home" class="active">Trang chủ</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                             <div class="search_box pull-right">
                                 <form action="productservices" method="Post">
                                     <input type="text" name="searchName" placeholder="Tên sản phẩm"/>
-                                    <button type="submit">Tìm kiếm</button>
+                                    <button style="padding: 7px; background-color: #FE980F; border-radius: 5px; border: none; color: white" type="submit">Tìm kiếm</button>
                                     <input name="service" type="hidden" value="search"/>
                                 </form>
                             </div>

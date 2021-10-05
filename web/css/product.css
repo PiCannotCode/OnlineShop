@@ -1,0 +1,44 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 5, 2021, 8:01:57 PM
+    Author     : Nghia 
+*/
+
+.addProduct{
+    padding: 10px;
+    margin-left: 80%;
+    margin-right: 8%;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: royalblue;
+    text-align: center;
+    color: white;
+}
+.thId, .thName, .thPrice, .thQuantity, .thStatus, .thcategory, 
+.thDescription, .thImage, .thNote ,.thUpdate, .thDelete{
+    padding: 5px;
+    text-align: center;
+    background-color: #FE980F;
+    color: white;
+}
+.tdId, .tdName, .tdPrice, 
+.tdQuantity, .tdStatus, .tdcategory{
+    text-align: center;
+}
+
+.btnUpdate{
+    background-color: limegreen;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+.btnDelete{
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
