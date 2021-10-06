@@ -63,7 +63,7 @@
                                                 <img src="image/${p.image}" alt="" />
                                                 <h2><fmt:formatNumber value="${p.price}"/><sup>đ</sup></h2>
                                                 <p><a href="productservices?service=details&id=${p.id}">${p.name}</a></p>
-                                                <a href="addtocart?service=taketocart&id=${p.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                                <a href="cartservice?service=taketocart&id=${p.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
                                             </div>
                                         </div>
                                     </div>

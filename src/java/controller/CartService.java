@@ -23,8 +23,8 @@ import java.util.List;
  *
  * @author SANG
  */
-@WebServlet(name = "Addtocart", urlPatterns = {"/addtocart"})
-public class Addtocart extends HttpServlet {
+@WebServlet(name = "Addtocart", urlPatterns = {"/cartservice"})
+public class CartService extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -55,21 +55,21 @@ public class Addtocart extends HttpServlet {
 
                 // LIST<CART>
                 int id = Integer.parseInt(request.getParameter("id"));
-                Product pro  = new ProductDAO().getProductDetail(id);
+                Product pro = new ProductDAO().getProductDetail(id);
                 Cart cart = new Cart(id, pro.getName(), pro.getPrice(), 1);
-                
+
                 session = request.getSession();
                 List<Cart> list = null;
                 list = (ArrayList<Cart>) session.getAttribute("listCart");
-                
+
                 boolean flag = true;
                 if (list == null) {
                     list = new ArrayList<>();
                     list.add(cart);
                     session.setAttribute("listCart", list);
-                }else{
+                } else {
                     for (Cart c : list) {
-                        if (c.getProductId()== id) {
+                        if (c.getProductId() == id) {
                             c.setQuantity(c.getQuantity() + 1);
                             flag = false;
                         }
@@ -80,7 +80,8 @@ public class Addtocart extends HttpServlet {
                     }
                     session.setAttribute("listCart", list);
                 }
-                
+                response.sendRedirect("home");
+
 //                int id = Integer.parseInt(request.getParameter("id"));
 //                Product pro = session.getAttribute(id);
 //
@@ -96,21 +97,23 @@ public class Addtocart extends HttpServlet {
 //                    pro.setQuantity(pro.getQuantity() + 1);
 //                    request.getRequestDispatcher("cart.jsp").forward(request, response);
 //                }
+//            if (service.equals("takefromcart")) {
+//                String id = request.getParameter("id");
+//                Product pro = (Product) session.getAttribute(id);
+//                // Đang bị lỗi dấu trừ
+//                if (pro.getQuantity() == 1) {
+//                    session.removeAttribute(id);
+//                    response.sendRedirect("cart.jsp");
+////                    response.sendRedirect("remove.jsp?id=" +  id);
+//                } else {
+//                    pro.setQuantity(pro.getQuantity() - 1);
+//                    response.sendRedirect("cart.jsp");
+//                }
+//            }
             }
-
-            // TAKE 1 ITEM FROM CART
-            if (service.equals("takefromcart")) {
-                String id = request.getParameter("id");
-                Product pro = (Product) session.getAttribute(id);
-                // Đang bị lỗi dấu trừ
-                if (pro.getQuantity() == 1) {
-                    session.removeAttribute(id);
-                    response.sendRedirect("cart.jsp");
-//                    response.sendRedirect("remove.jsp?id=" +  id);
-                } else {
-                    pro.setQuantity(pro.getQuantity() - 1);
-                    response.sendRedirect("cart.jsp");
-                }
+            // PUT IN AND TAKE OUT FROM CART
+            if (service.equals("action")) {
+                
             }
         }
     }

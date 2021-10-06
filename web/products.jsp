@@ -35,10 +35,10 @@
                     <td>${p.description}</td>
                     <td class="tdQuantity">${p.quantity}</td>
                     <td class="tdStatus">${p.status}</td>
-                    <td>${p.image}</td>
+                    <td><img src="image/${p.image}" style="width: 130px;"></td>
                     <td>${p.note}</td>
                     <td ><a class ="btnUpdate" href="UpdateProduct?id=${p.id}">Update</a></td>
-                    <td ><a class ="btnDelete" href="productservices?service=delete&id=${p.id}">Delete</a></td>
+                    <td ><a onclick="return confirm('Mặt hàng này sẽ được xóa')" class ="btnDelete" href="productservices?service=delete&id=${p.id}">Delete</a></td>
                 </tr>
             </c:forEach>
         </table>

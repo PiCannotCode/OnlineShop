@@ -55,19 +55,19 @@
                                         <h4><a href="productservices?service=details&id=${l.productId}">${l.name}</a></h4>
                                     </td>
                                     <td class="cart_price">
-                                        <fmt:formatNumber type="number" value="${l.unitPrice}"/><sup>dd</sup>
+                                        <fmt:formatNumber type="number" value="${l.unitPrice}"/><sup>đ</sup>
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">
-                                            <a class="cart_quantity_up" href="addtocart?service=taketocart&id=${l.productId}"> + </a>
+                                            <a class="cart_quantity_up" href="addtocart?service=action&id=${l.productId}"> + </a>
                                             ${l.quantity}
                                             <!--dấu trừ chưa được-->
-                                            <a class="cart_quantity_down" href="addtocart?service=takefromcart&id=${l.productId}"> - </a>
+                                            <a class="cart_quantity_down" href="addtocart?service=action&id=${l.productId}"> - </a>
                                         </div>
                                     </td>
                                     <td class="cart_total">
                                         <p class="cart_total_price">
-                                            <fmt:formatNumber type="number" value="${l.unitPrice * l.quantity}"/><sup>dd</sup>
+                                            <fmt:formatNumber type="number" value="${l.unitPrice * l.quantity}"/><sup>đ</sup>
                                         </p>
                                     </td>
                                     <td class="cart_delete">

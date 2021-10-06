@@ -5,7 +5,9 @@
  */
 package controller;
 
+import entity.Category;
 import dao.ProductDAO;
+import dao.CategoryDAO;
 import entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -50,7 +52,13 @@ public class ProductServices extends HttpServlet {
             if (service.equalsIgnoreCase("search")) {
                 String search = request.getParameter("searchName");
                 ProductDAO productDAO = new ProductDAO();
+                CategoryDAO categoryDAO = new CategoryDAO();
+                ArrayList<Category> listCate = categoryDAO.getAllCategory();
                 ArrayList<Product> listProduct = productDAO.getListProduct(search);
+                Product product = productDAO.getProductTop1();
+                
+                request.setAttribute("newproduct", product);
+                request.setAttribute("cate", listCate);
                 request.setAttribute("listproduct", listProduct);
                 request.getRequestDispatcher("home.jsp").forward(request, response);
             }
