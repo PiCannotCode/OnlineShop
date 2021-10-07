@@ -81,15 +81,15 @@ public class CartService extends HttpServlet {
                     session.setAttribute("listCart", list);
                 }
                 response.sendRedirect("home");
-
+                
 //                int id = Integer.parseInt(request.getParameter("id"));
-//                Product pro = session.getAttribute(id);
+//                Product pro = (Product) session.getAttribute(String.valueOf(id));
 //
 //                // DOES NOT HAVE THIS PRODUCT (OR KEY, VALUE) YET;
 //                if (pro == null) {
 //                    Product pro2 = new ProductDAO().getProductDetail(id);
 //                    pro2.setQuantity(1);
-//                    session.setAttribute(id, pro2);
+//                    session.setAttribute("id", pro2);
 //                    request.getRequestDispatcher("cart.jsp").forward(request, response);
 //                } else {
 //                    // THE CART HAVE THIS PRODUCT ALREADY
@@ -97,6 +97,7 @@ public class CartService extends HttpServlet {
 //                    pro.setQuantity(pro.getQuantity() + 1);
 //                    request.getRequestDispatcher("cart.jsp").forward(request, response);
 //                }
+//            }
 //            if (service.equals("takefromcart")) {
 //                String id = request.getParameter("id");
 //                Product pro = (Product) session.getAttribute(id);
@@ -110,25 +111,21 @@ public class CartService extends HttpServlet {
 //                    response.sendRedirect("cart.jsp");
 //                }
 //            }
-            }
-            // PUT IN AND TAKE OUT FROM CART
-            if (service.equals("action")) {
-                
-            }
         }
     }
+}
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+/**
+ * Handles the HTTP <code>GET</code> method.
+ *
+ * @param request servlet request
+ * @param response servlet response
+ * @throws ServletException if a servlet-specific error occurs
+ * @throws IOException if an I/O error occurs
+ */
+@Override
+        protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -142,7 +139,7 @@ public class CartService extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -153,7 +150,7 @@ public class CartService extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+        public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 

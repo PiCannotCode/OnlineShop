@@ -59,10 +59,9 @@
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">
-                                            <a class="cart_quantity_up" href="addtocart?service=action&id=${l.productId}"> + </a>
-                                            ${l.quantity}
-                                            <!--dấu trừ chưa được-->
-                                            <a class="cart_quantity_down" href="addtocart?service=action&id=${l.productId}"> - </a>
+                                            <a class="cart_quantity_up" href="calculatorservice?service=2&id=${l.productId}"> + </a>
+                                            <input class="cart_quantity_input" type="text" name="quantity" value="${l.quantity}" autocomplete="off" size="2">
+                                            <a class="cart_quantity_down" href="calculatorservice?service=1&id=${l.productId}">-</a>
                                         </div>
                                     </td>
                                     <td class="cart_total">
