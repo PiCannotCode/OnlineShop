@@ -57,7 +57,7 @@ public class AccountServices extends HttpServlet {
                     if (accountLogin.getRoleId() == 1) {
                         System.out.println(accountLogin);
                         System.out.println("1");
-                        response.sendRedirect("admin.jsp");
+                        response.sendRedirect("userlist");
                     } else if (accountLogin.getRoleId() == 2) {
                         System.out.println("2");
                         response.sendRedirect("home");
