@@ -9,8 +9,8 @@
     </head>
     <body>
         <jsp:include page="header.jsp"/>
-        <div
-            <a class="addProduct" href="AddProduct?id=${p.id}">Add Product</a>
+        <div>
+            <a class="addProduct" href="productservices?service=addview">Add Product</a>
         </div>
         <table border="1" align="center">
             <tr>
@@ -37,7 +37,7 @@
                     <td class="tdStatus">${p.status}</td>
                     <td><img src="image/${p.image}" style="width: 130px;"></td>
                     <td>${p.note}</td>
-                    <td ><a class ="btnUpdate" href="UpdateProduct?id=${p.id}">Update</a></td>
+                    <td ><a class ="btnUpdate" href="productservices?service=updateview&id=${p.id}">Update</a></td>
                     <td ><a onclick="return confirm('Mặt hàng này sẽ được xóa')" class ="btnDelete" href="productservices?service=delete&id=${p.id}">Delete</a></td>
                 </tr>
             </c:forEach>

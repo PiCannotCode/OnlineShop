@@ -71,10 +71,17 @@ public class ProductServices extends HttpServlet {
                 request.setAttribute("product", product);
                 request.getRequestDispatcher("product-detail.jsp").forward(request, response);
             }
+            
+            // ADD PRODUCT VIEW
+            if (service.equalsIgnoreCase("addview")) {
+                CategoryDAO categoryDAO = new CategoryDAO();
+                ArrayList<Category> listCategory = categoryDAO.getAllCategory();
+                request.setAttribute("listCategory", listCategory);
+                request.getRequestDispatcher("add-product.jsp").forward(request, response);
+            }
 
             // ADD PRODUCT
             if (service.equalsIgnoreCase("add")) {
-                int id = Integer.parseInt(request.getParameter("id"));
                 String name = request.getParameter("name");
                 int category_id = Integer.parseInt(request.getParameter("category_id"));
                 float price = Float.parseFloat(request.getParameter("price"));
@@ -83,15 +90,28 @@ public class ProductServices extends HttpServlet {
                 int status = Integer.parseInt(request.getParameter("status"));
                 String image = request.getParameter("image");
                 String note = request.getParameter("note");
-                Product product = new Product(id, name, category_id, price, description, quantity, status, image, note);
+                Product product = new Product(0, name, category_id, price, description, quantity, status, image, note);
                 ProductDAO productDAO = new ProductDAO();
                 if (productDAO.addProduct(product)) {
                     request.setAttribute("message", "Add Product Successfully");
                     request.getRequestDispatcher("productservices?service=list").forward(request, response);
                 } else {
                     request.setAttribute("message", "Add Product Fail");
-                    request.getRequestDispatcher("addProduct.jsp").forward(request, response);
+                    request.getRequestDispatcher("productservices?service=addview").forward(request, response);
                 }
+            }
+            
+            //UPDATE PRODUCT VIEW
+            if (service.equalsIgnoreCase("updateview")) {
+                int id = Integer.parseInt(request.getParameter("id"));
+                ProductDAO productDAO = new ProductDAO();
+                Product product = productDAO.getProductDetail(id);
+                CategoryDAO categoryDAO = new CategoryDAO();
+                ArrayList<Category> listCategory = categoryDAO.getAllCategory();
+                
+                request.setAttribute("product", product);
+                request.setAttribute("listCategory", listCategory);
+                request.getRequestDispatcher("add-product.jsp").forward(request, response);
             }
 
             // UPDATE PRODUCT
@@ -112,7 +132,7 @@ public class ProductServices extends HttpServlet {
                     request.getRequestDispatcher("productservices?service=list").forward(request, response);
                 } else {
                     request.setAttribute("message", "Update Product Fail");
-                    request.getRequestDispatcher("updateProduct.jsp").forward(request, response);
+                    request.getRequestDispatcher("productservices?service=updateview&id="+ id +"").forward(request, response);
                 }
             }
 
