@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import Utils.RegexUtils;
 
 /**
  *
@@ -39,9 +40,9 @@ public class AccountServices extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
-
+        
         try (PrintWriter out = response.getWriter()) {
-
+            
             HttpSession session = request.getSession(true);
             String service = request.getParameter("service");
 
@@ -50,7 +51,7 @@ public class AccountServices extends HttpServlet {
                 String email = request.getParameter("email");
                 String pass = request.getParameter("password");
 
-                // Check account
+                // Check account in database
                 Account accountLogin = new AccountDAO().login(email, pass);
                 if (accountLogin != null) {
                     session.setAttribute("currentAccount", accountLogin);
@@ -82,37 +83,63 @@ public class AccountServices extends HttpServlet {
                 // Get in4 Account Customer
                 String email = request.getParameter("email");
                 String pass = request.getParameter("password");
-                String rePass = request.getParameter("repassword");
+                String passcf = request.getParameter("repassword");
 
                 // Get in4 Account Detail
                 String name = request.getParameter("name");
                 String phone = request.getParameter("phone");
                 String address = request.getParameter("address");
                 int gender = Integer.parseInt(request.getParameter("gender"));
-
                 int idAccountDetail = 0;
-                // Check mail
-                if (new AccountDAO().checkEmail(email)) {
-                    request.setAttribute("message", "Tài khoản email đã tồn tại");
+                // Check mail validate
+                if (!RegexUtils.checkEmail(email)) {
+                    request.setAttribute("message", "Email không đúng định dạng");
                     request.getRequestDispatcher("register.jsp").forward(request, response);
                 } else {
-                    // Check pass
-                    if (pass.equals(rePass)) {
-                        AccountDetail accountDetail = new AccountDetail(name, phone, gender, address);
-                        idAccountDetail = new AccountDetailDAO().addAccountDetail(accountDetail);
-                        if (idAccountDetail > 0) {
-                            Account account = new Account(email, pass, idAccountDetail, 2, 1);
-                            if (new AccountDAO().addAccount(account)) {
-                                System.out.println(account); // Test datas
-                                request.setAttribute("message", "Đăng ký thành công");
-                                request.getRequestDispatcher("register.jsp").forward(request, response);
-                            }
-                        }
-                    } else {
-                        request.setAttribute("message", "Nhập lại mật khẩu không khớp");
+                    // Check mail in database
+                    if (new AccountDAO().checkEmail(email)) {
+                        request.setAttribute("message", "Email đăng ký đã tồn tại");
                         request.getRequestDispatcher("register.jsp").forward(request, response);
+                    } else {
+                        // Check pass and passcf
+                        if (RegexUtils.checkPassValidate(pass, passcf)) {
+                            AccountDetail accountDetail = new AccountDetail(name, phone, gender, address);
+                            idAccountDetail = new AccountDetailDAO().addAccountDetail(accountDetail);
+                            if (idAccountDetail > 0) {
+                                // if the pass and passcf are passed testcase, then create new an Account
+                                Account account = new Account(email, pass, idAccountDetail, 2, 1);
+                                if (new AccountDAO().addAccount(account)) {
+                                    request.setAttribute("message", "Đăng ký tài khoản thành công");
+                                    request.getRequestDispatcher("register.jsp").forward(request, response);
+                                }
+                            }
+                        }else{
+                            request.setAttribute("message", "Mật khẩu không đúng định dạng");
+                            request.getRequestDispatcher("register.jsp").forward(request, response);
+                        }
                     }
                 }
+//                if (new AccountDAO().checkEmail(email)) {
+//                    request.setAttribute("message", "Tài khoản email đã tồn tại");
+//                    request.getRequestDispatcher("register.jsp").forward(request, response);
+//                } else {
+//                    // Check pass
+//                    if (pass.equals(rePass)) {
+//                        AccountDetail accountDetail = new AccountDetail(name, phone, gender, address);
+//                        idAccountDetail = new AccountDetailDAO().addAccountDetail(accountDetail);
+//                        if (idAccountDetail > 0) {
+//                            Account account = new Account(email, pass, idAccountDetail, 2, 1);
+//                            if (new AccountDAO().addAccount(account)) {
+//                                System.out.println(account); // Test datas
+//                                request.setAttribute("message", "Đăng ký thành công");
+//                                request.getRequestDispatcher("register.jsp").forward(request, response);
+//                            }
+//                        }
+//                    } else {
+//                        request.setAttribute("message", "Nhập lại mật khẩu không khớp");
+//                        request.getRequestDispatcher("register.jsp").forward(request, response);
+//                    }
+//                }
             }
 
             // RESET PASSWORD
