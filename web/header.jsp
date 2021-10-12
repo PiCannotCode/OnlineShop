@@ -29,23 +29,38 @@
                     <div class="row">
                         <div class="col-md-4 clearfix">
                             <div class="logo pull-left">
-                               
+
                             </div>
                         </div>
                         <div class="col-md-8 clearfix">
                             <div class="shop-menu clearfix pull-right">
                                 <ul class="nav navbar-nav">
+                                    <c:choose>
+                                        <c:when test="${currentAccount != null}">
+                                            <li><a href="#">Hello: ${sessionScope.currentAccount.email}</a></li> 
+                                            </c:when>
+                                        </c:choose>
+                                        <c:choose>
+                                            <c:when test="${currentAccount.roleId==1}">
+                                            <li><a href="userlist"><i class="fa fa-lock"></i>User List</a></li>
+                                            </c:when>
+                                            <c:when test="${currentAccount.roleId==3}">
+                                            <li><a href="productservices?service=list"><i class="fa fa-lock"></i>Product Management</a></li>
+                                            </c:when>
+                                        </c:choose>         
                                     <li><a href="checkout.html"><i class="fa fa-crosshairs"></i>Checkout</a></li>
                                     <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a></li>
                                         <c:choose>
                                             <c:when test="${currentAccount != null}">
                                             <li><a href="UserProfile?id=${currentAccount.accountDetailId}"><i class="fa fa-user"></i>Tài khoản</a></li>
+                                            <li><a href="changePass.jsp"><i class="fa fa-lock"></i>Đổi mật khẩu</a></li>
                                             <li><a href="servicesaccount?service=logout"><i class="fa fa-lock"></i>Đăng xuất</a></li>
                                             </c:when>
                                             <c:when test="${currentAccount == null}">
                                             <li><a href="login.jsp"><i class="fa fa-lock"></i>Đăng nhập</a></li>
                                             </c:when>
-                                        </c:choose>
+
+                                    </c:choose>
                                 </ul>
                             </div>
                         </div>

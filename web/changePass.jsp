@@ -23,7 +23,10 @@
                         <div class="login-wrap p-0">
                             <h3 class="mb-4 text-center"></h3>
                             <p style="text-align: center; font-family: cursive">${message}</p>
+                            
+                            
                             <form action="ChangePass" method="post">     
+                                <input name="id"  value="${sessionScope.currentAccount.id}" type="hidden">
                                 <div class="form-group">
                                     <input name="password" type="password" class="form-control" placeholder="Mật khẩu hiện tại" required="" style="font-family: cursive">
                                     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
@@ -40,6 +43,8 @@
                                     <button type="submit" class="form-control btn btn-primary submit px-3" style="font-family: cursive">Đổi mật khẩu</button>
                                 </div>
                             </form>
+                            
+                            
                         </div>
                     </div>
                 </div>

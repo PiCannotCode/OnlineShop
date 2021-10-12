@@ -35,7 +35,7 @@ public class ChangePass extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        int id = 8;
+        int id = Integer.parseInt(request.getParameter("id"));
         String password = request.getParameter("password");
         String passwordNew = request.getParameter("passwordNew");
         String repasswordNew = request.getParameter("repasswordNew");
@@ -43,11 +43,11 @@ public class ChangePass extends HttpServlet {
         if (repasswordNew.equals(passwordNew)) {
             UserlistDAO d = new UserlistDAO();
             d.changePass(id, password, passwordNew);
-            response.sendRedirect("changePass");
+            request.getRequestDispatcher("home").forward(request, response);
 
         } else {
             request.setAttribute("message", "Mật khẩu nhập lại không đúng");
-            request.getRequestDispatcher("changePass").forward(request, response);
+            request.getRequestDispatcher("changePass.jsp").forward(request, response);
         }
     }
 
