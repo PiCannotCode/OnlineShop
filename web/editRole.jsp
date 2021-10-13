@@ -22,7 +22,7 @@
             <div class="container">
                 <!-- FOR DEMO PURPOSE -->
                 <header class="text-center mb-5">
-                    <h1 class="display-4">Edit Role</h1>
+                    <h1 class="heading-section">Edit Role</h1>
                 </header>
 
                 <form action="UpdateAccount" method="post">                                             

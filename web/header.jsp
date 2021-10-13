@@ -37,15 +37,15 @@
                                 <ul class="nav navbar-nav">
                                     <c:choose>
                                         <c:when test="${currentAccount != null}">
-                                            <li><a href="#">Hello: ${sessionScope.currentAccount.email}</a></li> 
+                                            <li><a href="#">Hello: <b>${sessionScope.currentAccount.email}</b></a></li> 
                                             </c:when>
                                         </c:choose>
                                         <c:choose>
                                             <c:when test="${currentAccount.roleId==1}">
-                                            <li><a href="userlist"><i class="fa fa-lock"></i>User List</a></li>
+                                            <li><a href="userlist"><i class="fa fa-list-alt"></i>Quản lý người dùng</a></li>
                                             </c:when>
                                             <c:when test="${currentAccount.roleId==3}">
-                                            <li><a href="productservices?service=list"><i class="fa fa-lock"></i>Product Management</a></li>
+                                            <li><a href="productservices?service=list"><i class="fa fa-list-alt"></i>Quản lý sản phẩm</a></li>
                                             </c:when>
                                         </c:choose>         
                                     <li><a href="checkout.html"><i class="fa fa-crosshairs"></i>Checkout</a></li>
@@ -54,10 +54,10 @@
                                             <c:when test="${currentAccount != null}">
                                             <li><a href="UserProfile?id=${currentAccount.accountDetailId}"><i class="fa fa-user"></i>Tài khoản</a></li>
                                             <li><a href="changePass.jsp"><i class="fa fa-lock"></i>Đổi mật khẩu</a></li>
-                                            <li><a href="servicesaccount?service=logout"><i class="fa fa-lock"></i>Đăng xuất</a></li>
+                                            <li><a href="servicesaccount?service=logout"><i class="fa fa-sign-out"></i>Đăng xuất</a></li>
                                             </c:when>
                                             <c:when test="${currentAccount == null}">
-                                            <li><a href="login.jsp"><i class="fa fa-lock"></i>Đăng nhập</a></li>
+                                            <li><a href="login.jsp"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
                                             </c:when>
 
                                     </c:choose>
@@ -74,7 +74,7 @@
                         <div class="col-sm-9">
                             <div class="mainmenu pull-left">
                                 <ul class="nav navbar-nav collapse navbar-collapse">
-                                    <li><a style="color: #FE980F" href="home" class="active">Trang chủ</a></li>
+                                    <li><a style="color: #FE980F" href="home" class="active"><b>Trang chủ</b></a></li>
                                 </ul>
                             </div>
                         </div>
