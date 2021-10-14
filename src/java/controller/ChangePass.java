@@ -7,8 +7,10 @@ package controller;
 
 import dao.UserlistDAO;
 import entity.Account;
+import entity.AccountAll;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,16 +41,24 @@ public class ChangePass extends HttpServlet {
         String password = request.getParameter("password");
         String passwordNew = request.getParameter("passwordNew");
         String repasswordNew = request.getParameter("repasswordNew");
-        String message ="";
-        if (repasswordNew.equals(passwordNew)) {
-            UserlistDAO d = new UserlistDAO();
-            d.changePass(id, password, passwordNew);
-            request.getRequestDispatcher("home").forward(request, response);
+        String message = "";
+        UserlistDAO d = new UserlistDAO();
+        Account a = d.getAccountbyid(id);
+        String pass = a.getPassword();
+        if (password.equals(pass)) {
+            if (repasswordNew.equals(passwordNew)) {
+                d.changePass(id, password, passwordNew);
+                request.getRequestDispatcher("home").forward(request, response);
 
+            } else {
+                request.setAttribute("message", "Mật khẩu nhập lại không đúng");
+                request.getRequestDispatcher("changePass.jsp").forward(request, response);
+            }
         } else {
-            request.setAttribute("message", "Mật khẩu nhập lại không đúng");
+            request.setAttribute("message", "Mật khẩu cũ nhập lại không đúng");
             request.getRequestDispatcher("changePass.jsp").forward(request, response);
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

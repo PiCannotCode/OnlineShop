@@ -92,6 +92,21 @@ public class UserlistDAO {
         }
     }
 
+        public Account getAccountbyid(int id) {
+        String query = "select* from account where id = ?";
+        try {
+            conn = new DBContext().getConnection(); //mo ket noi toi sql
+            ps = conn.prepareStatement(query);//nem cau lenh query sang sql
+            ps.setInt(1, id);
+            rs = ps.executeQuery();//chay cau lenh query, nhan ket qua tra ve
+            while (rs.next()) {
+                return new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         UserlistDAO d = new UserlistDAO();
         System.out.println(d.getAllAccountUser());

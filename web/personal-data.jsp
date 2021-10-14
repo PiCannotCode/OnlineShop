@@ -51,7 +51,7 @@
                         </div>
                         <div class="mt-5">
                             <button class="btn" style="background-color: #FE980F; color: white">Sửa thông tin</button>
-                            <button class="btn" style="background-color: #FE980F; color: white">Đổi mật khẩu</button>
+                            <a href="changePass.jsp"><i style="background-color: #FE980F; color: white"></i>Đổi mật khẩu</a>
                         </div>
                     </div>
                 </div>
