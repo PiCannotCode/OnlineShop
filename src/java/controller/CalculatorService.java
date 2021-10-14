@@ -6,6 +6,8 @@
 package controller;
 
 import entity.Cart;
+import entity.Product;
+import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -46,28 +48,43 @@ public class CalculatorService extends HttpServlet {
             List<Cart> list = null;
             list = (ArrayList<Cart>) session.getAttribute("listCart");
 
+            // Delete from cart
             if (service.equals("0")) {
                 for (int i = 0; i < list.size(); i++) {
                     if (list.size() > 1) {
                         if (list.get(i).getProductId() == id) {
                             list.remove(i);
                         }
-                    }else{
+                    } else {
                         list = null;
                         break;
                     }
                 }
-            }else{
+            } else {
                 for (int i = 0; i < list.size(); i++) {
                     if (list.get(i).getProductId() == id) {
+                        // - product
                         if (service.equals("1")) {
                             list.get(i).setQuantity(list.get(i).getQuantity() - 1);
+                            if (list.size() > 1) {
+                                if (list.get(i).getQuantity() == 0) {
+                                    list.remove(i);
+                                }
+                            } else {
+                                if (list.get(i).getQuantity() == 0) {
+                                    list = null;
+                                    break;
+                                }
+                            }
+                        } else {
+                            // + product
+                            list.get(i).setQuantity(list.get(i).getQuantity() + 1);
                         }
                     }
                 }
             }
-            
-
+            session.setAttribute("listCart", list);
+            response.sendRedirect("cart.jsp");
         }
     }
 

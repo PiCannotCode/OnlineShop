@@ -29,7 +29,7 @@
                     <div class="row">
                         <div class="col-md-4 clearfix">
                             <div class="logo pull-left">
-
+                                <a style="color: #FE980F; font-size: 18px;" href="home" class="active"><img src="//theme.hstatic.net/1000049508/1000480552/14/logo.png?v=267" style="width: 39%;"/></a>
                             </div>
                         </div>
                         <div class="col-md-8 clearfix">
@@ -74,7 +74,6 @@
                         <div class="col-sm-9">
                             <div class="mainmenu pull-left">
                                 <ul class="nav navbar-nav collapse navbar-collapse">
-                                    <li><a style="color: #FE980F" href="home" class="active"><b>Trang chủ</b></a></li>
                                 </ul>
                             </div>
                         </div>

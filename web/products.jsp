@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -31,7 +32,7 @@
                     <td class="tdId">${p.id}</td>
                     <td class="tdName">${p.name}</</td>
                     <td class="tdcategory">${p.category_id}</td>
-                    <td class="tdPrice">${p.price}</td>
+                    <td class="tdPrice"><fmt:formatNumber value="${p.price}"/><sup>đ</sup></td>
                     <td>${p.description}</td>
                     <td class="tdQuantity">${p.quantity}</td>
                     <td class="tdStatus">${p.status}</td>

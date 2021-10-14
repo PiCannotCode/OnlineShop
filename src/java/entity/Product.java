@@ -84,8 +84,12 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public int getStatus() {
-        return status;
+    public String getStatus() {
+        if (status == 1) {
+            return "Còn hàng";
+        }else{
+            return "Hết hàng";
+        }
     }
 
     public void setStatus(int status) {
