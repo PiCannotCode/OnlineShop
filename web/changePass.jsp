@@ -3,7 +3,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Login 10</title>
+        <title>Đổi mật khẩu</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
@@ -15,36 +15,37 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-6 text-center mb-5">
-                        <h2 class="heading-section" style="font-family: cursive">Change Password</h2>
+                        <h2 class="heading-section">Đổi mật khẩu</h2>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-4">
                         <div class="login-wrap p-0">
                             <h3 class="mb-4 text-center"></h3>
-                            <p style="text-align: center; font-family: cursive">${message}</p>
+                            <p style="text-align: center">${message}</p>
                             
                             
                             <form action="ChangePass" method="post">     
                                 <input name="id"  value="${sessionScope.currentAccount.id}" type="hidden">
                                 <div class="form-group">
-                                    <input name="password" type="password" class="form-control" placeholder="Mật khẩu hiện tại" required="" style="font-family: cursive">
+                                    <input name="password" type="password" class="form-control" placeholder="Mật khẩu hiện tại" required="">
                                     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input name="passwordNew" type="password" class="form-control" placeholder="Mật khẩu mới" required="" style="font-family: cursive">
+                                    <input name="passwordNew" type="password" class="form-control" placeholder="Mật khẩu mới" required="">
                                     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input name="repasswordNew" type="password" class="form-control" placeholder=" Nhập lại mật khẩu" required="" style="font-family: cursive">
+                                    <input name="repasswordNew" type="password" class="form-control" placeholder="Nhập lại mật khẩu mới" required="">
                                     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="form-control btn btn-primary submit px-3" style="font-family: cursive">Đổi mật khẩu</button>
+                                    <button type="submit" class="form-control btn btn-primary submit px-3">Đổi mật khẩu</button>
                                 </div>
                             </form>
-                            
-                            
+                            <div class="social d-flex text-center">
+                                <a href="UserProfile?id=${currentAccount.accountDetailId}" class="px-2 py-2 mr-md-1 rounded">Quay lại</a>
+                            </div>       
                         </div>
                     </div>
                 </div>

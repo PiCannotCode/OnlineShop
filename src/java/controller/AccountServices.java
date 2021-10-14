@@ -67,7 +67,7 @@ public class AccountServices extends HttpServlet {
                         response.sendRedirect("productservices?service=list");
                     }
                 } else {
-                    request.setAttribute("message", "Tài khoản email hoặc mật khẩu không đúng");
+                    request.setAttribute("message", "Email hoặc mật khẩu không đúng");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 }
             }

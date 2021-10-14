@@ -55,7 +55,7 @@ public class ChangePass extends HttpServlet {
                 request.getRequestDispatcher("changePass.jsp").forward(request, response);
             }
         } else {
-            request.setAttribute("message", "Mật khẩu cũ nhập lại không đúng");
+            request.setAttribute("message", "Mật khẩu hiện tại không đúng");
             request.getRequestDispatcher("changePass.jsp").forward(request, response);
         }
 

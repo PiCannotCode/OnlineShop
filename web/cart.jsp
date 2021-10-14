@@ -41,7 +41,6 @@
                         <thead>
                             <tr class="cart_menu">
                                 <td class="image">Item</td>
-                                <td class="description"></td>
                                 <td class="price">Price</td>
                                 <td class="quantity">Quantity</td>
                                 <td class="total">Total</td>
@@ -59,9 +58,9 @@
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">
-                                            <a class="cart_quantity_up" href="calculatorservice?service=2&id=${l.productId}"> + </a>
-                                            <input class="cart_quantity_input" type="text" name="quantity" value="${l.quantity}" autocomplete="off" size="2">
                                             <a class="cart_quantity_down" href="calculatorservice?service=1&id=${l.productId}">-</a>
+                                            <input class="cart_quantity_input" type="text" name="quantity" value="${l.quantity}" autocomplete="off" size="2">
+                                            <a class="cart_quantity_up" href="calculatorservice?service=2&id=${l.productId}"> + </a>
                                         </div>
                                     </td>
                                     <td class="cart_total">
@@ -83,8 +82,8 @@
         <section id="do_action">
             <div class="container">
                 <div class="heading">
-                    <h3>Thanh toán các mặt hàng trong giỏ.</h3>
-                    <p>Vui lòng điền đầy đủ thông tin dưới để để xác nhận đơn hàng, xin cảm ơn.</p>
+                    <h3>Thanh toán các mặt hàng trong giỏ</h3>
+                    <p>Vui lòng điền đầy đủ các thông tin bên dưới để xác nhận đơn hàng, xin cảm ơn!</p>
                 </div>
                 <div class="row">
                     <form action="checkout" method="post">

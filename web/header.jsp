@@ -48,7 +48,7 @@
                                             <li><a href="productservices?service=list"><i class="fa fa-list-alt"></i>Quản lý sản phẩm</a></li>
                                             </c:when>
                                         </c:choose>         
-                                    <li><a href="checkout.html"><i class="fa fa-crosshairs"></i>Checkout</a></li>
+                                    <li><a href="#"><i class="fa fa-crosshairs"></i>Checkout</a></li>
                                     <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a></li>
                                         <c:choose>
                                             <c:when test="${currentAccount != null}">

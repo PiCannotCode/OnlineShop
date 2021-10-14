@@ -62,7 +62,7 @@
                             </form>
                             <p class="w-100 text-center">&mdash; Hoặc &mdash;</p>
                             <div class="social d-flex text-center">
-                                <a href="login.jsp" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span>Đăng nhập</a>
+                                <a href="login.jsp" class="px-2 py-2 mr-md-1 rounded">Đăng nhập</a>
                             </div>
                         </div>
                     </div>
