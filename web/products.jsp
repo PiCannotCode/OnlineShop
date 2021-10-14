@@ -9,7 +9,7 @@
     </head>
     <body>
         <jsp:include page="header.jsp"/>
-        <div>
+        <div style="margin-bottom: 20px;">
             <a class="addProduct" href="productservices?service=addview">Add Product</a>
         </div>
         <table border="1" align="center">
