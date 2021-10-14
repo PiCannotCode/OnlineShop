@@ -155,7 +155,7 @@ public class ProductDAO extends DBContext {
             ps.setFloat(3, product.getPrice());
             ps.setString(4, product.getDescription());
             ps.setInt(5, product.getQuantity());
-            ps.setInt(6, product.getStatus());
+            ps.setString(6, product.getStatus());
             ps.setString(7, product.getImage());
             ps.setString(8, product.getNote());
             int flag = ps.executeUpdate();
@@ -180,7 +180,7 @@ public class ProductDAO extends DBContext {
             ps.setFloat(3, product.getPrice());
             ps.setString(4, product.getDescription());
             ps.setInt(5, product.getQuantity());
-            ps.setInt(6, product.getStatus());
+            ps.setString(6, product.getStatus());
             ps.setString(7, product.getImage());
             ps.setString(8, product.getNote());
             ps.setInt(9, product.getId());
