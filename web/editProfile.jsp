@@ -1,15 +1,16 @@
 <%-- 
-    Document   : UserProfile
-    Created on : Oct 1, 2021, 7:51:28 AM
-    Author     : DucAnh
+    Document   : editProfile
+    Created on : 14-Oct-2021, 20:29:51
+    Author     : HUY
 --%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Thông tin người dùng</title>
+        <title>Sửa thông tin</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link href="css/personal.css" rel="stylesheet" type="text/css"/>
     </head>
@@ -26,32 +27,35 @@
                 </div>
                 <div class="col-sm">
                     <div class="p-5">
-                        <h3>Thông tin cá nhân</h3>
+                        <h3>Sửa thông tin</h3>
                         <div class="row mt-3">
-                            <div class="personal-info">
-                                <table>
+                            <form action="" method="">
+                                <table align="center">
                                     <tr>
                                         <th>Tên người dùng: &nbsp;</th>
-                                        <td>${accDetail.name}</td>
+                                        <td><input type="text" name="name" value="${accDetail.name}"></td>
                                     </tr>
                                     <tr>
                                         <th>Số điện thoại:</th>
-                                        <td>${accDetail.phone}</td>
+                                        <td><input type="text" name="phone" value="${accDetail.phone}"></td>
                                     </tr>
                                     <tr>
                                         <th>Giới tính:</th>
-                                        <td>${accDetail.gender == 1? "Nam" : "Nữ"}</td>
+                                        <td>
+                                            <input type="radio" name="gender" value="1" <c:if test="${accDetail.gender == 1}">checked</c:if> >Nam
+                                            <input type="radio" name="gender" value="0" <c:if test="${accDetail.gender == 0}">checked</c:if> >Nữ
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Địa chỉ:</th>
-                                        <td>${accDetail.address}</td>
+                                        <td><input type="text" name="address" value="${accDetail.address}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><button type="submit" class="btn" style="background-color: #FE980F; color: white">Cập nhật</button></td>
                                     </tr>
                                 </table>
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                            <button class="btn" style="background-color: #FE980F; color: white">Sửa thông tin</button>
-                            <button class="btn" style="background-color: #FE980F; color: white">Đổi mật khẩu</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -59,5 +63,3 @@
         </div>
     </body>
 </html>
-
-
