@@ -29,46 +29,46 @@
                         </div>
                     </div>
 
-                        <table class="table table-striped table-hover">
-                            <thead>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Email</th>						
+                                <th>Date Created</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Gender</th>
+                                <th>Address</th>
+                                <th>Action</th>                      
+                            </tr>
+                        </thead>
+
+
+                        <tbody>
+                            <c:forEach items="${listA}" var="o">
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Email</th>						
-                                    <th>Date Created</th>
-                                    <th>Role</th>
-                                    <th>Status</th>
-                                    <th>Name</th>
-                                    <th>Phone</th>
-                                    <th>Gender</th>
-                                    <th>Address</th>
-                                    <th>Action</th>                      
-                                </tr>
-                            </thead>
+                                    <td>${o.id}</td>
+                                    <td>${o.email}</td>
+                                    <td>${o.createDate}</td>                        
+                                    <td>${o.role}</td>
+                                    <td>${o.status}</td>
+                                    <td>${o.name}</td>
+                                    <td>${o.phone}</td>
+                                    <td>${o.gender=='true'?"Male":"Female"}</td>
+                                    <td>${o.address}</td>                                
+                                    <td>
+                                        <a href="LoadAccount?id=${o.id}" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                                        <a href="DeleteAccount?id=${o.id}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                                    </td>
+                                </tr>                                      
+                            </c:forEach>
 
 
-                            <tbody>
-                                <c:forEach items="${listA}" var="o">
-                                    <tr>
-                                        <td>${o.id}</td>
-                                        <td>${o.email}</td>
-                                        <td>${o.createDate}</td>                        
-                                        <td>${o.role}</td>
-                                        <td>${o.status}</td>
-                                        <td>${o.name}</td>
-                                        <td>${o.phone}</td>
-                                        <td>${o.gender=='true'?"Male":"Female"}</td>
-                                        <td>${o.address}</td>                                
-                                        <td>
-                                            <a href="LoadAccount?id=${o.id}" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                            <a href="DeleteAccount?id=${o.id}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                                        </td>
-                                    </tr>                                      
-                                </c:forEach>
+                        </tbody>
+                    </table>
 
-
-                            </tbody>
-                        </table>
-                
                     <div class="clearfix">
                         <div class="hint-text">Showing <b>1</b> out of <b>1</b> entries</div>
                         <ul class="pagination">

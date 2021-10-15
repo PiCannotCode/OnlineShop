@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : Nghia 
 */
 
+body{
+    font-family: 'Varela Round', sans-serif;
+}
+
 .addProduct{
     padding: 10px;
     margin-left: 80%;
