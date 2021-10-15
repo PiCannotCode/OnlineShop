@@ -27,7 +27,7 @@ public class UserlistDAO {
 
     public ArrayList<AccountAll> getAllAccountUser() {
         ArrayList<AccountAll> list = new ArrayList<AccountAll>();
-        String sql = "select Account.Id , Email ,[Role].Name as [role], Status_Account.[Status] , Create_Date , Account_Detail.[name] , Phone_Number , Gender ,[Address] from Account , Account_Detail , [Role] , Status_Account where Account.Id = Account_Detail.Id and [role].id=account.Role_ID and Status_Account.id = Account.Role_ID ";
+        String sql = "select Account.Id , Email ,[Role].Name as [role], Status_Account.[Status] , Create_Date , Account_Detail.[name] , Phone_Number , Gender ,[Address] from Account , Account_Detail , [Role] , Status_Account where Account.Account_Detail_Id = Account_Detail.Id and [role].id=account.Role_ID and Status_Account.id = Account.Role_ID ";
         try {
             conn = new DBContext().getConnection(); //mo ket noi toi sql
             ps = conn.prepareStatement(sql);//nem cau lenh query sang sql
