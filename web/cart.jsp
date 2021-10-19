@@ -129,7 +129,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <a class="btn btn-default check_out" href=""style="margin-top: 2px; float: right;">Check Out</a>
+                            <a class="btn btn-default check_out" href=""style="margin-top: 2px; float: right;">Đặt hàng</a>
                         </div>
                     </form>
                 </div>
