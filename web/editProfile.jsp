@@ -29,7 +29,7 @@
                     <div class="p-5">
                         <h3>Sửa thông tin</h3>
                         <div class="row mt-3">
-                            <form action="" method="">
+                            <form action="EditProfile?service=edit&id=${accDetail.id}" method="post">
                                 <table align="center">
                                     <tr>
                                         <th>Tên người dùng: &nbsp;</th>

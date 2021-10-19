@@ -7,11 +7,9 @@ package dao;
 
 import dbcontext.DBContext;
 import entity.AccountDetail;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 /**
  *
@@ -61,6 +59,24 @@ public class AccountDetailDAO extends DBContext {
             System.out.println("Get Account Detail Fail: " + e.getMessage());
         }
         return accDetail;
+    }
+    
+    public boolean editProfile(AccountDetail accDetail) {
+        try {
+            String sql = "UPDATE Account_Detail SET Name= ? ,Phone_Number= ? ,Gender= ? ,Address= ? "
+                    + "WHERE Id= ?";
+            PreparedStatement ps = getConnection().prepareStatement(sql);
+            ps.setString(1, accDetail.getName());
+            ps.setString(2, accDetail.getPhone());
+            ps.setInt(3, accDetail.getGender());
+            ps.setString(4, accDetail.getAddress());
+            ps.setInt(5, accDetail.getId());
+            int flag = ps.executeUpdate();
+            return flag >= 1;
+        } catch (Exception e) {
+            System.err.println("Edit Profile Fail: " + e.getMessage());
+            return false;
+        }
     }
 
     public static void main(String[] args) {

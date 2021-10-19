@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="mt-5">
-                            <a href="editProfile.jsp" class="btn" style="background-color: #FE980F; color: white">Sửa thông tin</a>
+                            <a href="EditProfile?service=view&id=${accDetail.id}" class="btn" style="background-color: #FE980F; color: white">Sửa thông tin</a>
                             <a href="changePass.jsp" class="btn" style="background-color: #FE980F; color: white">Đổi mật khẩu</a>
                         </div>
                     </div>
