@@ -59,7 +59,7 @@ public class EditProfile extends HttpServlet {
                 AccountDetailDAO accDetailDAO = new AccountDetailDAO();
                 if (accDetailDAO.editProfile(accDetail)) {
                     request.setAttribute("message", "Edit Profile Successfully");
-                    request.getRequestDispatcher("EditProfile?service=view&id="+id+"").forward(request, response);
+                    request.getRequestDispatcher("home").forward(request, response);
                 } else {
                     request.setAttribute("message", "Edit Profile Fail");
                     request.getRequestDispatcher("EditProfile?service=view&id="+id+"").forward(request, response);

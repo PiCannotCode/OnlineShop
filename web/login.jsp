@@ -50,6 +50,10 @@
                             <div class="social d-flex text-center">
                                 <a href="register.jsp" class="px-2 py-2 mr-md-1 rounded">Tạo tài khoản</a>
                             </div>
+                            <br/>
+                            <div class="social d-flex text-center">
+                                <a href="home" class="px-2 py-2 mr-md-1 rounded">Về trang chủ</a>
+                            </div>
                         </div>
                     </div>
                 </div>

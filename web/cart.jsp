@@ -16,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Cart</title>
+        <title>Giỏ hàng</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -32,19 +32,19 @@
             <div class="container">
                 <div class="breadcrumbs">
                     <ol class="breadcrumb">
-                        <li><a href="#">Home</a></li>
-                        <li class="active">Shopping Cart</li>
+                        <li><a href="home">Trang chủ</a></li>
+                        <li class="active">Giỏ hàng</li>
                     </ol>
                 </div>
                 <div class="table-responsive cart_info">
                     <table class="table table-condensed">
                         <thead>
                             <tr class="cart_menu">
-                                <td class="image">Item</td>
-                                <td class="price">Price</td>
-                                <td class="quantity">Quantity</td>
-                                <td class="total">Total</td>
-                                <td></td>
+                                <td class="image">Sản phẩm</td>
+                                <td class="price">Đơn giá</td>
+                                <td class="quantity">Số lượng</td>
+                                <td class="total">Số tiền</td>
+                                <td>Thao tác</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -89,17 +89,17 @@
                     <form action="checkout" method="post">
                         <div class="col-sm-6">
                             <div class="total_area">
-                                <div class="form-group" style="margin-left: 1rem;">
-                                    <label>Địa chỉ nhận hàng</label>
-                                    <input name="address" type="text" class="form-control" >
-                                </div>
                                 <div class="form-group" required style="margin-left: 1rem;">
                                     <label>Tên người nhận</label>
-                                    <input name="name" type="text" class="form-control" required >
+                                    <input name="name" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group" required style="margin-left: 1rem;">
                                     <label>Số điện thoại người nhận</label>
-                                    <input name="phone" type="text" class="form-control" >
+                                    <input name="phone" type="text" class="form-control" required>
+                                </div>
+                                <div class="form-group" style="margin-left: 1rem;">
+                                    <label>Địa chỉ nhận hàng</label>
+                                    <input name="address" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group" required style="margin-left: 1rem;">
                                     <label>Email người nhận</label>
@@ -109,13 +109,13 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="total_area" >
-                                <div class="form-group" style="margin-left: 1rem;">
-                                    <label>Phí giao hàng</label>
-                                    <input name="ship" type="text" class="form-control" placeholder="50,000" readonly="" required >
+                                 <div class="form-group" style="margin-left: 1rem;">
+                                    <label>Tổng tiền hàng</label>
+                                    <input name="totalprice" type="text" class="form-control" readonly="">
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
-                                    <label>VAT</label>
-                                    <input name="vat" type="text" class="form-control" required>
+                                    <label>Phí vận chuyển</label>
+                                    <input name="ship" type="text" class="form-control" placeholder="50,000" readonly="" required >
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Tổng số tiền của đơn hàng</label>
