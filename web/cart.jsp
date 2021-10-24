@@ -48,28 +48,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${listCart}" var="l">
+                            <c:forEach items="" var="">
                                 <tr>
                                     <td class="cart_description">
-                                        <h4><a href="productservices?service=details&id=${l.productId}">${l.name}</a></h4>
+                                        <h4><a href="productservices?service=details&id="></a></h4>
                                     </td>
                                     <td class="cart_price">
-                                        <fmt:formatNumber type="number" value="${l.unitPrice}"/><sup>đ</sup>
+                                        <fmt:formatNumber type="number" value=""/><sup></sup>
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">
-                                            <a class="cart_quantity_down" href="calculatorservice?service=1&id=${l.productId}">-</a>
-                                            <input class="cart_quantity_input" type="text" name="quantity" value="${l.quantity}" autocomplete="off" size="2">
-                                            <a class="cart_quantity_up" href="calculatorservice?service=2&id=${l.productId}"> + </a>
+                                            <a class="cart_quantity_down" href="">-</a>
+                                            <input class="cart_quantity_input" type="text" name="quantity" value="" autocomplete="off" size="2">
+                                            <a class="cart_quantity_up" href=""> + </a>
                                         </div>
                                     </td>
                                     <td class="cart_total">
                                         <p class="cart_total_price">
-                                            <fmt:formatNumber type="number" value="${l.unitPrice * l.quantity}"/><sup>đ</sup>
+                                            <fmt:formatNumber type="number" value=""/>
                                         </p>
                                     </td>
                                     <td class="cart_delete">
-                                        <a class="cart_quantity_delete" href="calculatorservice?service=0&id=${l.productId}"><i class="fa fa-times"></i></a>
+                                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -105,11 +105,15 @@
                                     <label>Email người nhận</label>
                                     <input name="email" type="text" class="form-control">
                                 </div>
+                                <div class="form-group" required style="margin-left: 1rem;">
+                                    <label>Ghi chú</label>
+                                    <textarea name="note" type="text" class="form-control"></textarea>
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="total_area" >
-                                 <div class="form-group" style="margin-left: 1rem;">
+                                <div class="form-group" style="margin-left: 1rem;">
                                     <label>Tổng tiền hàng</label>
                                     <input name="totalprice" type="text" class="form-control" readonly="">
                                 </div>
@@ -122,14 +126,16 @@
                                     <input name="totalpays" type="text" class="form-control" readonly="">
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
-                                    <label>Hình thức thanh toán</label>
-                                    <select name="payments">
-                                        <option>Trả tiền khi nhận được hàng</option>
-                                        <option selected="">Chuyển khoản ngay</option>
-                                    </select>
+                                    <label>VAT</label>
+                                    <input name="vat" type="text" class="form-control" placeholder="-10%" readonly="">
+                                </div>
+                                <div class="form-group" style="margin-left: 1rem;">
+                                    <label>Hình thức thanh toán</label><br>
+                                    <input name="payments" type="radio" value="0" required checked/>Chuyển khoản ngay<br>
+                                    <input name="payments" type="radio" value="1" required />Trả tiền khi nhận được hàng
                                 </div>
                             </div>
-                            <a class="btn btn-default check_out" href=""style="margin-top: 2px; float: right;">Đặt hàng</a>
+                            <button class="btn btn-default check_out" href=""style="margin-top: 2px; float: right;">Đặt hàng</button>
                         </div>
                     </form>
                 </div>

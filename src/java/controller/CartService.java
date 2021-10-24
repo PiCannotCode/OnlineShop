@@ -44,73 +44,8 @@ public class CartService extends HttpServlet {
             String service = request.getParameter("service");
 
             // ADDTOCART
-            if (service.equals("taketocart")) {
-                // CHECK USER LOGIN
-                try {
-                    String id = session.getAttribute("currentAccount").toString();
-                } catch (NullPointerException e) {
-                    response.sendRedirect("login.jsp");
-                    return;
-                }
-
-                // LIST<CART>
-                int id = Integer.parseInt(request.getParameter("id"));
-                Product pro = new ProductDAO().getProductDetail(id);
-                Cart cart = new Cart(id, pro.getName(), pro.getPrice(), 1);
-
-                session = request.getSession();
-                List<Cart> list = null;
-                list = (ArrayList<Cart>) session.getAttribute("listCart");
-
-                boolean flag = true;
-                if (list == null) {
-                    list = new ArrayList<>();
-                    list.add(cart);
-                    session.setAttribute("listCart", list);
-                } else {
-                    for (Cart c : list) {
-                        if (c.getProductId() == id) {
-                            c.setQuantity(c.getQuantity() + 1);
-                            flag = false;
-                        }
-                    }
-                    if (flag) {
-                        list.add(cart);
-                        flag = true;
-                    }
-                    session.setAttribute("listCart", list);
-                }
-                response.sendRedirect("home");
-                
-//                int id = Integer.parseInt(request.getParameter("id"));
-//                Product pro = (Product) session.getAttribute(String.valueOf(id));
-//
-//                // DOES NOT HAVE THIS PRODUCT (OR KEY, VALUE) YET;
-//                if (pro == null) {
-//                    Product pro2 = new ProductDAO().getProductDetail(id);
-//                    pro2.setQuantity(1);
-//                    session.setAttribute("id", pro2);
-//                    request.getRequestDispatcher("cart.jsp").forward(request, response);
-//                } else {
-//                    // THE CART HAVE THIS PRODUCT ALREADY
-//                    // AND ADD 1 TO NUMBER OF ITEMS
-//                    pro.setQuantity(pro.getQuantity() + 1);
-//                    request.getRequestDispatcher("cart.jsp").forward(request, response);
-//                }
-//            }
-//            if (service.equals("takefromcart")) {
-//                String id = request.getParameter("id");
-//                Product pro = (Product) session.getAttribute(id);
-//                // Đang bị lỗi dấu trừ
-//                if (pro.getQuantity() == 1) {
-//                    session.removeAttribute(id);
-//                    response.sendRedirect("cart.jsp");
-////                    response.sendRedirect("remove.jsp?id=" +  id);
-//                } else {
-//                    pro.setQuantity(pro.getQuantity() - 1);
-//                    response.sendRedirect("cart.jsp");
-//                }
-//            }
+           if (service.equals("addtocart")) {
+           }
         }
     }
 }

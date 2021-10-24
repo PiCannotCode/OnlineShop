@@ -5,26 +5,25 @@
  */
 package controller;
 
-import entity.Cart;
-import entity.Product;
-import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import dao.OrderDAO;
+import entity.Order;
+import entity.Account;
+import entity.Cart;
+import java.util.List;
 import javax.servlet.http.HttpSession;
-
 /**
  *
  * @author SANG
  */
-@WebServlet(name = "CalculatorService", urlPatterns = {"/calculatorservice"})
-public class CalculatorService extends HttpServlet {
+@WebServlet(name = "OrderService", urlPatterns = {"/orderService"})
+public class OrderService extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,54 +37,26 @@ public class CalculatorService extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-
-            HttpSession session = request.getSession();
-            String service = request.getParameter("service");
-
-            int id = Integer.parseInt(request.getParameter("id"));
-
-            List<Cart> list = null;
-            list = (ArrayList<Cart>) session.getAttribute("listCart");
-
-            // Delete from cart
-            if (service.equals("0")) {
-                for (int i = 0; i < list.size(); i++) {
-                    if (list.size() > 1) {
-                        if (list.get(i).getProductId() == id) {
-                            list.remove(i);
-                        }
-                    } else {
-                        list = null;
-                        break;
-                    }
-                }
-            } else {
-                for (int i = 0; i < list.size(); i++) {
-                    if (list.get(i).getProductId() == id) {
-                        // - product
-                        if (service.equals("1")) {
-                            list.get(i).setQuantity(list.get(i).getQuantity() - 1);
-                            if (list.size() > 1) {
-                                if (list.get(i).getQuantity() == 0) {
-                                    list.remove(i);
-                                }
-                            } else {
-                                if (list.get(i).getQuantity() == 0) {
-                                    list = null;
-                                    break;
-                                }
-                            }
-                        } else {
-                            // + product
-                            list.get(i).setQuantity(list.get(i).getQuantity() + 1);
-                        }
-                    }
-                }
-            }
-            session.setAttribute("listCart", list);
-            response.sendRedirect("cart.jsp");
-        }
+        
+        HttpSession session = request.getSession();
+        Account account = (Account)session.getAttribute("currentAccount");
+        List<Cart> list = (List<Cart>)session.getAttribute("listCart");
+//        doutble totalPrice = session.getAttribute
+        
+        Order order = new Order(account.getId(), 0, note, 0, address, name, Phone, email, 0, 0, 0, 0, reasonCancle)
+        
+        String name = request.getParameter("name");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+        String email = request.getParameter("email");
+        String note = request.getParameter("note");
+        String totalPrice = request.getParameter("totalprice");
+        String ship = request.getParameter("ship");
+        String totalPays = request.getParameter("totalpays");
+        String vat = request.getParameter("vat");
+        String payments = request.getParameter("payments");
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
