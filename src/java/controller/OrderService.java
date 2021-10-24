@@ -43,7 +43,7 @@ public class OrderService extends HttpServlet {
         List<Cart> list = (List<Cart>)session.getAttribute("listCart");
 //        doutble totalPrice = session.getAttribute
         
-        Order order = new Order(account.getId(), 0, note, 0, address, name, Phone, email, 0, 0, 0, 0, reasonCancle)
+//        Order order = new Order(account.getId(), 0, note, 0, address, name, Phone, email, 0, 0, 0, 0, reasonCancle);
         
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");

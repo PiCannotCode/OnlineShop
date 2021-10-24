@@ -40,13 +40,13 @@ public class CartService extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            HttpSession session = request.getSession();
-            String service = request.getParameter("service");
-
-            // ADDTOCART
-           if (service.equals("addtocart")) {
-           }
-        }
+//            HttpSession session = request.getSession();
+//            String service = request.getParameter("service");
+//
+//            // ADDTOCART
+//           if (service.equals("addtocart")) {
+//           }
+//        }
     }
 }
 
