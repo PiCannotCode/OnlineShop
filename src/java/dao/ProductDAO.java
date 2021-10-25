@@ -155,7 +155,11 @@ public class ProductDAO extends DBContext {
             ps.setFloat(3, product.getPrice());
             ps.setString(4, product.getDescription());
             ps.setInt(5, product.getQuantity());
-            ps.setString(6, product.getStatus());
+            if(product.getStatus().equalsIgnoreCase("Còn hàng")){
+                ps.setInt(6, 1);
+            }else{
+                ps.setInt(6, 0);
+            }
             ps.setString(7, product.getImage());
             ps.setString(8, product.getNote());
             int flag = ps.executeUpdate();
@@ -180,7 +184,11 @@ public class ProductDAO extends DBContext {
             ps.setFloat(3, product.getPrice());
             ps.setString(4, product.getDescription());
             ps.setInt(5, product.getQuantity());
-            ps.setString(6, product.getStatus());
+            if(product.getStatus().equalsIgnoreCase("Còn hàng")){
+                ps.setInt(6, 1);
+            }else{
+                ps.setInt(6, 0);
+            }
             ps.setString(7, product.getImage());
             ps.setString(8, product.getNote());
             ps.setInt(9, product.getId());

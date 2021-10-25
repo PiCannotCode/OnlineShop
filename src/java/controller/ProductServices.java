@@ -9,19 +9,26 @@ import entity.Category;
 import dao.ProductDAO;
 import dao.CategoryDAO;
 import entity.Product;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author DucAnh
  */
+@MultipartConfig()
 @WebServlet(name = "ProductServices", urlPatterns = {"/productservices"})
 public class ProductServices extends HttpServlet {
 
@@ -56,7 +63,7 @@ public class ProductServices extends HttpServlet {
                 ArrayList<Category> listCate = categoryDAO.getAllCategory();
                 ArrayList<Product> listProduct = productDAO.getListProduct(search);
                 Product product = productDAO.getProductTop1();
-                
+
                 request.setAttribute("newproduct", product);
                 request.setAttribute("cate", listCate);
                 request.setAttribute("listproduct", listProduct);
@@ -71,7 +78,7 @@ public class ProductServices extends HttpServlet {
                 request.setAttribute("product", product);
                 request.getRequestDispatcher("product-detail.jsp").forward(request, response);
             }
-            
+
             // ADD PRODUCT VIEW
             if (service.equalsIgnoreCase("addview")) {
                 CategoryDAO categoryDAO = new CategoryDAO();
@@ -82,15 +89,45 @@ public class ProductServices extends HttpServlet {
 
             // ADD PRODUCT
             if (service.equalsIgnoreCase("add")) {
+                // IMAGE UPLOAD
+                Part part = request.getPart("image");
+                String realPath = request.getServletContext().getRealPath("/image");
+                System.err.println(realPath);
+                String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+                System.err.println("Filename: "+fileName);
+                File uploads = new File(realPath);
+                File file = new File(uploads, fileName);
+                System.out.println("11111111111111111111111111111111111111111111");
+                try (InputStream input = part.getInputStream()) {
+                    System.out.println("222222222222222222222222222222222222222222222");
+                    Files.copy(input, file.toPath());
+                }
+                
+//                
+//                
+                
+//                
+//                if (!Files.exists(Paths.get(realPath))) {
+//                    Files.createDirectory(Paths.get(realPath));
+//
+//                }
+//
+//                System.out.println("11111111111111111111111111111111111111111111");
+//                part.write(realPath + "/" + fileName);
+//                System.out.println("222222222222222222222222222222222222222222222");
+
+                //
                 String name = request.getParameter("name");
                 int category_id = Integer.parseInt(request.getParameter("category_id"));
                 float price = Float.parseFloat(request.getParameter("price"));
                 String description = request.getParameter("description");
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
-                int status = Integer.parseInt(request.getParameter("status"));
-                String image = request.getParameter("image");
+                int status = 0;
+                if(quantity > 0){
+                    status = 1;
+                }
                 String note = request.getParameter("note");
-                Product product = new Product(0, name, category_id, price, description, quantity, status, image, note);
+                Product product = new Product(0, name, category_id, price, description, quantity, status, fileName, note);
                 ProductDAO productDAO = new ProductDAO();
                 if (productDAO.addProduct(product)) {
                     request.setAttribute("message", "Add Product Successfully");
@@ -100,7 +137,7 @@ public class ProductServices extends HttpServlet {
                     request.getRequestDispatcher("productservices?service=addview").forward(request, response);
                 }
             }
-            
+
             //UPDATE PRODUCT VIEW
             if (service.equalsIgnoreCase("updateview")) {
                 int id = Integer.parseInt(request.getParameter("id"));
@@ -108,7 +145,7 @@ public class ProductServices extends HttpServlet {
                 Product product = productDAO.getProductDetail(id);
                 CategoryDAO categoryDAO = new CategoryDAO();
                 ArrayList<Category> listCategory = categoryDAO.getAllCategory();
-                
+
                 request.setAttribute("product", product);
                 request.setAttribute("listCategory", listCategory);
                 request.getRequestDispatcher("add-product.jsp").forward(request, response);
@@ -122,7 +159,10 @@ public class ProductServices extends HttpServlet {
                 float price = Float.parseFloat(request.getParameter("price"));
                 String description = request.getParameter("description");
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
-                int status = Integer.parseInt(request.getParameter("status"));
+                int status = 0;
+                if(quantity > 0){
+                    status = 1;
+                }
                 String image = request.getParameter("image");
                 String note = request.getParameter("note");
                 Product product = new Product(id, name, category_id, price, description, quantity, status, image, note);
@@ -132,7 +172,7 @@ public class ProductServices extends HttpServlet {
                     request.getRequestDispatcher("productservices?service=list").forward(request, response);
                 } else {
                     request.setAttribute("message", "Update Product Fail");
-                    request.getRequestDispatcher("productservices?service=updateview&id="+ id +"").forward(request, response);
+                    request.getRequestDispatcher("productservices?service=updateview&id=" + id + "").forward(request, response);
                 }
             }
 
