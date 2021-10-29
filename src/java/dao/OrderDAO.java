@@ -10,6 +10,7 @@ import entity.Order;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 /**
  *
@@ -42,5 +43,36 @@ public class OrderDAO extends DBContext {
         } catch (Exception e) {
         }
         return n > 0;
+    }
+
+    public ArrayList<Order> getListOrder() {
+        ArrayList<Order> listOrder = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM [Order]";
+            PreparedStatement ps = getConnection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Order order = new Order();
+                order.setId(rs.getInt("Id"));
+                order.setAccountId(rs.getInt("Account_Id"));
+                order.setDate(rs.getString("Create_Date"));
+                order.setTotalPrice(rs.getDouble("Total_Price"));
+                order.setNote(rs.getString("Note"));
+                order.setStatus(rs.getInt("Status"));
+                order.setAddress(rs.getString("Address"));
+                order.setName(rs.getString("Name"));
+                order.setPhone(rs.getString("Phone"));
+                order.setEmail(rs.getString("Email"));
+                order.setShip(rs.getFloat("Ship"));
+                order.setVat(rs.getFloat("VAT"));
+                order.setTotalPay(rs.getFloat("Total_Pay"));
+                order.setPayments(rs.getInt("Payments"));
+                order.setReasonCancle(rs.getString("Reason_Cancelltion"));
+                listOrder.add(order);
+            }
+        } catch (Exception e) {
+            System.err.println("Get List Order Fail: " + e.getMessage());
+        }
+        return listOrder;
     }
 }

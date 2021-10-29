@@ -28,6 +28,9 @@ public class Order {
     private int payments;
     public String reasonCancle;
 
+    public Order() {
+    }
+
     public Order(int id, int accountId, String date, double totalPrice, String note, int status, String address, String name, String Phone, String email, float ship, float Vat, float totalPay, int payments, String reasonCancle) {
         this.id = id;
         this.accountId = accountId;
