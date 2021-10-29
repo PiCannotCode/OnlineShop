@@ -19,6 +19,7 @@
             <a class="addProduct" href="productservices?service=addview">Add Product</a>
         </div>
         <div style="margin-left: 30px; margin-right: 30px;">
+            <form action="productservices?service=deleteCheckbox" method="POST">
             <table class="table table-striped table-hover" >
                 <thead >
                     <tr>
@@ -33,6 +34,7 @@
                         <th class="thNote">Ghi chú</th>
                         <th class="thUpdate"></th>
                         <th class="thDelete"></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,10 +51,13 @@
                             <td>${p.note}</td>
                             <td><a class ="btnUpdate" href="productservices?service=updateview&id=${p.id}">Update</a></td>
                             <td><a onclick="return confirm('Mặt hàng này sẽ được xóa')" class ="btnDelete" href="productservices?service=delete&id=${p.id}">Delete</a></td>
+                            <td><input type="checkbox" name="deleteCheckbox" value="${p.id}"></td>
                         </tr>
                     </tbody>
                 </c:forEach>
             </table>
+                <button type="Submit">Delete Checkbox</button>
+            </form>
         </div>
         <jsp:include page="footer.jsp"/>
     </body>

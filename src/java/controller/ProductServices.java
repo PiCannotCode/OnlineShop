@@ -90,22 +90,21 @@ public class ProductServices extends HttpServlet {
             // ADD PRODUCT
             if (service.equalsIgnoreCase("add")) {
                 // IMAGE UPLOAD
-                Part part = request.getPart("image");
-                String realPath = request.getServletContext().getRealPath("/image");
-                System.err.println(realPath);
-                String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
-                System.err.println("Filename: "+fileName);
-                File uploads = new File(realPath);
-                File file = new File(uploads, fileName);
-                System.out.println("11111111111111111111111111111111111111111111");
-                try (InputStream input = part.getInputStream()) {
-                    System.out.println("222222222222222222222222222222222222222222222");
-                    Files.copy(input, file.toPath());
-                }
-                
+//                Part part = request.getPart("image");
+//                String realPath = request.getServletContext().getRealPath("/image");
+//                System.err.println(realPath);
+//                String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+//                System.err.println("Filename: "+fileName);
+//                File uploads = new File(realPath);
+//                File file = new File(uploads, fileName);
+//                System.out.println("11111111111111111111111111111111111111111111");
+//                try (InputStream input = part.getInputStream()) {
+//                    System.out.println("222222222222222222222222222222222222222222222");
+//                    Files.copy(input, file.toPath());
+//                }
+
 //                
 //                
-                
 //                
 //                if (!Files.exists(Paths.get(realPath))) {
 //                    Files.createDirectory(Paths.get(realPath));
@@ -115,7 +114,6 @@ public class ProductServices extends HttpServlet {
 //                System.out.println("11111111111111111111111111111111111111111111");
 //                part.write(realPath + "/" + fileName);
 //                System.out.println("222222222222222222222222222222222222222222222");
-
                 //
                 String name = request.getParameter("name");
                 int category_id = Integer.parseInt(request.getParameter("category_id"));
@@ -123,11 +121,12 @@ public class ProductServices extends HttpServlet {
                 String description = request.getParameter("description");
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
                 int status = 0;
-                if(quantity > 0){
+                if (quantity > 0) {
                     status = 1;
                 }
+                String image = request.getParameter("image");
                 String note = request.getParameter("note");
-                Product product = new Product(0, name, category_id, price, description, quantity, status, fileName, note);
+                Product product = new Product(0, name, category_id, price, description, quantity, status, image, note);
                 ProductDAO productDAO = new ProductDAO();
                 if (productDAO.addProduct(product)) {
                     request.setAttribute("message", "Add Product Successfully");
@@ -160,7 +159,7 @@ public class ProductServices extends HttpServlet {
                 String description = request.getParameter("description");
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
                 int status = 0;
-                if(quantity > 0){
+                if (quantity > 0) {
                     status = 1;
                 }
                 String image = request.getParameter("image");
@@ -188,7 +187,24 @@ public class ProductServices extends HttpServlet {
                     request.getRequestDispatcher("productservices").forward(request, response);
                 }
             }
+
+            // DELETE BY CHECKBOX
+            if (service.equalsIgnoreCase("deleteCheckbox")) {
+                String[] deleteArray = request.getParameterValues("deleteCheckbox");
+                ProductDAO productDAO = new ProductDAO();
+                for (String s : deleteArray) {
+                    try {
+                        int id = Integer.parseInt(s);
+                        productDAO.deleteProduct(id);
+                        
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }
+                request.getRequestDispatcher("productservices?service=list").forward(request, response);
+            }
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
