@@ -36,8 +36,8 @@ public class LoadAccount extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-                String id = request.getParameter("id");
-        UserlistDAO d =new UserlistDAO();
+        String id = request.getParameter("id");
+        UserlistDAO d = new UserlistDAO();
         Account a = d.getAccountAllbyid(id);
         request.setAttribute("a", a);
         request.getRequestDispatcher("editRole.jsp").forward(request, response);

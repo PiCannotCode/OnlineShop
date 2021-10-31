@@ -58,7 +58,6 @@
                                             <c:when test="${currentAccount == null}">
                                             <li><a href="login.jsp"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
                                             </c:when>
-
                                     </c:choose>
                                 </ul>
                             </div>

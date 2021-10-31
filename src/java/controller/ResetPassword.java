@@ -4,8 +4,12 @@
  * and open the template in the editor.
  */
 package controller;
+
 import dao.AccountDAO;
+import dao.UserlistDAO;
 import entity.Account;
+import entity.Email;
+import forgetPassword.EmailUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.jasper.compiler.PageInfo;
 
 /**
  *
@@ -34,7 +39,7 @@ public class ResetPassword extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
 //            String email = request.getParameter("email");
 //            String message = "";
 //            if(new AccountModel().checkEmail(email)){
@@ -60,7 +65,7 @@ public class ResetPassword extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("reset-password.jsp").forward(request, response);
     }
 
     /**
@@ -74,7 +79,27 @@ public class ResetPassword extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            String email = request.getParameter("email");
+            UserlistDAO d = new UserlistDAO();
+            Account a = d.getAccountbyEmail(email);
+            if (a== null) {
+                request.setAttribute("message", "Email is incorrect");
+                request.getRequestDispatcher("reset-password.jsp").forward(request, response);
+            }else{
+                Email e = new Email();
+                e.setFrom("nolifesf000@gmail.com");
+                e.setFromPassword("Nolifesf1");
+                e.setTo(email);
+                e.setSubject("Forgot Password");
+                e.setContent("Your password is : "+a.getPassword());
+                EmailUtils.send(e);
+                request.setAttribute("message", "Email is sended , plz check your email");
+            }
+        } catch (Exception e) {
+
+        }
+         request.getRequestDispatcher("reset-password.jsp").forward(request, response);
     }
 
     /**

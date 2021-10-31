@@ -30,7 +30,8 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-4">
                         <div class="login-wrap p-0">
-                            <form action="servicesaccount" method="post">     
+                            <p style="text-align: center;">${message}</p>
+                            <form action="remindpassword" method="post">     
                                 <div class="form-group">
                                     <input  name="email" type="text" class="form-control" placeholder="Email" required>
                                 </div>
