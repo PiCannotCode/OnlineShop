@@ -5,6 +5,7 @@
  */
 package controller;
 
+import com.sun.xml.rpc.processor.modeler.j2ee.xml.string;
 import entity.Product;
 import dao.ProductDAO;
 import java.io.IOException;
@@ -40,27 +41,43 @@ public class CartService extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-//            HttpSession session = request.getSession();
-//            String service = request.getParameter("service");
-//
-//            // ADDTOCART
-//           if (service.equals("addtocart")) {
-//           }
-//        }
+            HttpSession session = request.getSession();
+            String service = request.getParameter("service");
+
+            // ADDTOCART
+            if (service.equals("taketocart")) {
+                try {
+                    String id = session.getAttribute("currentAccount").toString();
+                } catch (Exception e) {
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                }
+                int id = Integer.parseInt(request.getParameter("id"));
+                Product pro = (Product) session.getAttribute(String.valueOf(id));
+
+                if (pro == null) {
+                    Product pro2 = new ProductDAO().getProductDetail(id);
+                    pro2.setQuantity(1);
+                    session.setAttribute("id", pro2);
+                    request.getRequestDispatcher("cart.jsp").forward(request, response);
+                } else {// bug here
+                    pro.setQuantity(pro.getQuantity() + 1);
+                    request.getRequestDispatcher("cart.jsp").forward(request, response);
+                }
+            }
+        }
     }
-}
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-/**
- * Handles the HTTP <code>GET</code> method.
- *
- * @param request servlet request
- * @param response servlet response
- * @throws ServletException if a servlet-specific error occurs
- * @throws IOException if an I/O error occurs
- */
-@Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -74,7 +91,7 @@ public class CartService extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -85,7 +102,7 @@ public class CartService extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-        public String getServletInfo() {
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 

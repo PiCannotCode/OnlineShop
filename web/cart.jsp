@@ -48,31 +48,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="" var="">
-                                <tr>
-                                    <td class="cart_description">
-                                        <h4><a href="productservices?service=details&id="></a></h4>
-                                    </td>
-                                    <td class="cart_price">
-                                        <fmt:formatNumber type="number" value=""/><sup></sup>
-                                    </td>
-                                    <td class="cart_quantity">
-                                        <div class="cart_quantity_button">
-                                            <a class="cart_quantity_down" href="">-</a>
-                                            <input class="cart_quantity_input" type="text" name="quantity" value="" autocomplete="off" size="2">
-                                            <a class="cart_quantity_up" href=""> + </a>
-                                        </div>
-                                    </td>
-                                    <td class="cart_total">
-                                        <p class="cart_total_price">
-                                            <fmt:formatNumber type="number" value=""/>
-                                        </p>
-                                    </td>
-                                    <td class="cart_delete">
-                                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                            </c:forEach>
+                            <tr>
+                                <td class="cart_description">
+                                    <h4><a href="productservices?service=details&id=${id.id}">${id.name}</a></h4>
+                                </td>
+                                <td class="cart_price">
+                                    <fmt:formatNumber type="number" value="${id.price}"/><sup></sup>
+                                </td>
+                                <td class="cart_quantity">
+                                    <div class="cart_quantity_button">
+                                        <a class="cart_quantity_down" href=""> - </a>
+                                        <input class="cart_quantity_input" type="text" name="quantity" value="${id.quantity}" autocomplete="off" size="2">
+                                        <a class="cart_quantity_up" href=""> + </a>
+                                    </div>
+                                </td>
+                                <td class="cart_total">
+                                    <p class="cart_total_price">
+                                        <fmt:formatNumber type="number" value="${id.price}"/>
+                                    </p>
+                                </td>
+                                <td class="cart_delete">
+                                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
