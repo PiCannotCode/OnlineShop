@@ -33,22 +33,22 @@
                                 <table align="center">
                                     <tr>
                                         <th>Tên người dùng: &nbsp;</th>
-                                        <td><input type="text" name="name" value="${accDetail.name}"></td>
+                                        <td><input type="text" name="name" required="" value="${accDetail.name}"></td>
                                     </tr>
                                     <tr>
                                         <th>Số điện thoại:</th>
-                                        <td><input type="text" name="phone" value="${accDetail.phone}"></td>
+                                        <td><input type="text" name="phone" required="" value="${accDetail.phone}"></td>
                                     </tr>
                                     <tr>
                                         <th>Giới tính:</th>
                                         <td>
-                                            <input type="radio" name="gender" value="1" <c:if test="${accDetail.gender == 1}">checked</c:if> >Nam
-                                            <input type="radio" name="gender" value="0" <c:if test="${accDetail.gender == 0}">checked</c:if> >Nữ
+                                            <input type="radio" name="gender" required="" value="1" <c:if test="${accDetail.gender == 1}">checked</c:if> >Nam
+                                            <input type="radio" name="gender" required="" value="0" <c:if test="${accDetail.gender == 0}">checked</c:if> >Nữ
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>Địa chỉ:</th>
-                                        <td><input type="text" name="address" value="${accDetail.address}"></td>
+                                        <td><input type="text" name="address" required="" value="${accDetail.address}"></td>
                                     </tr>
                                     <tr>
                                         <td></td>
