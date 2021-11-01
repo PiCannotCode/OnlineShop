@@ -37,7 +37,7 @@
                                     </tr>
                                     <tr>
                                         <th>Số điện thoại:</th>
-                                        <td><input type="text" name="phone" required="" value="${accDetail.phone}"></td>
+                                        <td><input type="tel" pattern="[0]{1}[0-9]{9}" name="phone" required="" value="${accDetail.phone}"></td>
                                     </tr>
                                     <tr>
                                         <th>Giới tính:</th>

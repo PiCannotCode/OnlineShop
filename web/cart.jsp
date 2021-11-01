@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="form-group" required style="margin-left: 1rem;">
                                     <label>Số điện thoại người nhận</label>
-                                    <input name="phone" type="text" class="form-control" required>
+                                    <input name="phone" type="tel" pattern="[0]{1}[0-9]{9}" class="form-control" required>
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Địa chỉ nhận hàng</label>

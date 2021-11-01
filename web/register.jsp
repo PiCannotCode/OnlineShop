@@ -35,13 +35,13 @@
                                     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input  name="name" type="text" class="form-control" placeholder="Tên người dùng" required>
+                                    <input name="name" type="text" class="form-control" placeholder="Tên người dùng" required>
                                 </div>
                                 <div class="form-group">
-                                    <input  name="phone" type="text" class="form-control" placeholder="Số điện thoại" required>
+                                    <input name="phone" type="tel" pattern="[0]{1}[0-9]{9}" class="form-control" placeholder="Số điện thoại" required>
                                 </div>
                                 <div class="form-group">
-                                    <input  name="address" type="text" class="form-control" placeholder="Địa chỉ" required>
+                                    <input name="address" type="text" class="form-control" placeholder="Địa chỉ" required>
                                     <div class="form-group">
                                         <div class="col">
                                             <label>
