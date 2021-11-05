@@ -46,6 +46,7 @@
                                             </c:when>
                                             <c:when test="${currentAccount.roleId==3}">
                                             <li><a href="productservices?service=list"><i class="fa fa-list-alt"></i>Quản lý sản phẩm</a></li>
+                                            <li><a href="orderListServlet"><i class="fa fa-list-alt"></i>Quản lý dơn hàng</a></li>
                                             </c:when>
                                         </c:choose>         
                                     <li><a href="#"><i class="fa fa-book"></i>Đơn hàng</a></li>
