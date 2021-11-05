@@ -135,14 +135,14 @@ public class NewFilter implements Filter {
             }
         }
         // employee
-            if (url.equals("/productservices") && accountLogin == null) {
-            httpresponse.sendRedirect("home");
-        } else if (url.equals("/productservices") && accountLogin != null) {
-            int isAdmin = accountLogin.getRoleId();
-            if (isAdmin != 3) {
-                httpresponse.sendRedirect("home");
-            }
-        }
+//            if (url.equals("/productservices") && accountLogin == null) {
+//            httpresponse.sendRedirect("home");
+//        } else if (url.equals("/productservices") && accountLogin != null) {
+//            int isAdmin = accountLogin.getRoleId();
+//            if (isAdmin != 3) {
+//                httpresponse.sendRedirect("home");
+//            }
+//        }
         //kiem tra: neu user Home.jsp -> home
         if (url.equals("/Home.jsp")) {
             httpresponse.sendRedirect("home");
