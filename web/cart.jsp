@@ -28,7 +28,8 @@
 
     <body>
         <jsp:include page="header.jsp"/>
-        <section id="cart_items">
+        <form action="CheckOut" method="post">
+                    <section id="cart_items">
             <div class="container">
                 <div class="breadcrumbs">
                     <ol class="breadcrumb">
@@ -84,7 +85,7 @@
                     <p>Vui lòng điền đầy đủ các thông tin bên dưới để xác nhận đơn hàng, xin cảm ơn!</p>
                 </div>
                 <div class="row">
-                    <form action="checkout" method="post">
+
                         <div class="col-sm-6">
                             <div class="total_area">
                                 <div class="form-group" required style="margin-left: 1rem;">
@@ -135,10 +136,13 @@
                             </div>
                             <button class="btn btn-default check_out" href=""style="margin-top: 2px; float: right;">Đặt hàng</button>
                         </div>
-                    </form>
                 </div>
             </div>
         </section><!--/#do_action-->
+       
+        </form>
+ 
+
         <jsp:include page="footer.jsp"/>
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>

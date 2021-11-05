@@ -122,6 +122,27 @@ public class UserlistDAO {
         return null;
     }
 
+    public void addCheckOut(int id, long price, String note,
+             String address, String name, int phone,String email, long ship ,long VAT , long pay) {
+        String query = "insert into [Order](Account_Id ,Create_Date,Total_Price,Note,[Status],[Address],Name,Phone,Email,Ship,VAT,Total_Pay,Payments,Reason_Cancelltion) values('?',GETDATE(),'?','?','?','4','?','?','?','?','?','?','1','none')";
+        try {
+            conn = new DBContext().getConnection(); //mo ket noi toi sql
+            ps = conn.prepareStatement(query);//nem cau lenh query sang sql
+            ps.setInt(1, id);
+            ps.setLong(2, price);
+            ps.setString(3, note);
+            ps.setString(4, address);
+            ps.setString(5, name);
+            ps.setInt(6, phone);
+            ps.setString(7, email);
+            ps.setLong(8, ship);
+            ps.setLong(9, VAT);
+            ps.setLong(10, pay);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         UserlistDAO d = new UserlistDAO();
         System.out.println(d.getAccountbyEmail("admin@gmail.com"));

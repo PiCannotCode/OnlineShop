@@ -144,7 +144,7 @@ public class NewFilter implements Filter {
 //            }
 //        }
         //kiem tra: neu user Home.jsp -> home
-        if (url.equals("/Home.jsp")) {
+        if (url.equals("/home.jsp")) {
             httpresponse.sendRedirect("home");
         }
         
