@@ -54,15 +54,13 @@ public class CartService extends HttpServlet {
                 int id = Integer.parseInt(request.getParameter("id"));
                 Product pro = (Product) session.getAttribute(String.valueOf(id));
 
-                if (pro == null) {// bug here 
-                                  // pro always == null
+                if (pro == null) {
                     Product pro2 = new ProductDAO().getProductDetail(id);
                     pro2.setQuantity(1);
                     session.setAttribute("id", pro2);
                     request.getRequestDispatcher("cart.jsp").forward(request, response);
-                } else {
+                } else {// bug here
                     pro.setQuantity(pro.getQuantity() + 1);
-//                    session.setAttribute("id", pro);
                     request.getRequestDispatcher("cart.jsp").forward(request, response);
                 }
             }
