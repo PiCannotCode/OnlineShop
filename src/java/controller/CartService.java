@@ -51,18 +51,41 @@ public class CartService extends HttpServlet {
                 } catch (Exception e) {
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 }
-                int id = Integer.parseInt(request.getParameter("id"));
-                Product pro = (Product) session.getAttribute(String.valueOf(id));
 
-                if (pro == null) {
-                    Product pro2 = new ProductDAO().getProductDetail(id);
-                    pro2.setQuantity(1);
-                    session.setAttribute("id", pro2);
-                    request.getRequestDispatcher("cart.jsp").forward(request, response);
-                } else {// bug here
-                    pro.setQuantity(pro.getQuantity() + 1);
-                    request.getRequestDispatcher("cart.jsp").forward(request, response);
+                session = request.getSession();
+                int id = Integer.parseInt(request.getParameter("id"));
+                Product pro = new ProductDAO().getProductDetail(id);
+                Cart cart = new Cart(id, pro.getName(), pro.getPrice(), pro.getQuantity());
+                ArrayList<Cart> listCart = null;
+                listCart = (ArrayList<Cart>) session.getAttribute("listCart");
+
+                boolean flag = true;
+                if (listCart == null) {
+                    listCart = new ArrayList<>();
+                    listCart.add(cart);
+                    session.setAttribute("listCart", listCart);
+                } else {
+                    for (Cart c : listCart) {
+                        if (c.getProductId() == id) {
+                            c.setQuantity(c.getQuantity() + 1);
+                        }
+                    }
+                    session.setAttribute("listCart", listCart);
                 }
+                // Loi cart lien quan den fillter cua Tuyen
+//                int id = Integer.parseInt(request.getParameter("id"));
+                //                Product pro = (Product) session.getAttribute(String.valueOf(id));
+                //
+                //                if (pro == null) {
+                //                    Product pro2 = new ProductDAO().getProductDetail(id);
+                //                    pro2.setQuantity(1);
+                //                    session.setAttribute("id", pro2);
+                //                    request.getRequestDispatcher("cart.jsp").forward(request, response);
+                //                } else {// bug here
+                //                    pro.setQuantity(pro.getQuantity() + 1);
+                //                    request.getRequestDispatcher("cart.jsp").forward(request, response);
+                //                }
+                request.getRequestDispatcher("Cart.jsp").forward(request, response);
             }
         }
     }

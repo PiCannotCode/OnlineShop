@@ -29,62 +29,64 @@
     <body>
         <jsp:include page="header.jsp"/>
         <form action="CheckOut" method="post">
-                    <section id="cart_items">
-            <div class="container">
-                <div class="breadcrumbs">
-                    <ol class="breadcrumb">
-                        <li><a href="home">Trang chủ</a></li>
-                        <li class="active">Giỏ hàng</li>
-                    </ol>
+            <section id="cart_items">
+                <div class="container">
+                    <div class="breadcrumbs">
+                        <ol class="breadcrumb">
+                            <li><a href="home">Trang chủ</a></li>
+                            <li class="active">Giỏ hàng</li>
+                        </ol>
+                    </div>
+                    <div class="table-responsive cart_info">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr class="cart_menu">
+                                    <td class="image">Sản phẩm</td>
+                                    <td class="price">Đơn giá</td>
+                                    <td class="quantity">Số lượng</td>
+                                    <td class="total">Số tiền</td>
+                                    <td>Thao tác</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${listCart}" var="l">
+                                    <tr>
+                                        <td class="cart_description">
+                                            <h4><a href="productservices?service=details&id=${l.productId}">${l.name}</a></h4>
+                                        </td>
+                                        <td class="cart_price">
+                                            <fmt:formatNumber type="number" value="${l.unitPrice}"/><sup></sup>
+                                        </td>
+                                        <td class="cart_quantity">
+                                            <div class="cart_quantity_button">
+                                                <a class="cart_quantity_down" href=""> - </a>
+                                                <input class="cart_quantity_input" type="text" name="quantity" value="${l.quantity}" autocomplete="off" size="2">
+                                                <a class="cart_quantity_up" href=""> + </a>
+                                            </div>
+                                        </td>
+                                        <td class="cart_total">
+                                            <p class="cart_total_price">
+                                                <fmt:formatNumber type="number" value="${l.unitPrice * l.quantity}"/>
+                                            </p>
+                                        </td>
+                                        <td class="cart_delete">
+                                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="table-responsive cart_info">
-                    <table class="table table-condensed">
-                        <thead>
-                            <tr class="cart_menu">
-                                <td class="image">Sản phẩm</td>
-                                <td class="price">Đơn giá</td>
-                                <td class="quantity">Số lượng</td>
-                                <td class="total">Số tiền</td>
-                                <td>Thao tác</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="cart_description">
-                                    <h4><a href="productservices?service=details&id=${id.id}">${id.name}</a></h4>
-                                </td>
-                                <td class="cart_price">
-                                    <fmt:formatNumber type="number" value="${id.price}"/><sup></sup>
-                                </td>
-                                <td class="cart_quantity">
-                                    <div class="cart_quantity_button">
-                                        <a class="cart_quantity_down" href=""> - </a>
-                                        <input class="cart_quantity_input" type="text" name="quantity" value="${id.quantity}" autocomplete="off" size="2">
-                                        <a class="cart_quantity_up" href=""> + </a>
-                                    </div>
-                                </td>
-                                <td class="cart_total">
-                                    <p class="cart_total_price">
-                                        <fmt:formatNumber type="number" value="${id.price}"/>
-                                    </p>
-                                </td>
-                                <td class="cart_delete">
-                                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section> <!--/#cart_items-->
+            </section> <!--/#cart_items-->
 
-        <section id="do_action">
-            <div class="container">
-                <div class="heading">
-                    <h3>Thanh toán các mặt hàng trong giỏ</h3>
-                    <p>Vui lòng điền đầy đủ các thông tin bên dưới để xác nhận đơn hàng, xin cảm ơn!</p>
-                </div>
-                <div class="row">
+            <section id="do_action">
+                <div class="container">
+                    <div class="heading">
+                        <h3>Thanh toán các mặt hàng trong giỏ</h3>
+                        <p>Vui lòng điền đầy đủ các thông tin bên dưới để xác nhận đơn hàng, xin cảm ơn!</p>
+                    </div>
+                    <div class="row">
 
                         <div class="col-sm-6">
                             <div class="total_area">
@@ -136,12 +138,12 @@
                             </div>
                             <button class="btn btn-default check_out" href=""style="margin-top: 2px; float: right;">Đặt hàng</button>
                         </div>
+                    </div>
                 </div>
-            </div>
-        </section><!--/#do_action-->
-       
+            </section><!--/#do_action-->
+
         </form>
- 
+
 
         <jsp:include page="footer.jsp"/>
         <script src="js/jquery.js"></script>
