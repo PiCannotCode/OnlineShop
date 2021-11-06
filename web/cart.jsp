@@ -49,23 +49,38 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <%
+                                java.util.Enumeration em = session.getAttributeNames();
+                                double totalPay = 0.0;
+                                Product pro = null;
+                                while (em.hasMoreElements()) {
+                                    String pid = em.nextElement().toString();
+                                    try {
+                                        pro = (Product) session.getAttribute(pid);
+                                    } catch (Exception e) {
+                                        continue;
+                                    }
+                                }
+                                double total = pro.getQuantity() * pro.getPrice();
+                                totalPay += total;
+                            %>
                             <tr>
                                 <td class="cart_description">
-                                    <h4><a href="productservices?service=details&id=${id.id}">${id.name}</a></h4>
+                                    <h4><a href="productservices?service=details&id=<%= pro.getId()%>"><%= pro.getName()%></a></h4>
                                 </td>
                                 <td class="cart_price">
-                                    <fmt:formatNumber type="number" value="${id.price}"/><sup></sup>
+                                    <fmt:formatNumber type="number" value="<%= pro.getPrice()%>"/><sup></sup>
                                 </td>
                                 <td class="cart_quantity">
                                     <div class="cart_quantity_button">
                                         <a class="cart_quantity_down" href=""> - </a>
-                                        <input class="cart_quantity_input" type="text" name="quantity" value="${id.quantity}" autocomplete="off" size="2">
+                                        <input class="cart_quantity_input" type="text" name="quantity" value="<%= pro.getQuantity()%>" autocomplete="off" size="2">
                                         <a class="cart_quantity_up" href=""> + </a>
                                     </div>
                                 </td>
                                 <td class="cart_total">
                                     <p class="cart_total_price">
-                                        <fmt:formatNumber type="number" value="${id.price}"/>
+                                        <fmt:formatNumber type="number" value="<%= pro.getPrice() * pro.getQuantity()%>"/>
                                     </p>
                                 </td>
                                 <td class="cart_delete">
