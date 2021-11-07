@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import dbcontext.DBContext;
 import entity.Account;
 import entity.AccountAll;
+import entity.Max;
 import java.sql.Connection;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -122,29 +124,74 @@ public class UserlistDAO {
         return null;
     }
 
-    public void addCheckOut(int id, long price, String note,
-             String address, String name, int phone,String email, long ship ,long VAT , long pay) {
-        String query = "insert into [Order](Account_Id ,Create_Date,Total_Price,Note,[Status],[Address],Name,Phone,Email,Ship,VAT,Total_Pay,Payments,Reason_Cancelltion) values('?',GETDATE(),'?','?','?','4','?','?','?','?','?','?','1','none')";
+    public void addCheckOut(int id, String price, String note, int status,
+            String address, String name, String phone, String email, String ship, String VAT, String pay, int payment, String none) {
+        String query = "insert into [Order](Account_Id ,Total_Price,Note,[Status],[Address],Name,Phone,Email,Ship,VAT,Total_Pay,Payments,Reason_Cancelltion) values('?','?','?','?','?','?','?','?','?','?','?','?','?')";
         try {
             conn = new DBContext().getConnection(); //mo ket noi toi sql
             ps = conn.prepareStatement(query);//nem cau lenh query sang sql
             ps.setInt(1, id);
-            ps.setLong(2, price);
+            ps.setString(2, price);
             ps.setString(3, note);
-            ps.setString(4, address);
-            ps.setString(5, name);
-            ps.setInt(6, phone);
-            ps.setString(7, email);
-            ps.setLong(8, ship);
-            ps.setLong(9, VAT);
-            ps.setLong(10, pay);
+            ps.setInt(4, status);
+            ps.setString(5, address);
+            ps.setString(6, name);
+            ps.setString(7, phone);
+            ps.setString(8, email);
+            ps.setString(9, ship);
+            ps.setString(10, VAT);
+            ps.setString(11, pay);
+            ps.setInt(12, payment);
+            ps.setString(13, none);
             ps.executeUpdate();
         } catch (Exception e) {
         }
     }
 
+    public void addOrderDetail(int Oid, int Pid, String Pname, int Pquantity, String price) {
+        String query = "insert into Order_Detail(Order_Id,Product_Id,Product_Name,Product_Quantity,Product_Price) values('?','?','?','?','?')";
+        try {
+            conn = new DBContext().getConnection(); //mo ket noi toi sql
+            ps = conn.prepareStatement(query);//nem cau lenh query sang sql
+            ps.setInt(1, Oid);
+            ps.setInt(2, Pid);
+            ps.setString(3, Pname);
+            ps.setInt(4, Pquantity);
+            ps.setString(5, price);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public Max getMax() {
+        String query = "select top 1 id  from [Order] order by id desc";
+        try {
+            conn = new DBContext().getConnection(); //mo ket noi toi sql
+            ps = conn.prepareStatement(query);//nem cau lenh query sang sql
+            rs = ps.executeQuery();//chay cau lenh query, nhan ket qua tra ve
+            while (rs.next()) {
+                return new Max(rs.getInt(1));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public int token() {
+        Random r = new Random();
+        int low = 1000;
+        int high = 10000;
+        int result = r.nextInt(high - low) + low;
+        return result;
+    }
+
     public static void main(String[] args) {
         UserlistDAO d = new UserlistDAO();
-        System.out.println(d.getAccountbyEmail("admin@gmail.com"));
+//        d.addCheckOut(19, "123", "a", 1, "g", "fa", "0123456789", "c@gmail.com", "1", "1", "1", 1, "none");
+//        int t = d.getMax().getId();
+
+        System.out.println(d.token());
+
     }
+
 }

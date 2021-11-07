@@ -42,14 +42,24 @@ public class CheckOut extends HttpServlet {
         String address = request.getParameter("address");
         String note = request.getParameter("note");
         String email = request.getParameter("email");
-        long price = Long.parseLong(request.getParameter("totalprice"));
-        long ship = Long.parseLong(request.getParameter("ship"));
-        long VAT = Long.parseLong(request.getParameter("vat"));
-        long pay = Long.parseLong(request.getParameter("totalpays"));
-        int phone = Integer.parseInt(request.getParameter("phone"));
+        String price = request.getParameter("totalprice");
+        String ship = request.getParameter("ship");
+        String VAT = request.getParameter("vat");
+        String pay = request.getParameter("totalpays");
+        String phone = request.getParameter("phone");
+        int payment = 1;
+        String none ="none";
+        int status = 1;
 
         UserlistDAO d = new UserlistDAO();
-        d.addCheckOut(id, price, note, address, name, phone, email, ship, VAT, pay);
+        d.addCheckOut(id, price, note, status,address, name, phone, email, ship, VAT, pay, payment,none);     
+        int Oid = d.getMax().getId();
+        int Pid = Integer.parseInt(request.getParameter(name));
+        int Pquantity = Integer.parseInt(request.getParameter(name));
+        String Pprice = request.getParameter(name);
+        String Pname = request.getParameter(name);
+        d.addOrderDetail(Oid, Pid, Pname, Pquantity, Pprice);
+        
         request.getRequestDispatcher("home").forward(request, response);
 
     }

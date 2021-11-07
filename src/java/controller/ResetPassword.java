@@ -12,6 +12,7 @@ import entity.Email;
 import forgetPassword.EmailUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -83,23 +84,24 @@ public class ResetPassword extends HttpServlet {
             String email = request.getParameter("email");
             UserlistDAO d = new UserlistDAO();
             Account a = d.getAccountbyEmail(email);
-            if (a== null) {
+            
+            if (a == null) {
                 request.setAttribute("message", "Email is incorrect");
                 request.getRequestDispatcher("reset-password.jsp").forward(request, response);
-            }else{
+            } else {
                 Email e = new Email();
                 e.setFrom("nolifesf000@gmail.com");
                 e.setFromPassword("Nolifesf1");
                 e.setTo(email);
-                e.setSubject("Forgot Password");
-                e.setContent("Your password is : "+a.getPassword());
+                e.setSubject("Forgot Password from online shop XXX");
+                e.setContent("Tks you using forget password funcion .Your Token is : " + a.getPassword());
                 EmailUtils.send(e);
                 request.setAttribute("message", "Email is sended , plz check your email");
             }
         } catch (Exception e) {
 
         }
-         request.getRequestDispatcher("reset-password.jsp").forward(request, response);
+        request.getRequestDispatcher("reset-password.jsp").forward(request, response);
     }
 
     /**
