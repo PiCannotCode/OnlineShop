@@ -69,11 +69,14 @@ public class CartService extends HttpServlet {
                     session.setAttribute("listCart", listCart);
                 } else {
                     for (Cart c : listCart) {
-                        if (c.getProductId()== id) {
-                            c.setQuantity(c.getQuantity()+ 1);
+                        if (c.getProductId() == id) {
+                            c.setQuantity(c.getQuantity() + 1);
+                            flag = false;
                         }
                     }
-                    listCart.add(cart);
+                    if (flag == true) {
+                        listCart.add(cart);
+                    }
                     session.setAttribute("listCart", listCart);
                 }
                 // Loi cart lien quan den fillter cua Tuyen
