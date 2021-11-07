@@ -5,8 +5,7 @@
 --%>
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@page import="entity.Product"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="entity.Cart"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -66,7 +65,7 @@
                                         </td>
                                         <td class="cart_total">
                                             <p class="cart_total_price">
-                                                <fmt:formatNumber type="number" value="${l.unitPrice * l.quantity}"/>
+                                                <fmt:formatNumber type="number" value="${l.quantity * l.unitPrice}"/>
                                             </p>
                                         </td>
                                         <td class="cart_delete">

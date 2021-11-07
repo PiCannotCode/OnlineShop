@@ -223,7 +223,7 @@ public class ProductDAO extends DBContext {
 
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
-        Product pro = dao.getProductDetail(1);
+        Product pro = dao.getProductDetail(2);
         System.out.println(pro);
     }
 }

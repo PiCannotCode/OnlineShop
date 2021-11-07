@@ -54,8 +54,11 @@ public class CartService extends HttpServlet {
 
                 session = request.getSession();
                 int id = Integer.parseInt(request.getParameter("id"));
+                System.out.println(id);
                 Product pro = new ProductDAO().getProductDetail(id);
-                Cart cart = new Cart(id, pro.getName(), pro.getPrice(), pro.getQuantity());
+                System.out.println(pro);
+                Cart cart = new Cart(pro.getId(), pro.getName(), pro.getPrice(), 1);
+                System.out.println(cart);
                 ArrayList<Cart> listCart = null;
                 listCart = (ArrayList<Cart>) session.getAttribute("listCart");
 
@@ -66,10 +69,11 @@ public class CartService extends HttpServlet {
                     session.setAttribute("listCart", listCart);
                 } else {
                     for (Cart c : listCart) {
-                        if (c.getProductId() == id) {
-                            c.setQuantity(c.getQuantity() + 1);
+                        if (c.getProductId()== id) {
+                            c.setQuantity(c.getQuantity()+ 1);
                         }
                     }
+                    listCart.add(cart);
                     session.setAttribute("listCart", listCart);
                 }
                 // Loi cart lien quan den fillter cua Tuyen
@@ -85,7 +89,8 @@ public class CartService extends HttpServlet {
                 //                    pro.setQuantity(pro.getQuantity() + 1);
                 //                    request.getRequestDispatcher("cart.jsp").forward(request, response);
                 //                }
-                request.getRequestDispatcher("Cart.jsp").forward(request, response);
+//                request.getRequestDispatcher("cart.jsp").forward(request, response);
+                response.sendRedirect("home");
             }
         }
     }
