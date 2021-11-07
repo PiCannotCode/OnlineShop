@@ -14,7 +14,9 @@
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
+    
     <body>
+        
         <jsp:include page="header.jsp"/>
         <div id="main-contain" class="container">
             <c:if test="${product eq null}">
@@ -72,6 +74,7 @@
                 </div>
             </c:if>
         </div>
+        
         <jsp:include page="footer.jsp"/>
         <script src="js/jquery/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

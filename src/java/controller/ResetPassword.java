@@ -94,7 +94,7 @@ public class ResetPassword extends HttpServlet {
                 e.setFromPassword("Nolifesf1");
                 e.setTo(email);
                 e.setSubject("Forgot Password from online shop XXX");
-                e.setContent("Tks you using forget password funcion .Your Token is : " + a.getPassword());
+                e.setContent("Tks you using forget password funcion .Your Password is : " + a.getPassword());
                 EmailUtils.send(e);
                 request.setAttribute("message", "Email is sended , plz check your email");
             }

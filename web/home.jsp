@@ -19,6 +19,7 @@
     </head><!--/head-->
     <body>
         <jsp:include page="header.jsp"/>
+        
         <section>
             <div class="container">
                 <div class="row">

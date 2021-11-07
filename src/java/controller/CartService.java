@@ -61,7 +61,6 @@ public class CartService extends HttpServlet {
                 System.out.println(cart);
                 ArrayList<Cart> listCart = null;
                 listCart = (ArrayList<Cart>) session.getAttribute("listCart");
-
                 boolean flag = true;
                 if (listCart == null) {
                     listCart = new ArrayList<>();
@@ -77,7 +76,17 @@ public class CartService extends HttpServlet {
                     if (flag == true) {
                         listCart.add(cart);
                     }
+                    double totalprice = 0;
+                    for (Cart c1 : listCart) {
+                        int s = c1.getQuantity();
+                        totalprice = totalprice + c1.getUnitPrice() * s;
+                    }
+//                    double totalpays = (totalprice + totalprice / 10) + 50000;
+                    double totalpays = 0;
+                    totalpays = (totalprice + totalprice / 10) + 50000;
                     session.setAttribute("listCart", listCart);
+                    session.setAttribute("totalprice", totalprice);
+                    session.setAttribute("totalpays", totalpays);
                 }
                 // Loi cart lien quan den fillter cua Tuyen
 //                int id = Integer.parseInt(request.getParameter("id"));

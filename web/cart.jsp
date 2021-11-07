@@ -52,9 +52,13 @@
                                     <tr>
                                         <td class="cart_description">
                                             <h4><a href="productservices?service=details&id=${l.productId}">${l.name}</a></h4>
+                                            <input type="hidden" name="Pname" value="${l.name}">
                                         </td>
                                         <td class="cart_price">
                                             <fmt:formatNumber type="number" value="${l.unitPrice}"/><sup></sup>
+                                            <input type="hidden" name="Pname" value="${l.unitPrice}">
+                                            <input type="hidden" name="Pid" value="${l.productId}">
+                                            <input type="hidden" name="Pprice" value="${l.unitPrice}">
                                         </td>
                                         <td class="cart_quantity">
                                             <div class="cart_quantity_button">
@@ -115,19 +119,19 @@
                             <div class="total_area" >
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Tổng tiền hàng</label>
-                                    <input name="totalprice" type="text" class="form-control" readonly="">
+                                    <input name="totalprice" type="text" value="${totalprice}" class="form-control" readonly="">
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Phí vận chuyển</label>
                                     <input name="ship" type="text" class="form-control" placeholder="50,000" readonly="" required >
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
-                                    <label>Tổng số tiền của đơn hàng</label>
-                                    <input name="totalpays" type="text" class="form-control" readonly="">
-                                </div>
-                                <div class="form-group" style="margin-left: 1rem;">
                                     <label>VAT</label>
                                     <input name="vat" type="text" class="form-control" placeholder="-10%" readonly="">
+                                </div>
+                                <div class="form-group" style="margin-left: 1rem;">
+                                    <label>Tổng số tiền của đơn hàng</label>
+                                    <input name="totalpays" type="text" value="${totalpays}" class="form-control" readonly="">
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Hình thức thanh toán</label><br>

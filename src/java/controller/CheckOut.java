@@ -54,10 +54,10 @@ public class CheckOut extends HttpServlet {
         UserlistDAO d = new UserlistDAO();
         d.addCheckOut(id, price, note, status,address, name, phone, email, ship, VAT, pay, payment,none);     
         int Oid = d.getMax().getId();
-        int Pid = Integer.parseInt(request.getParameter(name));
-        int Pquantity = Integer.parseInt(request.getParameter(name));
-        String Pprice = request.getParameter(name);
-        String Pname = request.getParameter(name);
+        int Pid = Integer.parseInt(request.getParameter("pid"));
+        int Pquantity = Integer.parseInt(request.getParameter("quantity"));
+        String Pprice = request.getParameter("Pprice");
+        String Pname = request.getParameter("Pname");
         d.addOrderDetail(Oid, Pid, Pname, Pquantity, Pprice);
         
         request.getRequestDispatcher("home").forward(request, response);
