@@ -54,11 +54,8 @@ public class CartService extends HttpServlet {
 
                 session = request.getSession();
                 int id = Integer.parseInt(request.getParameter("id"));
-                System.out.println(id);
                 Product pro = new ProductDAO().getProductDetail(id);
-                System.out.println(pro);
                 Cart cart = new Cart(pro.getId(), pro.getName(), pro.getPrice(), 1);
-                System.out.println(cart);
                 ArrayList<Cart> listCart = null;
                 listCart = (ArrayList<Cart>) session.getAttribute("listCart");
                 boolean flag = true;

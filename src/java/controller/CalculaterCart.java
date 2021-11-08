@@ -38,20 +38,30 @@ public class CalculaterCart extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
+            
             int id = Integer.parseInt(request.getParameter("id"));
-            String service = request.getParameter("service");
+            int service = Integer.parseInt(request.getParameter("service"));
             HttpSession session = request.getSession();
-
+            
             ArrayList<Cart> listCart = null;
             listCart = (ArrayList<Cart>) session.getAttribute("listCart");
-
+            
             for (int i = 0; i < listCart.size(); i++) {
                 if (listCart.get(i).getProductId() == id) {
-                    if (service.equals("up")) {
+                    if (service == 1) {
                         listCart.get(i).setQuantity(listCart.get(i).getQuantity() - 1);
+                        if (listCart.size() > 1) {
+                            if (listCart.get(i).getQuantity() == 0) {
+                                listCart.remove(i);
+                            }
+                        }
+                    }
+                    if (service == 2) {
+                        listCart.get(i).setQuantity(listCart.get(i).getQuantity() + 1);
                     }
                 }
+                session.setAttribute("listCart", listCart);
+                request.getRequestDispatcher("cart.jsp").forward(request, response);
             }
         }
     }

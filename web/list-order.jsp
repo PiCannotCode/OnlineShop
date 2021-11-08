@@ -39,11 +39,18 @@
                             <td>${o.accountId}</td>
                             <td>${o.date}</td>
                             <td>${o.totalPay}</td>
+                            <c:choose>
+                                <c:when test="${o.status == 1}"><td>Đang xử lí</td></c:when>
+                                <c:when test="${o.status == 2}"><td>Đang giao hàng</td></c:when>
+                                <c:when test="${o.status == 3}"><td>Giao hàng thành công</td></c:when>
+                                <c:when test="${o.status == 4}"><td>Đã hủy bỏ</td></c:when>
+                            </c:choose>
                             <td>${o.status}</td>
                             <td>${o.note}</td>
                             <td><a href="orderDetails?id=${o.id}">Chi tiết</td>
-                            <td><a class ="btnDeliver" style=" background-color: limegreen" href="">Cập nhật trạng thái</a></td>
-                            <td><a class ="btnCancel" style=" background-color: red" href="">Hủy đơn hàng</a></td>
+                            <c:if test="${o.status == 1}">
+                                <td><a class ="btnDeliver" style=" background-color: limegreen" href="orderProcess?id=${o.id}&status=2">Giao hàng</a></td>
+                            </c:if>
                         </tr>
                     </c:forEach>
                 </tbody>

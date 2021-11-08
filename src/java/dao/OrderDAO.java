@@ -75,7 +75,7 @@ public class OrderDAO extends DBContext {
         }
         return listOrder;
     }
-    
+
     public ArrayList<Order> getListOrderByAccountId(int id) {
         ArrayList<Order> listOrder = new ArrayList<>();
         try {
@@ -106,5 +106,48 @@ public class OrderDAO extends DBContext {
             System.err.println("Get List Order By Account_Id Fail: " + e.getMessage());
         }
         return listOrder;
+    }
+
+    public void updateStatus(int id, int status) {
+        try {
+            String sql = "UPDATE [Order] SET Status= ? "
+                    + "WHERE Id= ?";
+            PreparedStatement ps = getConnection().prepareStatement(sql);
+            ps.setInt(1, status);
+            ps.setInt(2, id);
+            int flag = ps.executeUpdate();
+        } catch (Exception e) {
+            System.err.println("Update order stauts Fail: " + e.getMessage());
+        }
+    }
+
+    public Order getOrderDetails(int id) {
+        Order order = new Order();
+        try {
+            String sql = "SELECT * FROM [Order] WHERE Id = ?";
+            PreparedStatement ps = getConnection().prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                order.setId(rs.getInt("Id"));
+                order.setAccountId(rs.getInt("Account_Id"));
+                order.setDate(rs.getString("Create_Date"));
+                order.setTotalPrice(rs.getDouble("Total_Price"));
+                order.setNote(rs.getString("Note"));
+                order.setStatus(rs.getInt("Status"));
+                order.setAddress(rs.getString("Address"));
+                order.setName(rs.getString("Name"));
+                order.setPhone(rs.getString("Phone"));
+                order.setEmail(rs.getString("Email"));
+                order.setShip(rs.getFloat("Ship"));
+                order.setVat(rs.getFloat("VAT"));
+                order.setTotalPay(rs.getFloat("Total_Pay"));
+                order.setPayments(rs.getInt("Payments"));
+                order.setReasonCancle(rs.getString("Reason_Cancelltion"));
+            }
+        } catch (Exception e) {
+            System.err.println("Get Order Details Fail: " + e.getMessage());
+        }
+        return order;
     }
 }
