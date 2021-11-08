@@ -53,16 +53,15 @@
                                     <p class="local bd-t pt-3">
                                     <h4>Mua hàng trực tiếp tại địa chỉ:</h4>
                                     <ul>
-                                        <li>Khu công nghệ cao Hòa Lạc - Km29.</li>
-                                        <li>ĐCT08, Thạch Hoà, Thạch Thất, Hà Nội 10000.</li>
+                                        <li>Đại học FPT - Khu Công nghệ cao Hòa Lạc,</li>
+                                        <li>Xã Thạch Hoà, Huyện Thạch Thất, TP. Hà Nội.</li>
                                     </ul>
                                     </p>
                                     <p class="refund bd-t pt-3">
                                     <h4>Giao hàng và trả lại hàng theo các hình thức sau:</h4>
                                     <ul>
                                         <li>Đổi trả trong vòng 48h.</li>
-                                        <li>Phí vận chuyển nội thành Hà Nội: 50.000 VNĐ. </li>
-                                        <li>Phí vận chuyển ngoại thành/ngoại tỉnh: dịch bệnh tạm thời chưa nhận hình thức này.</li>
+                                        <li>Phí vận chuyển toàn quốc: 50.000 VNĐ. </li>
                                         <li>Cho xem hàng trước khi thanh toán.</li>
                                     </ul> 
                                     </p>
