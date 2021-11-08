@@ -7,12 +7,8 @@ package controller;
 
 import dao.UserlistDAO;
 import entity.Account;
-import entity.Cart;
-import entity.Order;
-import entity.OrderDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,36 +42,24 @@ public class CheckOut extends HttpServlet {
         String address = request.getParameter("address");
         String note = request.getParameter("note");
         String email = request.getParameter("email");
-        double price = Double.parseDouble(request.getParameter("totalprice"));
-        float ship = Float.parseFloat(request.getParameter("ship"));
-        float VAT = Float.parseFloat(request.getParameter("vat"));
-        float pay = Float.parseFloat(request.getParameter("totalpays"));
+        String price = request.getParameter("totalprice");
+        String ship = request.getParameter("ship");
+        String VAT = request.getParameter("vat");
+        String pay = request.getParameter("totalpays");
         String phone = request.getParameter("phone");
         int payment = 1;
-        String none = "none";
+        String none ="none";
         int status = 1;
 
         UserlistDAO d = new UserlistDAO();
-
-        d.addCheckOut(new Order(id, price, note, status, address, name, phone, email, ship, VAT, pay, payment, none));
+        d.addCheckOut(id, price, note, status,address, name, phone, email, ship, VAT, pay, payment,none);     
         int Oid = d.getMax().getId();
-//        String Pid[] = (request.getParameterValues("pid"));
-//        for (Object object : Pid) {;
-//            int Pquantity = Integer.parseInt(request.getParameter("quantity"));
-//            String Pprice = request.getParameter("Pprice");
-//            String Pname = request.getParameter("Pname");
-//            d.addOrderDetail(Oid, Pid, Pname, Pquantity, Pprice);
-//        }
-        ArrayList<Cart> listCart = null;
-        listCart = (ArrayList<Cart>) session.getAttribute("listCart");
-        for (Cart cart : listCart) {
-            int Pid = cart.getProductId();
-            int Pquantity = cart.getQuantity();
-            double Pprice = cart.getUnitPrice();
-            String Pname = cart.getName();
-            d.addOrderDetail(new OrderDetail(Oid, Pid, Pname, Pquantity, price));
-        }
-
+        int Pid = Integer.parseInt(request.getParameter("pid"));
+        int Pquantity = Integer.parseInt(request.getParameter("quantity"));
+        String Pprice = request.getParameter("Pprice");
+        String Pname = request.getParameter("Pname");
+        d.addOrderDetail(Oid, Pid, Pname, Pquantity, Pprice);
+        
         request.getRequestDispatcher("home").forward(request, response);
 
     }
