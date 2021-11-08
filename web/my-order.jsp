@@ -1,7 +1,7 @@
 <%-- 
-    Document   : list-order
-    Created on : Oct 29, 2021, 11:57:47 PM
-    Author     : DucAnh
+    Document   : my-order
+    Created on : 08-Nov-2021, 07:45:43
+    Author     : HUY
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,20 +10,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Danh sách đơn hàng</title>
+        <title>Đơn hàng của tôi</title>
         <link href="css/order.css" rel="stylesheet">
     </head>
     <body
         <jsp:include page="header.jsp"/>
         <div class="orderlist" style="margin-bottom: 20px;">
-            <b>Danh sách đơn hàng</b>
+            <b>Đơn hàng của tôi</b>
         </div>
         <div class="list" style="margin-left: 30px; margin-right: 30px;">
             <table class="table table-striped table-hover" >
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Account_ID</th>
                         <th>Ngày đặt hàng</th>
                         <th>Tổng số tiền</th>
                         <th>Trạng thái</th>
@@ -36,7 +35,6 @@
                     <c:forEach items="${listOrder}" var="o">
                         <tr>
                             <td>${o.id}</a></td>
-                            <td>${o.accountId}</td>
                             <td>${o.date}</td>
                             <td>${o.totalPay}</td>
                             <td>${o.status}</td>

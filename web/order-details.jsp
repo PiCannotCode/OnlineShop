@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Order detail</title>
+        <title>Chi tiết đơn hàng</title>
         <link href="css/order.css" rel="stylesheet">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
@@ -25,20 +25,12 @@
             <table class="table table-striped table-hover" >
                 <thead class="thead">
                     <tr>
-                        <th>ID</th>
-                        <th>Create Date</th>
-                        <th>Total price</th>
-                        <th>Status</th>
-                        <th>Note</th>
+                        <%-- Danh sách sản phẩm --%>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>2021/10/20</td>
-                        <td>442$</td>
-                        <td>Processing</td>
-                        <td></td>
+                        <%-- Danh sách sản phẩm --%>
                     </tr>
                 </tbody>
             </table>
@@ -53,19 +45,23 @@
                     <div class="total_area">
                         <div class="form-group" required style="margin-left: 5rem;">
                             <label>Tên người nhận</label>
-                            <input name="name" type="text" class="form-control" required>
+                            <input name="name" type="text" class="form-control" readonly="" required>
                         </div>
                         <div class="form-group" required style="margin-left: 5rem;">
                             <label>Số điện thoại người nhận</label>
-                            <input name="phone" type="tel" pattern="[0]{1}[0-9]{9}" class="form-control" required>
+                            <input name="phone" type="tel" pattern="[0]{1}[0-9]{9}" class="form-control" readonly="" required>
                         </div>
                         <div class="form-group" style="margin-left: 5rem;">
                             <label>Địa chỉ nhận hàng</label>
-                            <input name="address" type="text" class="form-control" required>
+                            <input name="address" type="text" class="form-control" readonly="" required>
                         </div>
                         <div class="form-group" required style="margin-left: 5rem;">
                             <label>Email người nhận</label>
-                            <input name="email" type="text" class="form-control">
+                            <input name="email" type="text" class="form-control" readonly="">
+                        </div>
+                        <div class="form-group" required style="margin-left: 1rem;">
+                            <label>Ghi chú</label>
+                            <textarea name="note" type="text" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>
@@ -85,7 +81,11 @@
                         </div>
                         <div class="form-group" style="margin-left: 5rem;">
                             <label>VAT</label>
-                            <input name="vat" type="text" class="form-control" placeholder="-10%" readonly="">
+                            <input name="vat" type="text" class="form-control" placeholder="0" readonly="">
+                        </div>
+                        <div class="form-group" style="margin-left: 5rem;">
+                            <label>Hình thức thanh toán</label>
+                            <input name="payments" type="text" class="form-control" readonly="">
                         </div>
                     </div>
                 </div>

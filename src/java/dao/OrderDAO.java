@@ -75,4 +75,36 @@ public class OrderDAO extends DBContext {
         }
         return listOrder;
     }
+    
+    public ArrayList<Order> getListOrderByAccountId(int id) {
+        ArrayList<Order> listOrder = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM [Order] WHERE Account_Id = ?";
+            PreparedStatement ps = getConnection().prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Order order = new Order();
+                order.setId(rs.getInt("Id"));
+                order.setAccountId(rs.getInt("Account_Id"));
+                order.setDate(rs.getString("Create_Date"));
+                order.setTotalPrice(rs.getDouble("Total_Price"));
+                order.setNote(rs.getString("Note"));
+                order.setStatus(rs.getInt("Status"));
+                order.setAddress(rs.getString("Address"));
+                order.setName(rs.getString("Name"));
+                order.setPhone(rs.getString("Phone"));
+                order.setEmail(rs.getString("Email"));
+                order.setShip(rs.getFloat("Ship"));
+                order.setVat(rs.getFloat("VAT"));
+                order.setTotalPay(rs.getFloat("Total_Pay"));
+                order.setPayments(rs.getInt("Payments"));
+                order.setReasonCancle(rs.getString("Reason_Cancelltion"));
+                listOrder.add(order);
+            }
+        } catch (Exception e) {
+            System.err.println("Get List Order By Account_Id Fail: " + e.getMessage());
+        }
+        return listOrder;
+    }
 }

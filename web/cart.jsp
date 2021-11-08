@@ -127,7 +127,7 @@
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>VAT</label>
-                                    <input name="vat" type="text" class="form-control" placeholder="-10%" readonly="">
+                                    <input name="vat" type="text" class="form-control" placeholder="0" readonly="">
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Tổng số tiền của đơn hàng</label>

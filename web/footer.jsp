@@ -30,7 +30,7 @@
                         <div class="col-sm-2">
                             <div class="companyinfo">
                                 <h2><span>e</span>-shopper</h2>
-                                <p>Cửa hàng mua bán các sản phẩm balo thời trang</p>
+                                <p>Cửa hàng mua bán các sản phẩm túi xách, balo thời trang</p>
                             </div>
                         </div>
                         <div class="col-sm-7">
@@ -146,7 +146,7 @@
                         <div class="col-sm-3 col-sm-offset-1">
                             <div class="single-widget">
                                 <h2>Tư vấn mua hàng</h2>
-                                <p>1800.0000 (Miễn phí)</p>
+                                <p>1800.xxxx (Miễn phí)</p>
                             </div>
                         </div>
                     </div>

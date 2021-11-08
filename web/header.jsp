@@ -45,12 +45,14 @@
                                             <li><a href="userlist"><i class="fa fa-list-alt"></i>Quản lý người dùng</a></li>
                                             </c:when>
                                             <c:when test="${currentAccount.roleId==3}">
-                                            <li><a href="productservices?service=list"><i class="fa fa-list-alt"></i>Quản lý sản phẩm</a></li>
-                                            <li><a href="orderListServlet"><i class="fa fa-list-alt"></i>Quản lý dơn hàng</a></li>
+                                            <li><a href="orderListServlet"><i class="fa fa-list-alt"></i>Quản lý đơn hàng</a></li>
+                                            <li><a href="productservices?service=list"><i class="fa fa-list-alt"></i>Quản lý sản phẩm</a></li>                                           
                                             </c:when>
-                                        </c:choose>         
-                                    <li><a href="#"><i class="fa fa-book"></i>Đơn hàng</a></li>
-                                    <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a></li>
+                                            <c:when test="${currentAccount.roleId==2||currentAccount.roleId==null}">
+                                            <li><a href="MyOrderServlet?id=${currentAccount.id}"><i class="fa fa-book"></i>Đơn hàng</a></li>
+                                            <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a></li>
+                                            </c:when>
+                                        </c:choose>
                                         <c:choose>
                                             <c:when test="${currentAccount != null}">
                                             <li><a href="UserProfile?id=${currentAccount.accountDetailId}"><i class="fa fa-user"></i>Tài khoản</a></li>
@@ -59,7 +61,7 @@
                                             <c:when test="${currentAccount == null}">
                                             <li><a href="login.jsp"><i class="fa fa-sign-in"></i>Đăng nhập</a></li>
                                             </c:when>
-                                    </c:choose>
+                                        </c:choose>
                                 </ul>
                             </div>
                         </div>
