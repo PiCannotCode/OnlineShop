@@ -5,7 +5,6 @@
  */
 package controller;
 
-import dao.AccountDAO;
 import dao.UserlistDAO;
 import entity.Account;
 import entity.Email;
@@ -18,7 +17,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.jasper.compiler.PageInfo;
 
 /**
  *
@@ -86,17 +84,17 @@ public class ResetPassword extends HttpServlet {
             Account a = d.getAccountbyEmail(email);
             
             if (a == null) {
-                request.setAttribute("message", "Email is incorrect");
+                request.setAttribute("message", "Email không tồn tại");
                 request.getRequestDispatcher("reset-password.jsp").forward(request, response);
             } else {
                 Email e = new Email();
                 e.setFrom("nolifesf000@gmail.com");
                 e.setFromPassword("Nolifesf1");
                 e.setTo(email);
-                e.setSubject("Forgot Password from online shop XXX");
-                e.setContent("Tks you using forget password funcion .Your Password is : " + a.getPassword());
+                e.setSubject("Reset Password Online Shopping System");
+                e.setContent("Mật khẩu của bạn là: " + a.getPassword() +". Bạn nên thay đổi mật khẩu sau khi đăng nhập lại.");
                 EmailUtils.send(e);
-                request.setAttribute("message", "Email is sended , plz check your email");
+                request.setAttribute("message", "Mật khẩu của bạn đã được gửi tới email đăng ký, vui lòng kiểm tra lại email!");
             }
         } catch (Exception e) {
 
