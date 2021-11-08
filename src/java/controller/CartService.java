@@ -88,19 +88,6 @@ public class CartService extends HttpServlet {
                     session.setAttribute("totalprice", totalprice);
                     session.setAttribute("totalpays", totalpays);
                 }
-                // Loi cart lien quan den fillter cua Tuyen
-//                int id = Integer.parseInt(request.getParameter("id"));
-                //                Product pro = (Product) session.getAttribute(String.valueOf(id));
-                //
-                //                if (pro == null) {
-                //                    Product pro2 = new ProductDAO().getProductDetail(id);
-                //                    pro2.setQuantity(1);
-                //                    session.setAttribute("id", pro2);
-                //                    request.getRequestDispatcher("cart.jsp").forward(request, response);
-                //                } else {// bug here
-                //                    pro.setQuantity(pro.getQuantity() + 1);
-                //                    request.getRequestDispatcher("cart.jsp").forward(request, response);
-                //                }
 //                request.getRequestDispatcher("cart.jsp").forward(request, response);
                 response.sendRedirect("home");
             }

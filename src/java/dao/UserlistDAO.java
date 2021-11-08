@@ -16,7 +16,7 @@ import java.sql.Connection;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import entity.Order;
 /**
  *
  * @author hanoon
@@ -124,28 +124,33 @@ public class UserlistDAO {
         return null;
     }
 
-    public void addCheckOut(int id, String price, String note, int status,
-            String address, String name, String phone, String email, String ship, String VAT, String pay, int payment, String none) {
-        String query = "insert into [Order](Account_Id ,Total_Price,Note,[Status],[Address],Name,Phone,Email,Ship,VAT,Total_Pay,Payments,Reason_Cancelltion) values('?','?','?','?','?','?','?','?','?','?','?','?','?')";
+    public boolean addCheckOut(Order order) {
+        String query = "insert into [Order] (Account_Id, Total_Price, Note, [Status], [Address],[name], Phone,Email,Ship,VAT,Total_Pay,Payments,Reason_Cancelltion) \n"
+                + "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
-            conn = new DBContext().getConnection(); //mo ket noi toi sql
-            ps = conn.prepareStatement(query);//nem cau lenh query sang sql
-            ps.setInt(1, id);
-            ps.setString(2, price);
-            ps.setString(3, note);
-            ps.setInt(4, status);
-            ps.setString(5, address);
-            ps.setString(6, name);
-            ps.setString(7, phone);
-            ps.setString(8, email);
-            ps.setString(9, ship);
-            ps.setString(10, VAT);
-            ps.setString(11, pay);
-            ps.setInt(12, payment);
-            ps.setString(13, none);
-            ps.executeUpdate();
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, order.getAccountId());
+            ps.setDouble(2, order.getTotalPrice());
+            ps.setString(3, order.getNote());
+            ps.setInt(4, order.getStatus());
+            ps.setString(5, order.getAddress());
+            ps.setString(6, order.getName());
+            ps.setString(7, order.getPhone());
+            ps.setString(8, order.getEmail());
+            ps.setFloat(9, order.getShip());
+            ps.setFloat(10, order.getVat());
+            ps.setFloat(11, order.getTotalPay());
+            ps.setInt(12, order.getPayments());
+            ps.setString(13, order.getReasonCancle());
+            int n = ps.executeUpdate();
+            if (n > 0) {
+                return true;
+            }
         } catch (Exception e) {
+            System.out.println("Error" + e.getMessage());
         }
+        return false;
     }
 
     public void addOrderDetail(int Oid, int Pid, String Pname, int Pquantity, String price) {

@@ -49,23 +49,6 @@ public class Order {
         this.reasonCancle = reasonCancle;
     }
 
-    public Order(int id, int accountId, double totalPrice, String note, int status, String address, String name, String Phone, String email, float ship, float Vat, float totalPay, int payments, String reasonCancle) {
-        this.id = id;
-        this.accountId = accountId;
-        this.totalPrice = totalPrice;
-        this.note = note;
-        this.status = status;
-        this.address = address;
-        this.name = name;
-        this.Phone = Phone;
-        this.email = email;
-        this.ship = ship;
-        this.Vat = Vat;
-        this.totalPay = totalPay;
-        this.payments = payments;
-        this.reasonCancle = reasonCancle;
-    }
-
     public Order(int accountId, double totalPrice, String note, int status, String address, String name, String Phone, String email, float ship, float Vat, float totalPay, int payments, String reasonCancle) {
         this.accountId = accountId;
         this.totalPrice = totalPrice;
