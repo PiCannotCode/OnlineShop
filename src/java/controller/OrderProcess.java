@@ -6,24 +6,22 @@
 package controller;
 
 import dao.OrderDAO;
-import dao.OrderDetailsDAO;
-import entity.Order;
-import entity.OrderDetail;
+import entity.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author DucAnh
  */
-@WebServlet(name = "OrderDetails", urlPatterns = {"/orderDetails"})
-public class OrderDetails extends HttpServlet {
+@WebServlet(name = "OrderProcess", urlPatterns = {"/orderProcess"})
+public class OrderProcess extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,13 +37,17 @@ public class OrderDetails extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int id = Integer.parseInt(request.getParameter("id"));
-            OrderDetailsDAO orderDetailsDAO = new OrderDetailsDAO();
-            ArrayList<OrderDetail> list = orderDetailsDAO.getListOrderDetails(id);
+            int status = Integer.parseInt(request.getParameter("status"));
             OrderDAO orderDAO = new OrderDAO();
-            Order order = orderDAO.getOrderDetails(id);
-            request.setAttribute("list", list);
-            request.setAttribute("order", order);
-            request.getRequestDispatcher("order-details.jsp").forward(request, response);
+            orderDAO.updateStatus(id, status);
+            HttpSession session = request.getSession();
+            Account account = (Account) session.getAttribute("currentAccount");
+            if ((int)account.getRoleId() == 3) {
+                request.getRequestDispatcher("orderListServlet").forward(request, response);
+            } else {
+                request.getRequestDispatcher("MyOrderServlet?id="+(int)account.getId()+"").forward(request, response);
+            }
+
         }
     }
 
