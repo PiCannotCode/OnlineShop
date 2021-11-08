@@ -48,7 +48,7 @@
                                             <li><a href="orderListServlet"><i class="fa fa-list-alt"></i>Quản lý đơn hàng</a></li>
                                             <li><a href="productservices?service=list"><i class="fa fa-list-alt"></i>Quản lý sản phẩm</a></li>                                           
                                             </c:when>
-                                            <c:when test="${currentAccount.roleId==2||currentAccount.roleId==null}">
+                                            <c:when test="${currentAccount.roleId==2}">
                                             <li><a href="MyOrderServlet?id=${currentAccount.id}"><i class="fa fa-book"></i>Đơn hàng</a></li>
                                             <li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a></li>
                                             </c:when>
