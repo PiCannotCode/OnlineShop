@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Phí vận chuyển</label>
-                                    <input name="ship" type="text" class="form-control" value="50,000" readonly="" required >
+                                    <input name="ship" type="text" class="form-control" value="50000" readonly="" required >
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>VAT</label>

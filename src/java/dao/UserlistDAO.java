@@ -17,6 +17,8 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import entity.Order;
+import entity.OrderDetail;
+
 /**
  *
  * @author hanoon
@@ -153,19 +155,25 @@ public class UserlistDAO {
         return false;
     }
 
-    public void addOrderDetail(int Oid, int Pid, String Pname, int Pquantity, String price) {
-        String query = "insert into Order_Detail(Order_Id,Product_Id,Product_Name,Product_Quantity,Product_Price) values('?','?','?','?','?')";
+    public boolean addOrderDetail(OrderDetail Or) {
+        String query = "insert into Order_Detail(Order_Id,Product_Id,Product_Name,Product_Quantity,Product_Price)\n"
+                + "values(?,?,?,?,?)";
         try {
-            conn = new DBContext().getConnection(); //mo ket noi toi sql
-            ps = conn.prepareStatement(query);//nem cau lenh query sang sql
-            ps.setInt(1, Oid);
-            ps.setInt(2, Pid);
-            ps.setString(3, Pname);
-            ps.setInt(4, Pquantity);
-            ps.setString(5, price);
-            ps.executeUpdate();
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, Or.getOrderId());
+            ps.setInt(2, Or.getProductId());
+            ps.setString(3, Or.getProductName());
+            ps.setInt(4, Or.getProductQuantity());
+            ps.setDouble(5, Or.getProductPrice());
+            int n = ps.executeUpdate();
+            if (n > 0) {
+                return true;
+            }
         } catch (Exception e) {
+            System.out.println("Error" + e.getMessage());
         }
+        return false;
     }
 
     public Max getMax() {
@@ -182,21 +190,20 @@ public class UserlistDAO {
         return null;
     }
 
-    public int token() {
-        Random r = new Random();
-        int low = 1000;
-        int high = 10000;
-        int result = r.nextInt(high - low) + low;
-        return result;
-    }
+//    public int token() {
+//        Random r = new Random();
+//        int low = 1000;
+//        int high = 10000;
+//        int result = r.nextInt(high - low) + low;
+//        return result;
+//    }
 
     public static void main(String[] args) {
         UserlistDAO d = new UserlistDAO();
-//        d.addCheckOut(19, "123", "a", 1, "g", "fa", "0123456789", "c@gmail.com", "1", "1", "1", 1, "none");
-//        int t = d.getMax().getId();
-
-        System.out.println(d.token());
-
+//        d.addCheckOut(new Order(24,100 , "aaa", 1, "123a", "manh", "0123123123", "ass@gmail.com", 100, 100,100, 1, "none"));
+////        int t = d.getMax().getId();
+////        System.out.println(d.token());
+        d.addOrderDetail(new OrderDetail(18, 11, "manh", 100, 300));
     }
 
 }
