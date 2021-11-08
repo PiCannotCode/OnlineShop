@@ -95,19 +95,19 @@
                             <div class="total_area">
                                 <div class="form-group" required style="margin-left: 1rem;">
                                     <label>Tên người nhận</label>
-                                    <input name="name" type="text" class="form-control" required>
+                                    <input name="name" type="text" class="form-control" value="${accDetail.name}" required>
                                 </div>
                                 <div class="form-group" required style="margin-left: 1rem;">
                                     <label>Số điện thoại người nhận</label>
-                                    <input name="phone" type="tel" pattern="[0]{1}[0-9]{9}" class="form-control" required>
+                                    <input name="phone" type="tel" pattern="[0]{1}[0-9]{9}" class="form-control" value="${accDetail.phone}" required>
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Địa chỉ nhận hàng</label>
-                                    <input name="address" type="text" class="form-control" required>
+                                    <input name="address" type="text" class="form-control" value="${accDetail.address}" required>
                                 </div>
                                 <div class="form-group" required style="margin-left: 1rem;">
                                     <label>Email người nhận</label>
-                                    <input name="email" type="text" class="form-control">
+                                    <input name="email" type="text" class="form-control" value="${currentAccount.email}">
                                 </div>
                                 <div class="form-group" required style="margin-left: 1rem;">
                                     <label>Ghi chú</label>
@@ -123,11 +123,11 @@
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Phí vận chuyển</label>
-                                    <input name="ship" type="text" class="form-control" placeholder="50,000" readonly="" required >
+                                    <input name="ship" type="text" class="form-control" value="50,000" readonly="" required >
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>VAT</label>
-                                    <input name="vat" type="text" class="form-control" placeholder="0" readonly="">
+                                    <input name="vat" type="text" class="form-control" value="0" readonly="">
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Tổng số tiền của đơn hàng</label>

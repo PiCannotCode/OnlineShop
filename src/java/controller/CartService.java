@@ -83,7 +83,7 @@ public class CartService extends HttpServlet {
                     }
 //                    double totalpays = (totalprice + totalprice / 10) + 50000;
                     double totalpays = 0;
-                    totalpays = (totalprice + totalprice / 10) + 50000;
+                    totalpays = totalprice + 50000;
                     session.setAttribute("listCart", listCart);
                     session.setAttribute("totalprice", totalprice);
                     session.setAttribute("totalpays", totalpays);
