@@ -62,9 +62,9 @@
                                         </td>
                                         <td class="cart_quantity">
                                             <div class="cart_quantity_button">
-                                                <a class="cart_quantity_down" href="CalculaterCart?service=down&id=${l.productId}"> - </a>
+                                                <a class="cart_quantity_down" href="CalculaterCart?service=1&id=${l.productId}"> - </a>
                                                 <input class="cart_quantity_input" type="text" name="quantity" value="${l.quantity}" autocomplete="off" size="2">
-                                                <a class="cart_quantity_up" href="CalculaterCart?service=up&id=${l.productId}"> + </a>
+                                                <a class="cart_quantity_up" href="CalculaterCart?service=2&id=${l.productId}"> + </a>
                                             </div>
                                         </td>
                                         <td class="cart_total">
