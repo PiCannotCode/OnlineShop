@@ -1,3 +1,9 @@
+<%-- 
+    Document   : search
+    Created on : 08-Nov-2021, 08:45:24
+    Author     : HUY
+--%>
+
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -39,25 +45,17 @@
                                     </c:forEach>
                                 </div>
                             </div><!--/category-products-->
-
-                            <!--LAST PRODUCT-->
-                            <div class="title text-center">
-                                <p style="color: #FE980F; font-size: 18px; font-weight: 700;">Sản phẩm bán chạy nhất</p>
-                                <a href="productservices?service=details&id=${newproduct.id}"><img src="image/${newproduct.image}" style="width: 240px; padding-left:  0px;" /></a>
-                            </div>
-
                             <div class="shipping text-center"><!--shipping-->
                                 <img src="images/home/shipping.jpg" alt="" />
-                            </div><!--/shipping-->
-                            
+                            </div><!--/shipping-->         
                         </div>
                     </div>
 
                     <div class="col-sm-9 padding-right">
                         <div class="features_items"><!--features_items-->
                             <h2 class="title text-center" style="margin-top: .7rem;">Sản phẩm mới nhất</h2>
-                            <c:if test="${empty listproduct}"><h4 style="text-align: center">Sản phẩm đang được cập nhật</h4></c:if>
-                            <c:forEach items="${listproduct}" var="p">
+                            <c:if test="${empty listproduct}"><h4 style="text-align: center">Không tìm thấy sản phẩm</h4></c:if>
+                            <c:forEach items="${listproduct}" var="p">            
                                 <div class="col-sm-3">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">

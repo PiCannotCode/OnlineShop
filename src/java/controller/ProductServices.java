@@ -67,7 +67,7 @@ public class ProductServices extends HttpServlet {
                 request.setAttribute("newproduct", product);
                 request.setAttribute("cate", listCate);
                 request.setAttribute("listproduct", listProduct);
-                request.getRequestDispatcher("home.jsp").forward(request, response);
+                request.getRequestDispatcher("search.jsp").forward(request, response);
             }
 
             // PRODUCT DETAILS
