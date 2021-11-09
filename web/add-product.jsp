@@ -46,35 +46,35 @@
                         <div class="col-md-1"></div>
                         <div class="col-md-5">
                             <table>
-                                <tr>
-                                    <th>Tên sản phẩm: </th>
-                                    <td><input type="text" name="name" placeholder="Nhập tên sản phẩm" value="${product.name}" required=""></td>
+                                <tr style="height: 40px">
+                                    <th>Tên sản phẩm: &nbsp;</th>
+                                    <td><input type="text" name="name" placeholder="Nhập tên sản phẩm" value="${product.name}" required="" class="form-control"></td>
+                                </tr>               
+                                <tr style="height: 40px">
+                                    <th>Giá: </th>
+                                    <td><input type="number" min="1" name="price" placeholder="Nhập giá" value="${product.price}" required="" class="form-control"></td>
                                 </tr>
-                                <tr>
+                                <tr style="height: 40px">
+                                    <th>Số lượng: </th>
+                                    <td><input type="number" min="0" name="quantity" placeholder="Nhập số lượng" value="${product.quantity}" required="" class="form-control"></td>
+                                </tr>
+                                <tr style="height: 40px">
                                     <th>Danh mục: </th>
                                     <td>
-                                        <select name="category_id" required="">
+                                        <select name="category_id" required="" class="form-control">
                                             <c:forEach items="${listCategory}" var="c">
                                                 <option value="${c.id}" <c:if test="${c.id == product.category_id}">selected=""</c:if>>${c.category}</option>
                                             </c:forEach>
                                         </select>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th>Giá : </th>
-                                    <td><input type="number" name="price" placeholder="Nhập giá" value="${product.price}" required=""></td>
-                                </tr>
-                                <tr>
+                                <tr style="height: 40px">
                                     <th>Mô tả: </th>
-                                    <td><input type="text" name="description" placeholder="Nhập mô tả" value="${product.description}" required=""></td>
+                                    <td><textarea name="description" placeholder="Nhập mô tả" required="" rows="3" cols="30" class="form-control">${product.description}</textarea></td>
                                 </tr>
-                                <tr>
-                                    <th>Số lượng: </th>
-                                    <td><input type="number" name="quantity" placeholder="Nhập số lượng" value="${product.quantity}" required=""></td>
-                                </tr>
-                                <tr>
+                                <tr style="height: 40px">
                                     <th>Ghi chú: </th>
-                                    <td><input type="text" name="note" placeholder="Nhập ghi chú" value="${product.note}"></td>
+                                    <td><textarea name="note" placeholder="Nhập ghi chú" required="" rows="1" cols="30" class="form-control">${product.note}</textarea></td>
                                 </tr>
                             </table>
 

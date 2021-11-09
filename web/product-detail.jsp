@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="img mg-top-15">
-                            <img src="image/${product.image}">
+                            <img src="image/${product.image}" height="500" width="500">
                         </div>
                     </div>
                     <div class="col-md-1"></div>
