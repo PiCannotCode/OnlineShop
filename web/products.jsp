@@ -45,7 +45,7 @@
                                 <td>${p.description}</td>
                                 <td class="tdQuantity">${p.quantity}</td>
                                 <td class="tdStatus">${p.status}</td>
-                                <td><img src="image/${p.image}" style="width: 130px;"></td>
+                                <td><img src="image/${p.image}" width="130" height="130"></td>
                                 <td>${p.note}</td>
                                 <td><a class ="btnUpdate" href="productservices?service=updateview&id=${p.id}">Sửa</a></td>
                                 <td><a onclick="return confirm('Mặt hàng này sẽ được xóa')" class ="btnDelete" href="productservices?service=delete&id=${p.id}">Xóa</a></td>
