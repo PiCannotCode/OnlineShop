@@ -83,6 +83,23 @@ public class UserlistDAO {
         }
     }
 
+    public ArrayList<Order> getIdOrder(String id) {
+        ArrayList<Order> list = new ArrayList<Order>();
+        String sql = "select Account_Id from [Order] where Account_Id=?";
+        try {
+            conn = new DBContext().getConnection(); //mo ket noi toi sql
+            ps = conn.prepareStatement(sql);//nem cau lenh query sang sql
+            ps.setString(1, id);
+            rs = ps.executeQuery();//chay cau lenh query, nhan ket qua tra ve
+            while (rs.next()) {
+                list.add(new Order(rs.getInt(1)));
+            }
+
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public void changePass(int id, String pass, String newpass) {
         String query = "update Account set [Password]=? where id = ? and [Password]=?";
         try {
@@ -197,13 +214,13 @@ public class UserlistDAO {
 //        int result = r.nextInt(high - low) + low;
 //        return result;
 //    }
-
     public static void main(String[] args) {
         UserlistDAO d = new UserlistDAO();
 //        d.addCheckOut(new Order(24,100 , "aaa", 1, "123a", "manh", "0123123123", "ass@gmail.com", 100, 100,100, 1, "none"));
 ////        int t = d.getMax().getId();
 ////        System.out.println(d.token());
-        d.addOrderDetail(new OrderDetail(18, 11, "manh", 100, 300));
+//        d.addOrderDetail(new OrderDetail(18, 11, "manh", 100, 300));
+        System.out.println(d.getIdOrder("19"));
     }
 
 }

@@ -6,8 +6,10 @@
 package controller;
 
 import dao.UserlistDAO;
+import entity.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,8 +37,13 @@ public class DeleteAccount extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("id");
         UserlistDAO d = new UserlistDAO();
-        d.deleteAcc(id);
-        response.sendRedirect("userlist");
+        List<Order> listC = d.getIdOrder(id);
+        if (listC == null) {
+            d.deleteAcc(id);
+        }else{
+            request.setAttribute("message", "Không thể xóa account này");
+        }
+        request.getRequestDispatcher("userlist").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

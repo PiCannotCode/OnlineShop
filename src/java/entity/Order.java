@@ -65,6 +65,9 @@ public class Order {
         this.reasonCancle = reasonCancle;
     }
 
+    public Order(int accountId){
+        this.accountId = accountId;
+    }
     
     
     public int getId() {

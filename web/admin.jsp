@@ -27,6 +27,7 @@
                                 <a href="home" class="btn btn-secondary"><i class="material-icons"></i> <span>Back to Home</span></a>					
                             </div>
                         </div>
+                        <p style="text-align: center;">${message}</p>
                     </div>
                     
                         <table class="table table-striped table-hover">
