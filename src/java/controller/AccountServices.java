@@ -114,7 +114,7 @@ public class AccountServices extends HttpServlet {
                                 }
                             }
                         }else{
-                            request.setAttribute("message", "Mật khẩu phải có độ dài từ 6-20 ký tự trong đó bao gồm 1 chữ viết thường");
+                            request.setAttribute("message", "Mật khẩu phải dài ít nhất 8 ký tự, có ít nhất 1 ký tự đặc biệt và 1 chữ cái viết hoa");
                             request.getRequestDispatcher("register.jsp").forward(request, response);
                         }
                     }

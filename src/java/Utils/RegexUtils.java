@@ -18,7 +18,7 @@ public class RegexUtils {
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     public static final String PASSWORD_REGEX
-            = "((?=.*\\d)(?=.*[a-z]).{6,20})";
+            = "^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$";
 
     private static Pattern pattern;
     private static Matcher matcher;
