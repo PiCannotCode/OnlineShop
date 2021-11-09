@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import dbcontext.DBContext;
 import entity.Account;
 import entity.AccountAll;
+import entity.Cart;
 import entity.Max;
 import java.sql.Connection;
 import java.util.Random;
@@ -31,7 +32,8 @@ public class UserlistDAO {
 
     public ArrayList<AccountAll> getAllAccountUser() {
         ArrayList<AccountAll> list = new ArrayList<AccountAll>();
-        String sql = "select Account.Id , Email ,[Role].Name as [role], Status_Account.[Status] , Create_Date , Account_Detail.[name] , Phone_Number , Gender ,[Address] from Account , Account_Detail , [Role] , Status_Account where Account.Account_Detail_Id = Account_Detail.Id and [role].id=account.Role_ID and Status_Account.id = Account.Role_ID ";
+        String sql = "select Account.Id , Email ,[Role].Name as [role], Status_Account.[Status] , Create_Date , Account_Detail.[name] , Phone_Number , Gender ,[Address] from Account , Account_Detail , [Role] ,"
+                + " Status_Account where Account.Account_Detail_Id = Account_Detail.Id and [role].id=account.Role_ID and Status_Account.id = Account.Role_ID ";
         try {
             conn = new DBContext().getConnection(); //mo ket noi toi sql
             ps = conn.prepareStatement(sql);//nem cau lenh query sang sql
@@ -207,20 +209,40 @@ public class UserlistDAO {
         return null;
     }
 
-//    public int token() {
-//        Random r = new Random();
-//        int low = 1000;
-//        int high = 10000;
-//        int result = r.nextInt(high - low) + low;
-//        return result;
-//    }
+    public Cart getQuantity(int id) {
+        String query = "select Quantity from Products where id =?";
+        try {
+            conn = new DBContext().getConnection(); //mo ket noi toi sql
+            ps = conn.prepareStatement(query);//nem cau lenh query sang sql
+            ps.setInt(1, id);
+            rs = ps.executeQuery();//chay cau lenh query, nhan ket qua tra ve
+            while (rs.next()) {
+                return new Cart(rs.getInt(1));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public void changeQuantity(int quantity,int id) {
+        String query = "update Products set Quantity =? where Id=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, quantity);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         UserlistDAO d = new UserlistDAO();
 //        d.addCheckOut(new Order(24,100 , "aaa", 1, "123a", "manh", "0123123123", "ass@gmail.com", 100, 100,100, 1, "none"));
 ////        int t = d.getMax().getId();
 ////        System.out.println(d.token());
 //        d.addOrderDetail(new OrderDetail(18, 11, "manh", 100, 300));
-        System.out.println(d.getIdOrder("19"));
+        d.changeQuantity(9, 1);
     }
 
 }
