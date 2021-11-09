@@ -25,6 +25,10 @@ public class Cart {
         this.unitPrice = unitPrice;
         this.quantity = quantity;
     }
+    
+    public Cart(int quantity){
+        this.quantity = quantity;
+    }
 
     public int getProductId() {
         return productId;

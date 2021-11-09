@@ -59,18 +59,14 @@ public class CheckOut extends HttpServlet {
 
         d.addCheckOut(new Order(id, price, note, status, address, name, phone, email, ship, VAT, pay, payment, none));
         int Oid = d.getMax().getId();
-//        String Pid[] = (request.getParameterValues("pid"));
-//        for (Object object : Pid) {;
-//            int Pquantity = Integer.parseInt(request.getParameter("quantity"));
-//            String Pprice = request.getParameter("Pprice");
-//            String Pname = request.getParameter("Pname");
-//            d.addOrderDetail(Oid, Pid, Pname, Pquantity, Pprice);
-//        }
         ArrayList<Cart> listCart = null;
         listCart = (ArrayList<Cart>) session.getAttribute("listCart");
         for (Cart cart : listCart) {
             int Pid = cart.getProductId();
+            int QuantityLeft = d.getQuantity(Pid).getQuantity();
             int Pquantity = cart.getQuantity();
+            int ChangeQuantity = QuantityLeft-Pquantity;
+            d.changeQuantity(ChangeQuantity, Pid);
             double Pprice = cart.getUnitPrice();
             String Pname = cart.getName();
             d.addOrderDetail(new OrderDetail(Oid, Pid, Pname, Pquantity, price));
