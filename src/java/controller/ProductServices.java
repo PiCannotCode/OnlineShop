@@ -94,32 +94,20 @@ public class ProductServices extends HttpServlet {
 
             // ADD PRODUCT
             if (service.equalsIgnoreCase("add")) {
-                // IMAGE UPLOAD
-//                Part part = request.getPart("image");
-//                String realPath = request.getServletContext().getRealPath("/image");
-//                System.err.println(realPath);
-//                String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
-//                System.err.println("Filename: "+fileName);
-//                File uploads = new File(realPath);
-//                File file = new File(uploads, fileName);
-//                System.out.println("11111111111111111111111111111111111111111111");
-//                try (InputStream input = part.getInputStream()) {
-//                    System.out.println("222222222222222222222222222222222222222222222");
-//                    Files.copy(input, file.toPath());
-//                }
+                String fileName = "";
+                for (Part part : request.getParts()) {
+                    if(part != null && part.getSubmittedFileName() != null){
+                        fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+                        fileName = (new java.util.Date().getTime()) + "_" + fileName;
+                        String realPath = request.getServletContext().getRealPath("/image");
+                        File uploads = new File(realPath);
+                        File file = new File(uploads, fileName);
+                        try (InputStream input = part.getInputStream()) {                           
+                            Files.copy(input, file.toPath());
+                        }
+                    }                    
+                }
 
-//                
-//                
-//                
-//                if (!Files.exists(Paths.get(realPath))) {
-//                    Files.createDirectory(Paths.get(realPath));
-//
-//                }
-//
-//                System.out.println("11111111111111111111111111111111111111111111");
-//                part.write(realPath + "/" + fileName);
-//                System.out.println("222222222222222222222222222222222222222222222");
-                //
                 String name = request.getParameter("name");
                 int category_id = Integer.parseInt(request.getParameter("category_id"));
                 float price = Float.parseFloat(request.getParameter("price"));
@@ -129,9 +117,8 @@ public class ProductServices extends HttpServlet {
                 if (quantity > 0) {
                     status = 1;
                 }
-                String image = request.getParameter("image");
                 String note = request.getParameter("note");
-                Product product = new Product(0, name, category_id, price, description, quantity, status, image, note);
+                Product product = new Product(0, name, category_id, price, description, quantity, status, fileName, note);
                 ProductDAO productDAO = new ProductDAO();
                 if (productDAO.addProduct(product)) {
                     request.setAttribute("message", "Add Product Successfully");
@@ -157,6 +144,20 @@ public class ProductServices extends HttpServlet {
 
             // UPDATE PRODUCT
             if (service.equalsIgnoreCase("update")) {
+                String fileName = "";
+                for (Part part : request.getParts()) {
+                    if(part != null && part.getSubmittedFileName() != null){
+                        fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+                        fileName = (new java.util.Date().getTime()) + "_" + fileName;
+                        String realPath = request.getServletContext().getRealPath("/image");
+                        File uploads = new File(realPath);
+                        File file = new File(uploads, fileName);
+                        try (InputStream input = part.getInputStream()) {                           
+                            Files.copy(input, file.toPath());
+                        }
+                    }                    
+                }
+
                 int id = Integer.parseInt(request.getParameter("id"));
                 String name = request.getParameter("name");
                 int category_id = Integer.parseInt(request.getParameter("category_id"));
@@ -167,9 +168,8 @@ public class ProductServices extends HttpServlet {
                 if (quantity > 0) {
                     status = 1;
                 }
-                String image = request.getParameter("image");
                 String note = request.getParameter("note");
-                Product product = new Product(id, name, category_id, price, description, quantity, status, image, note);
+                Product product = new Product(id, name, category_id, price, description, quantity, status, fileName, note);
                 ProductDAO productDAO = new ProductDAO();
                 if (productDAO.updateProduct(product)) {
                     request.setAttribute("message", "Update Product Successfully");

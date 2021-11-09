@@ -37,7 +37,7 @@
                             <div class="img mg-top-15">
                                 <label>Photo : ${product.image}</label>
                                 <c:if test="${product ne null}">
-                                    <img src="image/${product.image}">
+                                    <img src="image/${product.image}" width="500" height="500" alt="Lỗi link hình ảnh">
                                 </c:if>
                                 
                                 <input type="file" class="form-control" name="image" placeholder="Enter Image">
