@@ -39,9 +39,7 @@
                         <div class="product-details">
                             <h3 style="color: #FE980F;">${product.name}</h3>
                             <p style="font-size: 19px; font-weight: 700;"><fmt:formatNumber value="${product.price}"/><sup>đ</sup></p>
-
-                            <a href="cartservice?service=taketocart&id=${product.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
-
+                            <c:if test="${currentAccount.roleId==2 || currentAccount.roleId==null}"><a href="cartservice?service=taketocart&id=${product.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a></c:if>
                             <div class="row">
                                 <div class="col-md-12 info">
                                     <p class="description bd-t pt-3">

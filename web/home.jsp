@@ -19,8 +19,29 @@
     </head><!--/head-->
     <body>
         <jsp:include page="header.jsp"/>
-        
         <section>
+            <div class="header-bottom"><!--search bar-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="mainmenu pull-left">
+                                <ul class="nav navbar-nav collapse navbar-collapse">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="search_box pull-right">
+                                <form action="productservices" method="Post">
+                                    <input type="text" name="searchName" placeholder="Tên sản phẩm"/>
+                                    <button style="padding: 7px; background-color: #FE980F; border-radius: 5px; border: none; color: white" type="submit">Tìm kiếm</button>
+                                    <input name="service" type="hidden" value="search"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/search bar-->
+
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3">
@@ -49,7 +70,7 @@
                             <div class="shipping text-center"><!--shipping-->
                                 <img src="images/home/shipping.jpg" alt="" />
                             </div><!--/shipping-->
-                            
+
                         </div>
                     </div>
 
@@ -65,11 +86,11 @@
                                                 <img src="image/${p.image}" alt="" />
                                                 <h2><fmt:formatNumber value="${p.price}"/><sup>đ</sup></h2>
                                                 <p><a href="productservices?service=details&id=${p.id}">${p.name}</a></p>
-                                                <a href="cartservice?service=taketocart&id=${p.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                                <c:if test="${currentAccount.roleId==2 || currentAccount.roleId==null}"><a href="cartservice?service=taketocart&id=${p.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a></c:if>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             </c:forEach>
                         </div><!--features_items-->
                     </div>

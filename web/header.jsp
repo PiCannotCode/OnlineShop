@@ -24,12 +24,12 @@
     </head>
     <body>
         <header id="header"><!--header-->
-            <div class="header-middle"><!--header-middle-->
+            <div class="header-middle">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3 clearfix">
                             <div class="logo pull-left">
-                                <a style="color: #FE980F; font-size: 18px;" href="home" class="active"><img src="//theme.hstatic.net/1000049508/1000480552/14/logo.png?v=267" style="width: 39%;"/></a>
+                                <a style="color: #FE980F; font-size: 18px;" href="home" class="active"><img src="//theme.hstatic.net/1000049508/1000480552/14/logo.png?v=267" style="width: 60%;"/></a>
                             </div>
                         </div>
                         <div class="col-md-9 clearfix">
@@ -67,29 +67,7 @@
                         </div>
                     </div>
                 </div>
-            </div><!--/header-middle-->
-
-            <div class="header-bottom"><!--header-bottom-->
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-9">
-                            <div class="mainmenu pull-left">
-                                <ul class="nav navbar-nav collapse navbar-collapse">
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="search_box pull-right">
-                                <form action="productservices" method="Post">
-                                    <input type="text" name="searchName" placeholder="Tên sản phẩm"/>
-                                    <button style="padding: 7px; background-color: #FE980F; border-radius: 5px; border: none; color: white" type="submit">Tìm kiếm</button>
-                                    <input name="service" type="hidden" value="search"/>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!--/header-bottom-->
+            </div>           
         </header><!--/header-->
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>

@@ -139,7 +139,7 @@
                                     <input name="payments" type="radio" value="1" required />Trả tiền khi nhận được hàng
                                 </div>
                             </div>
-                            <button class="btn btn-default check_out" href=""style="margin-top: 2px; float: right;">Đặt hàng</button>
+                            <button class="btn btn-default check_out" href=""style="margin-top: 2px; float: right;" onclick="return confirm('Xác nhận đặt hàng?')">Đặt hàng</button>
                         </div>
                     </div>
                 </div>
