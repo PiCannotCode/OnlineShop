@@ -18,43 +18,45 @@
         <div class="orderlist" style="margin-bottom: 20px;">
             <b>Đơn hàng của tôi</b>
         </div>
-        <div class="list" style="margin-left: 30px; margin-right: 30px;">
-            <table class="table table-striped table-hover" >
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Ngày đặt hàng</th>
-                        <th>Tổng số tiền</th>
-                        <th>Trạng thái</th>
-                        <th>Ghi chú</th>
-                        <th>Chi tiết đơn hàng</th>
-                        <th colspan="2">Thao tác</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach items="${listOrder}" var="o">
+        <div class="container">
+            <div class="list" style="margin-left: 30px; margin-right: 30px;">
+                <table class="table table-striped table-hover" >
+                    <thead>
                         <tr>
-                            <td>${o.id}</a></td>
-                            <td>${o.date}</td>
-                            <td>${o.totalPay}</td>
-                            <c:choose>
-                                <c:when test="${o.status == 1}"><td>Đang xử lí</td></c:when>
-                                <c:when test="${o.status == 2}"><td>Đang giao hàng</td></c:when>
-                                <c:when test="${o.status == 3}"><td>Giao hàng thành công</td></c:when>
-                                <c:when test="${o.status == 4}"><td>Đã hủy bỏ</td></c:when>
-                            </c:choose>
-                            <td>${o.note}</td>
-                            <td><a href="orderDetails?id=${o.id}">Chi tiết</td>
-                            <c:if test="${o.status == 2}">
-                                <td><a class ="btnDeliver" style=" background-color: limegreen" href="orderProcess?id=${o.id}&status=3">Đã nhận hàng</a></td>
-                            </c:if>
-                            <c:if test="${o.status == 1}">
-                                <td><a class ="btnCancel" style=" background-color: red" href="orderProcess?id=${o.id}&status=4">Hủy đơn hàng</a></td>
-                            </c:if>
+                            <th>ID</th>
+                            <th>Ngày đặt hàng</th>
+                            <th>Tổng số tiền</th>
+                            <th>Trạng thái</th>
+                            <th>Ghi chú</th>
+                            <th>Chi tiết đơn hàng</th>
+                            <th colspan="2">Thao tác</th>
                         </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${listOrder}" var="o">
+                            <tr>
+                                <td>${o.id}</a></td>
+                                <td>${o.date}</td>
+                                <td>${o.totalPay}</td>
+                                <c:choose>
+                                    <c:when test="${o.status == 1}"><td>Đang xử lí</td></c:when>
+                                    <c:when test="${o.status == 2}"><td>Đang giao hàng</td></c:when>
+                                    <c:when test="${o.status == 3}"><td>Giao hàng thành công</td></c:when>
+                                    <c:when test="${o.status == 4}"><td>Đã hủy bỏ</td></c:when>
+                                </c:choose>
+                                <td>${o.note}</td>
+                                <td><a href="orderDetails?id=${o.id}">Chi tiết</td>
+                                <c:if test="${o.status == 2}">
+                                    <td><a class ="btnDeliver" style=" background-color: limegreen" href="orderProcess?id=${o.id}&status=3">Đã nhận hàng</a></td>
+                                </c:if>
+                                <c:if test="${o.status == 1}">
+                                    <td><a class ="btnCancel" style=" background-color: red" href="orderProcess?id=${o.id}&status=4">Hủy đơn hàng</a></td>
+                                </c:if>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </body>
 </html>

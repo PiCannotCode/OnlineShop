@@ -21,19 +21,21 @@
             <b class="w3-left w3-padding">Order Details</b>
             <p class="w3-right w3-padding">Order_ID</p>
         </div>
-        <div class="list" style="margin-left: 30px; margin-right: 30px;">
-            <table class="table table-striped table-hover" >
-                <thead class="thead">
-                    <tr>
-                        <%-- Danh sách sản phẩm --%>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <%-- Danh sách sản phẩm --%>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="container">
+            <div class="list" style="margin-left: 30px; margin-right: 30px;">
+                <table class="table table-striped table-hover" >
+                    <thead class="thead">
+                        <tr>
+                            <%-- Danh sách sản phẩm --%>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <%-- Danh sách sản phẩm --%>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <c:forEach items="${list}" var="od">
             <h1>${od.id}</h1>
@@ -59,7 +61,7 @@
                             <label>Email người nhận</label>
                             <input name="email" type="text" class="form-control" readonly="">
                         </div>
-                        <div class="form-group" required style="margin-left: 1rem;">
+                        <div class="form-group" required style="margin-left: 5rem;">
                             <label>Ghi chú</label>
                             <textarea name="note" type="text" class="form-control"></textarea>
                         </div>
