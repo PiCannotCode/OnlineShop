@@ -40,4 +40,21 @@ public class OrderDetailsDAO extends DBContext {
         return list;
     }
 
+    public boolean deleteOrderDetails(int id) {
+        try {
+            String sql = "DELETE FROM [Order_Detail] WHERE Order_Id= ?";
+            PreparedStatement ps = getConnection().prepareStatement(sql);
+            ps.setInt(1, id);
+            int flag = ps.executeUpdate();
+            if (flag >= 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.err.println("Delete Order Fail: " + e.getMessage());
+            return false;
+        }
+    }
+
 }

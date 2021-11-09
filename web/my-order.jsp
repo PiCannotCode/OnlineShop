@@ -29,7 +29,7 @@
                             <th>Trạng thái</th>
                             <th>Ghi chú</th>
                             <th>Chi tiết đơn hàng</th>
-                            <th>Thao tác</th>
+                            <th colspan="2">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,7 +54,7 @@
                                         <td><a class ="btnCancel" style=" background-color: red" href="orderProcess?id=${o.id}&status=4">Hủy đơn hàng</a></td>
                                     </c:when>
                                     <c:otherwise>
-                                        <td></td>
+                                        <td><a class ="btnCancel" style=" background-color: gray" href="deleteOrder?id=${o.id}">Xóa hóa đơn</a></td>
                                     </c:otherwise>
                                 </c:choose>
                             </tr>
