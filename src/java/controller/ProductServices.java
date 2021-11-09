@@ -190,7 +190,7 @@ public class ProductServices extends HttpServlet {
                     request.getRequestDispatcher("productservices?service=list").forward(request, response);
                 } else {
                     request.setAttribute("message", "Delete Product Fail");
-                    request.getRequestDispatcher("productservices").forward(request, response);
+                    request.getRequestDispatcher("productservices?service=list").forward(request, response);
                 }
             }
 

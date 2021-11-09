@@ -6,9 +6,13 @@
 package controller;
 
 import dao.OrderDAO;
+import dao.OrderDetailsDAO;
+import dao.ProductDAO;
 import entity.Account;
+import entity.OrderDetail;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,6 +42,16 @@ public class OrderProcess extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             int id = Integer.parseInt(request.getParameter("id"));
             int status = Integer.parseInt(request.getParameter("status"));
+            OrderDetailsDAO orderDetailsDAO = new OrderDetailsDAO();
+            ArrayList<OrderDetail> odList = orderDetailsDAO.getListOrderDetails(id);
+            if(status == 4){
+                for(OrderDetail od : odList){
+                    int productID = od.getProductId();
+                    int quantity = od.getProductQuantity();
+                    ProductDAO productDAO = new ProductDAO();
+                    productDAO.restoreProductQuantity(productID,quantity);
+                }
+            }
             OrderDAO orderDAO = new OrderDAO();
             orderDAO.updateStatus(id, status);
             HttpSession session = request.getSession();
