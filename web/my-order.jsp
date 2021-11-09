@@ -15,10 +15,10 @@
     </head>
     <body
         <jsp:include page="header.jsp"/>
-        <div class="orderlist" style="margin-bottom: 20px;">
-            <b>Đơn hàng của tôi</b>
-        </div>
         <div class="container">
+            <div class="orderlist" style="margin-bottom: 20px;">
+                <b>Danh sách đơn hàng</b>
+            </div>
             <div class="list" style="margin-left: 30px; margin-right: 30px;">
                 <table class="table table-striped table-hover" >
                     <thead>
@@ -29,7 +29,7 @@
                             <th>Trạng thái</th>
                             <th>Ghi chú</th>
                             <th>Chi tiết đơn hàng</th>
-                            <th colspan="2">Thao tác</th>
+                            <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,17 +45,23 @@
                                     <c:when test="${o.status == 4}"><td>Đã hủy bỏ</td></c:when>
                                 </c:choose>
                                 <td>${o.note}</td>
-                                <td><a href="orderDetails?id=${o.id}">Chi tiết</td>
-                                <c:if test="${o.status == 2}">
-                                    <td><a class ="btnDeliver" style=" background-color: limegreen" href="orderProcess?id=${o.id}&status=3">Đã nhận hàng</a></td>
-                                </c:if>
-                                <c:if test="${o.status == 1}">
-                                    <td><a class ="btnCancel" style=" background-color: red" href="orderProcess?id=${o.id}&status=4">Hủy đơn hàng</a></td>
-                                </c:if>
+                                <td><a href="OrderInfo?id=${o.id}">Xem chi tiết</a></td>
+                                <c:choose>
+                                    <c:when test="${o.status == 2}">
+                                        <td><a class ="btnDeliver" style=" background-color: limegreen" href="orderProcess?id=${o.id}&status=3">Đã nhận hàng</a></td>
+                                    </c:when>
+                                    <c:when test="${o.status == 1}">
+                                        <td><a class ="btnCancel" style=" background-color: red" href="orderProcess?id=${o.id}&status=4">Hủy đơn hàng</a></td>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <td></td>
+                                    </c:otherwise>
+                                </c:choose>
                             </tr>
                         </c:forEach>
-                    </tbody>
+                    </tbody>                  
                 </table>
+                <b><i>*Vui lòng nhấn "Đã nhận hàng" sau khi nhận được sản phẩm.</i></b>
             </div>
         </div>
     </body>

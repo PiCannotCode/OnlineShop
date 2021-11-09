@@ -15,12 +15,12 @@
     </head>
     <body
         <jsp:include page="header.jsp"/>
-        <div class="orderlist" style="margin-bottom: 20px;">
-            <b>Danh sách đơn hàng</b>
-        </div>
         <div class="container">
+            <div class="orderlist" style="margin-bottom: 20px;">
+                <b>Danh sách đơn hàng</b>
+            </div>
             <div class="list" style="margin-left: 30px; margin-right: 30px;">
-                <table class="table table-striped table-hover" >
+                <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -30,7 +30,7 @@
                             <th>Trạng thái</th>
                             <th>Ghi chú</th>
                             <th>Chi tiết đơn hàng</th>
-                            <th colspan="2">Thao tác</th>
+                            <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,12 +46,16 @@
                                     <c:when test="${o.status == 3}"><td>Giao hàng thành công</td></c:when>
                                     <c:when test="${o.status == 4}"><td>Đã hủy bỏ</td></c:when>
                                 </c:choose>
-                                <td>${o.status}</td>
                                 <td>${o.note}</td>
-                                <td><a href="orderDetails?id=${o.id}">Chi tiết</td>
-                                <c:if test="${o.status == 1}">
-                                    <td><a class ="btnDeliver" style=" background-color: limegreen" href="orderProcess?id=${o.id}&status=2">Giao hàng</a></td>
-                                </c:if>
+                                <td><a href="orderDetails?id=${o.id}">Xem chi tiết</a></td>
+                                <c:choose>
+                                    <c:when test="${o.status == 1}">
+                                        <td><a class ="btnDeliver" style=" background-color: limegreen" href="orderProcess?id=${o.id}&status=2">Đang giao hàng</a></td>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <td></td>
+                                    </c:otherwise>
+                                </c:choose>
                             </tr>
                         </c:forEach>
                     </tbody>

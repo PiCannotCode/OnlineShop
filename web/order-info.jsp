@@ -1,7 +1,7 @@
 <%-- 
-    Document   : order-details
-    Created on : Nov 5, 2021, 12:55:48 AM
-    Author     : DucAnh
+    Document   : order-info
+    Created on : 09-Nov-2021, 20:22:15
+    Author     : HUY
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -35,6 +35,7 @@
                                 <th>Số lượng</th>
                                 <th>Đơn giá</th>
                                 <th>Số tiền</th>
+                            <c:if test="${order.status == 3}"><th>Đánh giá</th></c:if>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,7 +46,8 @@
                                 <td>${od.productQuantity}</td>
                                 <td>${od.productPrice}</td>
                                 <td>${od.productPrice * od.productQuantity}</td>
-                            </tr>
+                                <c:if test="${order.status == 3}"><th><a href="#">Đánh giá</a></th></c:if>
+                                </tr>
                         </c:forEach>
                     </tbody>
                 </table>
@@ -97,7 +99,7 @@
                            <c:if test="${order.payments == 2}">Chuyển khoản</c:if>">
                 </div>
             </div>
-            <a href="orderListServlet" class="btn" style="margin-left: 90%; background-color: #FE980F; color: white">Quay lại</a>
+            <a href="MyOrderServlet?id=${currentAccount.id}" class="btn" style="margin-left: 90%; background-color: #FE980F; color: white">Quay lại</a>
         </div>
     </body>
 </html>
