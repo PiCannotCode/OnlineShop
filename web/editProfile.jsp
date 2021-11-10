@@ -52,7 +52,7 @@
                                     </tr>
                                     <tr>
                                         <td></td>
-                                        <td><button type="submit" class="btn" style="background-color: #FE980F; color: white">Cập nhật</button></td>
+                                        <td><button type="submit" class="btn" style="background-color: #FE980F; color: white; margin-top: 10px;">Cập nhật</button></td>
                                     </tr>
                                 </table>
                             </form>
