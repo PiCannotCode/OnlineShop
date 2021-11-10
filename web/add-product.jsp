@@ -75,7 +75,7 @@
                                 </tr>
                                 <tr style="height: 40px">
                                     <th>Ghi chú: </th>
-                                    <td><textarea name="note" placeholder="Nhập ghi chú" required="" rows="1" cols="30" class="form-control">${product.note}</textarea></td>
+                                    <td><textarea name="note" placeholder="Nhập ghi chú" rows="1" cols="30" class="form-control">${product.note}</textarea></td>
                                 </tr>
                             </table>
 
