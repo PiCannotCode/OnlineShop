@@ -15,10 +15,10 @@
         <link href="css/order.css" rel="stylesheet">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
-    <body>
+    <body style="background-image: url(images/bgbalo2.png); background-size: 100%">
         <jsp:include page="header.jsp"/>
-        <div class="container" style="margin-top: 20px;">
-            <div class="w3-bar">
+        <div class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white;  margin-top: 20px; margin-bottom: 50px">
+            <div class="w3-bar" style="margin-top: 15px">
                 <b class="w3-left w3-padding">Chi tiết Đơn hàng</b>
                 <p class="w3-right w3-padding">Trạng thái: 
                     <c:if test="${order.status == 1}">Đang xử lý</c:if>
@@ -95,9 +95,10 @@
                     <input class="form-control" readonly 
                            value="<c:if test="${order.payments == 1}">Thanh toán khi nhận hàng</c:if>
                            <c:if test="${order.payments == 2}">Chuyển khoản</c:if>">
+                    </div>
                 </div>
+                <a href="orderListServlet" class="btn" style="margin-left: 90%; margin-bottom: 20px; background-color: #FE980F; color: white">Quay lại</a>
             </div>
-            <a href="orderListServlet" class="btn" style="margin-left: 90%; background-color: #FE980F; color: white">Quay lại</a>
-        </div>
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>

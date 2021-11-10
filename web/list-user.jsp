@@ -19,10 +19,10 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <link href="css/admin.css" rel="stylesheet">
     </head>
-    <body>
+    <body style="background-image: url(images/bgbalo2.png); background-size: 100%">
         <jsp:include page="header.jsp"/>
-        <div class="container" style="margin-top: 20px;">
-            <div style="margin-bottom: 20px">
+        <div class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white; margin-top: 20px; margin-bottom: 20px">
+            <div style="margin-top: 20px">
                 <h2 class="title text-center" style="margin-top: .7rem;">Danh sách người dùng</h2>
             </div>
              <p style="text-align: center">${message}</p>

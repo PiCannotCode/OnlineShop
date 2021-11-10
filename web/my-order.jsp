@@ -13,10 +13,10 @@
         <title>Đơn hàng của tôi</title>
         <link href="css/order.css" rel="stylesheet">
     </head>
-    <body
+    <body style="background-image: url(images/bgbalo2.png); background-size: 100%">
         <jsp:include page="header.jsp"/>
-        <div class="container" style="margin-top: 20px;">
-            <div class="orderlist" style="margin-bottom: 20px;">
+        <div class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white;  margin-top: 20px; margin-bottom: 50px">
+            <div class="orderlist" style="margin-top: 20px">
                 <b>Danh sách đơn hàng</b>
             </div>
             <div class="list" style="margin-left: 30px; margin-right: 30px;">
@@ -48,13 +48,13 @@
                                 <td><a href="OrderInfo?id=${o.id}">Xem chi tiết</a></td>
                                 <c:choose>
                                     <c:when test="${o.status == 2}">
-                                        <td><a class ="btnDeliver" style=" background-color: limegreen" href="orderProcess?id=${o.id}&status=3">Đã nhận hàng</a></td>
+                                        <td><a class ="btnReiceive" style=" background-color: limegreen" href="orderProcess?id=${o.id}&status=3">Đã nhận hàng</a></td>
                                     </c:when>
                                     <c:when test="${o.status == 1}">
                                         <td><a class ="btnCancel" style=" background-color: red" href="orderProcess?id=${o.id}&status=4">Hủy đơn hàng</a></td>
                                     </c:when>
                                     <c:when test="${o.status == 4 || o.status == 6}">
-                                        <td><a class ="btnCancel" style=" background-color: gray" href="deleteOrder?id=${o.id}">Xóa hóa đơn</a></td>
+                                        <td><a class ="btnDelete" style=" background-color: gray" href="deleteOrder?id=${o.id}">Xóa khỏi danh sách</a></td>
                                     </c:when>
                                     <c:otherwise>
                                         <td></td>
@@ -64,8 +64,9 @@
                         </c:forEach>
                     </tbody>                  
                 </table>
-                <b><i>*Vui lòng nhấn "Đã nhận hàng" sau khi nhận được sản phẩm.</i></b>
+                <p class="note">*Vui lòng nhấn "Đã nhận hàng" sau khi nhận được sản phẩm.</p>
             </div>
         </div>
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>

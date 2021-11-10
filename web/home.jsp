@@ -19,7 +19,7 @@
     </head><!--/head-->
     <body style="background-image: url(images/bgbalo2.png); background-size: 100% 45%">
         <jsp:include page="header.jsp"/>
-        
+
         <section>
             <div class="header-bottom"><!--search bar-->
                 <div class="container">
@@ -87,22 +87,20 @@
                                                 <img src="image/${p.image}" alt="" style="height: 180px; width: 180px"/>
                                                 <h2><fmt:formatNumber value="${p.price}"/><sup>đ</sup></h2>
                                                 <p><a href="productservices?service=details&id=${p.id}">${p.name}</a></p>     
-                                                <c:if test="${currentAccount.roleId==2 || currentAccount.roleId==null}">
-                                                    <c:choose>
-                                                        <c:when test="${p.status == 'Còn hàng'}">
-                                                            <a href="cartservice?service=taketocart&id=${p.id}" class="btn btn-default add-to-cart">
-                                                    <i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                                    <c:if test="${currentAccount.roleId==2 || currentAccount.roleId==null}">
+                                                        <c:choose>
+                                                            <c:when test="${p.status == 'Còn hàng'}">
+                                                            <a href="cartservice?service=taketocart&id=${p.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
                                                         </c:when>
                                                         <c:otherwise>
-                                                            <button class="btn btn-default add-to-cart" disabled="">
-                                                    <i class="fa fa-shopping-cart"></i>Hết hàng</button>
+                                                            <button class="btn btn-default add-to-cart" disabled=""><i class="fa fa-shopping-cart"></i>Hết hàng</button>
                                                         </c:otherwise>
                                                     </c:choose>
                                                 </c:if>    
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                             </c:forEach>
                         </div><!--features_items-->
                     </div>

@@ -28,14 +28,24 @@ and open the template in the editor.
     margin-left: 50px;
 }
 
+.btnReiceive{
+    color: white;
+    padding: 9px 27px;
+    border-radius: 5px;
+}
 .btnDeliver{
     color: white;
-    padding: 10px;
+    padding: 9px 21px;
     border-radius: 5px;
 }
 .btnCancel{
     color: white;
-    padding: 10px;
+    padding: 9px 27px;
+    border-radius: 5px;
+}
+.btnDelete{
+    color: white;
+    padding: 9px;
     border-radius: 5px;
 }
 .thead{
@@ -68,3 +78,8 @@ and open the template in the editor.
     color: white;
 }
 
+.note{
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 10px
+}

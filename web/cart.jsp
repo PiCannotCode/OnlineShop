@@ -25,12 +25,12 @@
         <link href="css/responsive.css" rel="stylesheet">
     </head><!--/head-->
 
-    <body>
+    <body style="background-image: url(images/bgbalo2.png); background-size: 100% 65%">
         <jsp:include page="header.jsp"/>
         <form action="CheckOut" method="post">
             <section id="cart_items">
-                <div class="container" style="margin-top: 20px;">
-                    <div class="table-responsive cart_info">
+                <div class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white;  margin-top: 20px">
+                    <div class="table-responsive cart_info" style="margin-top: 20px">
                         <table class="table table-condensed">
                             <thead>
                                 <tr class="cart_menu">
@@ -78,7 +78,7 @@
             </section> <!--/#cart_items-->
 
             <section id="do_action">
-                <div class="container">
+                <div class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white;  margin-top: 20px">
                     <div class="heading">
                         <h3>Thanh toán các mặt hàng trong giỏ</h3>
                         <p>Vui lòng điền đầy đủ các thông tin bên dưới để xác nhận đơn hàng, xin cảm ơn!</p>
@@ -86,7 +86,7 @@
                     <div class="row">
 
                         <div class="col-sm-6">
-                            <div class="total_area">
+                            <div class="total_area" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white">
                                 <div class="form-group" required style="margin-left: 1rem;">
                                     <label>Tên người nhận</label>
                                     <input name="name" type="text" class="form-control" value="${currentAccountDetail.name}" required>
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="total_area" >
+                            <div class="total_area" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white">
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Tổng tiền hàng</label><br>
                                     <input name="totalprice" type="text" class="form-control" value="${totalprice}" readonly="" required >
@@ -133,7 +133,7 @@
                                     <input name="payments" type="radio" value="1" required />Trả tiền khi nhận được hàng
                                 </div>
                             </div>
-                            <button class="btn btn-default check_out" href=""style="margin-top: 2px; float: right;" onclick="return confirm('Xác nhận đặt hàng?')">Đặt hàng</button>
+                            <button class="btn btn-default check_out" onclick="return confirm('Xác nhận đặt hàng?')" style="margin-bottom: 15px; float: right">Đặt hàng</button>
                         </div>
                     </div>
                 </div>

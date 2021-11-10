@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div><!--/search bar-->
-            
+
             <div class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white;  margin-bottom: 20px">
                 <div class="row" style="margin-top: 20px">
                     <div class="col-sm-3">
@@ -84,15 +84,13 @@
                                                 <img src="image/${p.image}" alt="" style="height: 180px; width: 180px"/>
                                                 <h2><fmt:formatNumber value="${p.price}"/><sup>đ</sup></h2>
                                                 <p><a href="productservices?service=details&id=${p.id}">${p.name}</a></p>
-                                                <c:if test="${currentAccount.roleId==2 || currentAccount.roleId==null}">
-                                                    <c:choose>
-                                                        <c:when test="${p.status == 'Còn hàng'}">
-                                                            <a href="cartservice?service=taketocart&id=${p.id}" class="btn btn-default add-to-cart">
-                                                    <i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                                    <c:if test="${currentAccount.roleId==2 || currentAccount.roleId==null}">
+                                                        <c:choose>
+                                                            <c:when test="${p.status == 'Còn hàng'}">
+                                                            <a href="cartservice?service=taketocart&id=${p.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
                                                         </c:when>
                                                         <c:otherwise>
-                                                            <button class="btn btn-default add-to-cart" disabled="">
-                                                    <i class="fa fa-shopping-cart"></i>Hết hàng</button>
+                                                            <button class="btn btn-default add-to-cart" disabled=""><i class="fa fa-shopping-cart"></i>Hết hàng</button>
                                                         </c:otherwise>
                                                     </c:choose>
                                                 </c:if>
