@@ -51,10 +51,6 @@ public class CalculaterCart extends HttpServlet {
                     if (listCart.get(i).getProductId() == id) {
                         listCart.remove(i);
                     }
-                    if (listCart.get(i).getQuantity() == 0) {
-                        listCart = null;
-                        break;
-                    }
                 }
                 request.setAttribute("listCart", listCart);
             }
