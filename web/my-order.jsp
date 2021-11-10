@@ -42,7 +42,7 @@
                                     <c:when test="${o.status == 1}"><td>Đang xử lí</td></c:when>
                                     <c:when test="${o.status == 2}"><td>Đang giao hàng</td></c:when>
                                     <c:when test="${o.status == 3}"><td>Giao hàng thành công</td></c:when>
-                                    <c:when test="${o.status == 4}"><td>Đã hủy bỏ</td></c:when>
+                                    <c:otherwise><td>Đã hủy bỏ</td></c:otherwise>
                                 </c:choose>
                                 <td>${o.note}</td>
                                 <td><a href="OrderInfo?id=${o.id}">Xem chi tiết</a></td>
@@ -53,7 +53,7 @@
                                     <c:when test="${o.status == 1}">
                                         <td><a class ="btnCancel" style=" background-color: red" href="orderProcess?id=${o.id}&status=4">Hủy đơn hàng</a></td>
                                     </c:when>
-                                    <c:when test="${o.status == 4}">
+                                    <c:when test="${o.status == 4 || o.status == 6}">
                                         <td><a class ="btnCancel" style=" background-color: gray" href="deleteOrder?id=${o.id}">Xóa hóa đơn</a></td>
                                     </c:when>
                                     <c:otherwise>

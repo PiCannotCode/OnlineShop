@@ -48,7 +48,7 @@ public class OrderDAO extends DBContext {
     public ArrayList<Order> getListOrder() {
         ArrayList<Order> listOrder = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM [Order]";
+            String sql = "SELECT * FROM [Order] WHERE Status <> 6";
             PreparedStatement ps = getConnection().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -79,7 +79,7 @@ public class OrderDAO extends DBContext {
     public ArrayList<Order> getListOrderByAccountId(int id) {
         ArrayList<Order> listOrder = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM [Order] WHERE Account_Id = ?";
+            String sql = "SELECT * FROM [Order] WHERE Account_Id = ? AND Status <> 5";
             PreparedStatement ps = getConnection().prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();

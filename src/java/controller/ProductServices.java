@@ -125,10 +125,10 @@ public class ProductServices extends HttpServlet {
                 Product product = new Product(0, name, category_id, price, description, quantity, status, fileName, note);
                 ProductDAO productDAO = new ProductDAO();
                 if (productDAO.addProduct(product)) {
-                    request.setAttribute("message", "Add Product Successfully");
+                    request.setAttribute("message", "Thêm sản phẩm mới thành công");
                     request.getRequestDispatcher("productservices?service=list").forward(request, response);
                 } else {
-                    request.setAttribute("message", "Add Product Fail");
+                    request.setAttribute("message", "Thêm sản phẩm mới không thành công");
                     request.getRequestDispatcher("productservices?service=addview").forward(request, response);
                 }
             }
@@ -184,10 +184,10 @@ public class ProductServices extends HttpServlet {
                 Product product = new Product(id, name, category_id, price, description, quantity, status, fileName, note);
                 ProductDAO productDAO = new ProductDAO();
                 if (productDAO.updateProduct(product)) {
-                    request.setAttribute("message", "Update Product Successfully");
+                    request.setAttribute("message", "Cập nhật sản phẩm thành công");
                     request.getRequestDispatcher("productservices?service=list").forward(request, response);
                 } else {
-                    request.setAttribute("message", "Update Product Fail");
+                    request.setAttribute("message", "Cập nhật sản phẩm không thành công");
                     request.getRequestDispatcher("productservices?service=updateview&id=" + id + "").forward(request, response);
                 }
             }
@@ -197,10 +197,10 @@ public class ProductServices extends HttpServlet {
                 int id = Integer.parseInt(request.getParameter("id"));
                 ProductDAO productDAO = new ProductDAO();
                 if (productDAO.deleteProduct(id)) {
-                    request.setAttribute("message", "Delete Product Successfully");
+                    request.setAttribute("message", "Đã xóa sản phẩm thành công");
                     request.getRequestDispatcher("productservices?service=list").forward(request, response);
                 } else {
-                    request.setAttribute("message", "Delete Product Fail");
+                    request.setAttribute("message", "Xóa sản phẩm không thành công");
                     request.getRequestDispatcher("productservices?service=list").forward(request, response);
                 }
             }

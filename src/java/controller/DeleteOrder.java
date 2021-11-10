@@ -8,6 +8,7 @@ package controller;
 import dao.OrderDAO;
 import dao.OrderDetailsDAO;
 import entity.Account;
+import entity.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -38,16 +39,27 @@ public class DeleteOrder extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int id = Integer.parseInt(request.getParameter("id"));
-            OrderDetailsDAO orderDetailsDAO = new OrderDetailsDAO();
-            orderDetailsDAO.deleteOrderDetails(id);
             OrderDAO orderDAO = new OrderDAO();
-            orderDAO.deleteOrder(id);
+            OrderDetailsDAO orderDetailsDAO = new OrderDetailsDAO();
             HttpSession session = request.getSession();
             Account account = (Account) session.getAttribute("currentAccount");
-            if ((int)account.getRoleId() == 3) {
+            Order order = orderDAO.getOrderDetails(id);
+            if ((int) account.getRoleId() == 3) {
+                if (order.getStatus() == 5) {
+                    orderDetailsDAO.deleteOrderDetails(id);
+                    orderDAO.deleteOrder(id);
+                } else {
+                    orderDAO.updateStatus(id, 6);
+                }
                 request.getRequestDispatcher("orderListServlet").forward(request, response);
             } else {
-                request.getRequestDispatcher("MyOrderServlet?id="+(int)account.getId()+"").forward(request, response);
+                if (order.getStatus() == 6) {
+                    orderDetailsDAO.deleteOrderDetails(id);
+                    orderDAO.deleteOrder(id);
+                } else {
+                    orderDAO.updateStatus(id, 5);
+                }
+                request.getRequestDispatcher("MyOrderServlet?id=" + (int) account.getId() + "").forward(request, response);
             }
         }
     }
