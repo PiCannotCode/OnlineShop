@@ -17,14 +17,14 @@ public class AccountAll {
     private String status;
     private String createDate;
     private String name;
-    private int phone ;
+    private String phone ;
     private boolean gender ;
     private String address;
 
     public AccountAll() {
     }
 
-    public AccountAll(int id, String email, String role, String status, String createDate, String name, int phone, boolean gender, String address) {
+    public AccountAll(int id, String email, String role, String status, String createDate, String name, String phone, boolean gender, String address) {
         this.id = id;
         this.email = email;
         this.role = role;
@@ -60,7 +60,7 @@ public class AccountAll {
         return name;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -96,7 +96,7 @@ public class AccountAll {
         this.name = name;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

@@ -42,7 +42,7 @@ public class UserList extends HttpServlet {
             UserlistDAO d = new UserlistDAO();
             ArrayList<AccountAll> listA = d.getAllAccountUser();
             request.setAttribute("listA", listA);
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
+            request.getRequestDispatcher("list-user.jsp").forward(request, response);
         }
     }
 
