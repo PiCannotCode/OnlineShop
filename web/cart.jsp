@@ -29,13 +29,7 @@
         <jsp:include page="header.jsp"/>
         <form action="CheckOut" method="post">
             <section id="cart_items">
-                <div class="container">
-                    <div class="breadcrumbs">
-                        <ol class="breadcrumb">
-                            <li><a href="home">Trang chủ</a></li>
-                            <li class="active">Giỏ hàng</li>
-                        </ol>
-                    </div>
+                <div class="container" style="margin-top: 20px;">
                     <div class="table-responsive cart_info">
                         <table class="table table-condensed">
                             <thead>

@@ -22,7 +22,7 @@
     </head>
     <body>
         <jsp:include page="header.jsp"/>
-        <div id="main-contain" class="container">
+        <div id="main-contain" class="container" style="margin-top: 20px;">
             <div class="row">
                 <c:if test="${product eq null}">
                     <h2 class="title text-center" style="margin-top: .7rem;">Thêm sản phẩm</h2>

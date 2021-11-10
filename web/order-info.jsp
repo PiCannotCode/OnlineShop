@@ -17,7 +17,7 @@
     </head>
     <body>
         <jsp:include page="header.jsp"/>
-        <div class="container">
+        <div class="container" style="margin-top: 20px;">
             <div class="w3-bar">
                 <b class="w3-left w3-padding">Chi tiết Đơn hàng</b>
                 <p class="w3-right w3-padding">Trạng thái: 
