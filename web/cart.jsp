@@ -118,8 +118,8 @@
                         <div class="col-sm-6">
                             <div class="total_area" >
                                 <div class="form-group" style="margin-left: 1rem;">
-                                    <label>Tổng tiền hàng</label>
-                                    <input name="totalprice" type="text" value="${totalprice}" class="form-control" readonly="">
+                                    <label>Tổng tiền hàng</label><br>
+                                    <fmt:formatNumber value="${totalprice}"/><sup>đ</sup>
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Phí vận chuyển</label>

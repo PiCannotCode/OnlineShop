@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import entity.Cart;
 import entity.Product;
+import dao.ProductDAO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,15 +64,36 @@ public class CalculaterCart extends HttpServlet {
                             if (listCart.get(i).getQuantity() == 0) {
                                 listCart.remove(i);
                             }
+                        } else {
+                            if (listCart.get(i).getQuantity() == 0) {
+                                listCart.remove(i);
+                                break;
+                            }
                         }
+                        session.setAttribute("listCart", listCart);
                     }
                     if (service == 2) {
-                        listCart.get(i).setQuantity(listCart.get(i).getQuantity() + 1);
+                        Product pro = new ProductDAO().getProductDetail(id);
+                        if (listCart.get(i).getQuantity() < pro.getQuantity()) {
+                            listCart.get(i).setQuantity(listCart.get(i).getQuantity() + 1);
+                        } else {
+                            listCart.get(i).setQuantity(listCart.get(i).getQuantity());
+                        }
+                        session.setAttribute("listCart", listCart);
                     }
                 }
-                session.setAttribute("listCart", listCart);
-                request.getRequestDispatcher("cart.jsp").forward(request, response);
             }
+            double totalprice = 0;
+            for (Cart c1 : listCart) {
+                int s = c1.getQuantity();
+                totalprice = totalprice + c1.getUnitPrice() * s;
+            }
+            double totalpays = 0;
+            totalpays = totalprice + 50000;
+            session.setAttribute("listCart", listCart);
+            session.setAttribute("totalprice", totalprice);
+            session.setAttribute("totalpays", totalpays);
+            request.getRequestDispatcher("cart.jsp").forward(request, response);
         }
     }
 
