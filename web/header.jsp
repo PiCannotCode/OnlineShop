@@ -23,13 +23,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <header id="header" style="background-color: #FF9900; box-shadow: 0px 5px 1px 1px #999999"><!--header-->
+        <header id="header" style="margin-top: 1px; background-color: #FF9900; box-shadow: 0px 5px 1px 1px #999999"><!--header-->
             <div class="header-middle">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3 clearfix">
                             <div class="logo pull-left">
-                                <a style="color: #FE980F; font-size: 18px;" href="home" class="active"><img src="images/logo2.png" style="width: 60%;"/></a>
+                                <a href="home" class="active"><img src="images/logo2.png" style="width: 50%;"/></a>
                             </div>
                         </div>
                         <div class="col-md-9 clearfix">

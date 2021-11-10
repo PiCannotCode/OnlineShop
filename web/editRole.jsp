@@ -51,8 +51,8 @@
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="isAdmin" value="3" ${a.roleId==3?"checked":""} id="flexRadioDefault2">
-                                        <label class="form-check-label" for="flexRadioDefault2">
+                                        <input class="form-check-input" type="radio" name="isAdmin" value="3" ${a.roleId==3?"checked":""} id="flexRadioDefault3">
+                                        <label class="form-check-label" for="flexRadioDefault3">
                                             Employee
                                         </label>
                                     </div>
