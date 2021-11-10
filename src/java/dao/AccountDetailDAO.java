@@ -78,6 +78,29 @@ public class AccountDetailDAO extends DBContext {
             return false;
         }
     }
+    
+    public AccountDetail getAccountDetailLogin(String email, String password){
+        AccountDetail accDetail = new AccountDetail();
+        try{
+            String sql = "SELECT Account_Detail.Id, Name, Phone_Number, Gender, Address "
+                    + "FROM Account_Detail, Account WHERE Account.Account_Detail_Id = Account_Detail.Id "
+                    + "AND Email = ? AND [Password] = ?";
+            PreparedStatement ps = getConnection().prepareStatement(sql);
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                accDetail.setId(rs.getInt("Id"));
+                accDetail.setName(rs.getString("Name"));
+                accDetail.setPhone(rs.getString("Phone_Number"));
+                accDetail.setGender(rs.getInt("Gender"));
+                accDetail.setAddress(rs.getString("Address"));
+            }
+        } catch(Exception e){
+            
+        }
+        return accDetail;
+    }
 
     public static void main(String[] args) {
         // Test datas

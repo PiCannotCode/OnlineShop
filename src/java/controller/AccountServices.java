@@ -53,8 +53,10 @@ public class AccountServices extends HttpServlet {
 
                 // Check account in database
                 Account accountLogin = new AccountDAO().login(email, pass);
+                AccountDetail accountDetailLogin = new AccountDetailDAO().getAccountDetailLogin(email, pass);
                 if (accountLogin != null) {
                     session.setAttribute("currentAccount", accountLogin);
+                    session.setAttribute("currentAccountDetail", accountDetailLogin);
                     if (accountLogin.getRoleId() == 1) {
                         System.out.println(accountLogin);
                         System.out.println("1");

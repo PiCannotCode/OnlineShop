@@ -89,15 +89,15 @@
                             <div class="total_area">
                                 <div class="form-group" required style="margin-left: 1rem;">
                                     <label>Tên người nhận</label>
-                                    <input name="name" type="text" class="form-control" value="${accDetail.name}" required>
+                                    <input name="name" type="text" class="form-control" value="${currentAccountDetail.name}" required>
                                 </div>
                                 <div class="form-group" required style="margin-left: 1rem;">
                                     <label>Số điện thoại người nhận</label>
-                                    <input name="phone" type="tel" pattern="[0]{1}[0-9]{9}" class="form-control" value="${accDetail.phone}" required>
+                                    <input name="phone" type="tel" pattern="[0]{1}[0-9]{9}" class="form-control" value="${currentAccountDetail.phone}" required>
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Địa chỉ nhận hàng</label>
-                                    <input name="address" type="text" class="form-control" value="${accDetail.address}" required>
+                                    <input name="address" type="text" class="form-control" value="${currentAccountDetail.address}" required>
                                 </div>
                                 <div class="form-group" required style="margin-left: 1rem;">
                                     <label>Email người nhận</label>
