@@ -86,9 +86,7 @@
                                             <div class="productinfo text-center">
                                                 <img src="image/${p.image}" alt="" style="height: 180px; width: 180px"/>
                                                 <h2><fmt:formatNumber value="${p.price}"/><sup>đ</sup></h2>
-                                                <p><a href="productservices?service=details&id=${p.id}">${p.name}</a></p>
-                                                
-                                                
+                                                <p><a href="productservices?service=details&id=${p.id}">${p.name}</a></p>     
                                                 <c:if test="${currentAccount.roleId==2 || currentAccount.roleId==null}">
                                                     <c:choose>
                                                         <c:when test="${p.status == 'Còn hàng'}">
@@ -100,10 +98,7 @@
                                                     <i class="fa fa-shopping-cart"></i>Hết hàng</button>
                                                         </c:otherwise>
                                                     </c:choose>
-                                                </c:if>
-                                                    
-                                                    
-                                                    
+                                                </c:if>    
                                                 </div>
                                             </div>
                                         </div>
