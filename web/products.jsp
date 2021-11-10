@@ -41,8 +41,10 @@
                             <c:forEach items="${listProduct}" var="p">
                                 <tr>
                                     <td class="tdId">${p.id}</td>
-                                    <td class="tdName">${p.name}</</td>
-                                    <td class="tdcategory">${p.category_id}</td>
+                                    <td class="tdName">${p.name}</td>
+                                    <c:forEach items="${listCategory}" var="c">
+                                        <c:if test="${c.id == p.category_id}"><td class="tdcategory">${c.category}</td></c:if>
+                                    </c:forEach>
                                     <td class="tdPrice"><fmt:formatNumber value="${p.price}"/><sup>đ</sup></td>
                                     <td>${p.description}</td>
                                     <td class="tdQuantity">${p.quantity}</td>

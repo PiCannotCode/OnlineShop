@@ -52,7 +52,10 @@ public class ProductServices extends HttpServlet {
             if (service.equalsIgnoreCase("list")) {
                 ProductDAO productDAO = new ProductDAO();
                 ArrayList<Product> listProduct = productDAO.getListProduct("");
+                CategoryDAO categoryDAO = new CategoryDAO();
+                ArrayList<Category> listCategory = categoryDAO.getAllCategory();
                 request.setAttribute("listProduct", listProduct);
+                request.setAttribute("listCategory", listCategory);
                 request.getRequestDispatcher("products.jsp").forward(request, response);
             }
 
