@@ -148,10 +148,18 @@ public class ProductServices extends HttpServlet {
 
             // UPDATE PRODUCT
             if (service.equalsIgnoreCase("update")) {
-                String fileName = "";
+                String fileName = request.getParameter("img_url");
+                System.out.println(fileName);
+                String tmp = fileName.trim();
+                boolean check = false;
                 for (Part part : request.getParts()) {
                     if(part != null && part.getSubmittedFileName() != null){
+                        fileName = "";
                         fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+                        if(fileName.trim().equalsIgnoreCase("")){
+                            fileName = tmp;
+                            break;
+                        }
                         fileName = (new java.util.Date().getTime()) + "_" + fileName;
                         String realPath = request.getServletContext().getRealPath("/image");
                         File uploads = new File(realPath);
@@ -159,7 +167,7 @@ public class ProductServices extends HttpServlet {
                         try (InputStream input = part.getInputStream()) {                           
                             Files.copy(input, file.toPath());
                         }
-                    }                    
+                    }                  
                 }
 
                 int id = Integer.parseInt(request.getParameter("id"));

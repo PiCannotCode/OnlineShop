@@ -27,20 +27,21 @@
                 <c:if test="${product eq null}">
                     <h2 class="title text-center" style="margin-top: .7rem;">Thêm sản phẩm</h2>
                     <form action="productservices?service=add" method="POST" enctype="multipart/form-data">
-                </c:if>
-                <c:if test="${product ne null}">
-                    <h2 class="title text-center" style="margin-top: .7rem;">Sửa sản phẩm</h2>
-                    <form action="productservices?service=update&id=${product.id}" method="POST" enctype="multipart/form-data">
-                </c:if>
+                    </c:if>
+                    <c:if test="${product ne null}">
+                        <h2 class="title text-center" style="margin-top: .7rem;">Sửa sản phẩm</h2>
+                        <form action="productservices?service=update&id=${product.id}" method="POST" enctype="multipart/form-data">
+                        </c:if>
                         <p style="text-align: center;">${message}</p>
                         <div class="col-md-6">
                             <div class="img mg-top-15">
                                 <label>Photo : ${product.image}</label>
+                                <input type="text" name="img_url" value="${product.image}" hidden="">
                                 <c:if test="${product ne null}">
                                     <img src="image/${product.image}" width="500" height="500" alt="Lỗi link hình ảnh">
                                 </c:if>
-                                
-                                <input type="file" class="form-control" name="image" placeholder="Enter Image">
+
+                                    <input type="file" class="form-control" name="image" placeholder="Enter Image" <c:if test="${product eq null}"> required=""</c:if>>
                             </div>
                         </div>
                         <div class="col-md-1"></div>
