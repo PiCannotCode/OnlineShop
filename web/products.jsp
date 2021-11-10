@@ -27,7 +27,7 @@
                             <tr>
                                 <th class="thId">Id</th>
                                 <th class="thName">Tên sản phẩm</th>
-                                <th class="thcategory">Category_id</th>
+                                <th class="thcategory">Danh mục</th>
                                 <th class="thPrice">Đơn giá</th>
                                 <th class="thDescription">Mô tả chi tiết</th>
                                 <th class="thQuantity">Số lượng</th>
