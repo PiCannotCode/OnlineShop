@@ -100,16 +100,16 @@ public class ProductServices extends HttpServlet {
             if (service.equalsIgnoreCase("add")) {
                 String fileName = "";
                 for (Part part : request.getParts()) {
-                    if(part != null && part.getSubmittedFileName() != null){
+                    if (part != null && part.getSubmittedFileName() != null) {
                         fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
                         fileName = (new java.util.Date().getTime()) + "_" + fileName;
                         String realPath = request.getServletContext().getRealPath("/image");
                         File uploads = new File(realPath);
                         File file = new File(uploads, fileName);
-                        try (InputStream input = part.getInputStream()) {                           
+                        try (InputStream input = part.getInputStream()) {
                             Files.copy(input, file.toPath());
                         }
-                    }                    
+                    }
                 }
 
                 String name = request.getParameter("name");
@@ -128,7 +128,7 @@ public class ProductServices extends HttpServlet {
                     request.setAttribute("message", "Thêm sản phẩm mới thành công");
                     request.getRequestDispatcher("productservices?service=list").forward(request, response);
                 } else {
-                    request.setAttribute("message", "Thêm sản phẩm mới không thành công");
+                    request.setAttribute("error", "Thêm sản phẩm mới không thành công");
                     request.getRequestDispatcher("productservices?service=addview").forward(request, response);
                 }
             }
@@ -153,10 +153,10 @@ public class ProductServices extends HttpServlet {
                 String tmp = fileName.trim();
                 boolean check = false;
                 for (Part part : request.getParts()) {
-                    if(part != null && part.getSubmittedFileName() != null){
+                    if (part != null && part.getSubmittedFileName() != null) {
                         fileName = "";
                         fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
-                        if(fileName.trim().equalsIgnoreCase("")){
+                        if (fileName.trim().equalsIgnoreCase("")) {
                             fileName = tmp;
                             break;
                         }
@@ -164,10 +164,10 @@ public class ProductServices extends HttpServlet {
                         String realPath = request.getServletContext().getRealPath("/image");
                         File uploads = new File(realPath);
                         File file = new File(uploads, fileName);
-                        try (InputStream input = part.getInputStream()) {                           
+                        try (InputStream input = part.getInputStream()) {
                             Files.copy(input, file.toPath());
                         }
-                    }                  
+                    }
                 }
 
                 int id = Integer.parseInt(request.getParameter("id"));
@@ -187,7 +187,7 @@ public class ProductServices extends HttpServlet {
                     request.setAttribute("message", "Cập nhật sản phẩm thành công");
                     request.getRequestDispatcher("productservices?service=list").forward(request, response);
                 } else {
-                    request.setAttribute("message", "Cập nhật sản phẩm không thành công");
+                    request.setAttribute("error", "Cập nhật sản phẩm không thành công");
                     request.getRequestDispatcher("productservices?service=updateview&id=" + id + "").forward(request, response);
                 }
             }
@@ -200,27 +200,28 @@ public class ProductServices extends HttpServlet {
                     request.setAttribute("message", "Đã xóa sản phẩm thành công");
                     request.getRequestDispatcher("productservices?service=list").forward(request, response);
                 } else {
-                    request.setAttribute("message", "Xóa sản phẩm không thành công");
+                    request.setAttribute("error", "Xóa sản phẩm không thành công");
                     request.getRequestDispatcher("productservices?service=list").forward(request, response);
                 }
             }
 
             // DELETE BY CHECKBOX
             if (service.equalsIgnoreCase("deleteCheckbox")) {
-                String[] deleteArray = request.getParameterValues("deleteCheckbox");
-                ProductDAO productDAO = new ProductDAO();
-                for (String s : deleteArray) {
-                    try {
+                try {
+                    String[] deleteArray = request.getParameterValues("deleteCheckbox");
+                    ProductDAO productDAO = new ProductDAO();
+                    for (String s : deleteArray) {
                         int id = Integer.parseInt(s);
                         productDAO.deleteProduct(id);
-                    } catch (Exception e) {
-                        System.out.println(e);
                     }
+                    request.setAttribute("message", "Xóa sản phẩm thành công");
+                    request.getRequestDispatcher("productservices?service=list").forward(request, response);
+                } catch (Exception e) {
+                    request.setAttribute("error", "Vui lòng chọn sản phẩm cần xóa");
+                    request.getRequestDispatcher("productservices?service=list").forward(request, response);
                 }
-                request.getRequestDispatcher("productservices?service=list").forward(request, response);
             }
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

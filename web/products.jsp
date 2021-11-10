@@ -16,12 +16,22 @@
     <body style="background-image: url(images/bgbalo2.png); background-size: 100% 27%">
         <jsp:include page="header.jsp"/>
         <div class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: whitesmoke; margin-top: 20px; margin-bottom: 20px">
-            <div class="alert alert-success" role="alert" style="margin-top: 10px">
-                <p style="text-align: center">${message}</p>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+            <c:if test="${message != null}">
+                <div class="alert alert-success" role="alert" style="margin-top: 10px">
+                    <p style="text-align: center">${message}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </c:if>
+            <c:if test="${error != null}">
+                <div class="alert alert-danger" role="alert" style="margin-top: 10px">
+                    <p style="text-align: center">${error}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </c:if>
             <div style="margin-bottom: 20px; margin-top: 20px">
                 <h2 class="title text-center" style="margin-top: .7rem;">Danh sách sản phẩm</h2>
                 <a style="margin-left: 86%" class="btn btn-info" href="productservices?service=addview">Thêm sản phẩm mới</a>
