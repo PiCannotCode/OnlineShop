@@ -38,7 +38,7 @@ public class DeleteAccount extends HttpServlet {
         String id = request.getParameter("id");
         UserlistDAO d = new UserlistDAO();
         List<Order> listC = d.getIdOrder(id);
-        if (listC == null) {
+        if (listC.size() == 0) {
             d.deleteAcc(id);
         }else{
             request.setAttribute("message", "Không thể xóa account này");
