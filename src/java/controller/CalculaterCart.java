@@ -38,14 +38,27 @@ public class CalculaterCart extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
             int id = Integer.parseInt(request.getParameter("id"));
             int service = Integer.parseInt(request.getParameter("service"));
             HttpSession session = request.getSession();
-            
+
             ArrayList<Cart> listCart = null;
             listCart = (ArrayList<Cart>) session.getAttribute("listCart");
-            
+
+            if (service == 0) {
+                for (int i = 0; i < listCart.size(); i++) {
+                    if (listCart.get(i).getProductId() == id) {
+                        listCart.remove(i);
+                    }
+                    if (listCart.get(i).getQuantity() == 0) {
+                        listCart = null;
+                        break;
+                    }
+                }
+                request.setAttribute("listCart", listCart);
+            }
+
             for (int i = 0; i < listCart.size(); i++) {
                 if (listCart.get(i).getProductId() == id) {
                     if (service == 1) {
