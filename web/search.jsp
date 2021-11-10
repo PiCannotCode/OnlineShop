@@ -23,7 +23,7 @@
         <link href="css/main.css" rel="stylesheet">
         <link href="css/responsive.css" rel="stylesheet">
     </head><!--/head-->
-    <body style="background-image: url(images/bgbalo2.png); background-size: 100% 45%">
+    <body style="background-image: url(images/bgbalo2.png); background-repeat: repeat-y;  background-size: 100%">
         <jsp:include page="header.jsp"/>
         <section>
             <div class="header-bottom"><!--search bar-->
