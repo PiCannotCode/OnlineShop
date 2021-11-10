@@ -53,8 +53,11 @@
                                     <c:when test="${o.status == 1}">
                                         <td><a class ="btnCancel" style=" background-color: red" href="orderProcess?id=${o.id}&status=4">Hủy đơn hàng</a></td>
                                     </c:when>
-                                    <c:otherwise>
+                                    <c:when test="${o.status == 4}">
                                         <td><a class ="btnCancel" style=" background-color: gray" href="deleteOrder?id=${o.id}">Xóa hóa đơn</a></td>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <td></td>
                                     </c:otherwise>
                                 </c:choose>
                             </tr>
