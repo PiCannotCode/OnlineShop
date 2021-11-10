@@ -221,13 +221,14 @@ public class ProductDAO extends DBContext {
         }
     }
     
-    public void restoreProductQuantity(int productID, int quantity) {
+    public void restoreProductQuantity(int productID, int quantity, int status) {
         try {
-            String sql = "UPDATE Products SET Quantity += ? "
+            String sql = "UPDATE Products SET Quantity += ? ,Status = ? "
                     + "WHERE Id= ?";
             PreparedStatement ps = getConnection().prepareStatement(sql);
             ps.setInt(1, quantity);
-            ps.setInt(2, productID);
+            ps.setInt(2, status);
+            ps.setInt(3, productID);
             int flag = ps.executeUpdate();
         } catch (Exception e) {
             System.err.println("Restore Product Quantity Fail: " + e.getMessage());

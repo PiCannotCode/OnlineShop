@@ -49,7 +49,7 @@ public class OrderProcess extends HttpServlet {
                     int productID = od.getProductId();
                     int quantity = od.getProductQuantity();
                     ProductDAO productDAO = new ProductDAO();
-                    productDAO.restoreProductQuantity(productID,quantity);
+                    productDAO.restoreProductQuantity(productID,quantity,1);
                 }
             }
             OrderDAO orderDAO = new OrderDAO();
