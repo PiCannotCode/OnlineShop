@@ -197,8 +197,8 @@ a#scrollUp i {
 }
 
 .shop-menu ul li a {
-    background: #FFFFFF;
-    color: #696763;
+
+    color: #FFFFFF;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: 300;
@@ -212,8 +212,8 @@ a#scrollUp i {
 }
 
 .shop-menu ul li a:hover {
-    color: #fe980f;
-    background: #fff;
+    color: #ffffff;
+    background: #fe980f;
 }
 
 .header-bottom {
@@ -260,8 +260,8 @@ a#scrollUp i {
     height: 35px;
     outline: medium none;
     padding-left: 10px;
-    width: 155px;
-    background-image: url(../images/home/searchicon.png);
+    width: 230px;
+
     background-repeat: no-repeat;
     background-position: 130px;
 }

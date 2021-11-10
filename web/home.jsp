@@ -17,8 +17,9 @@
         <link href="css/main.css" rel="stylesheet">
         <link href="css/responsive.css" rel="stylesheet">
     </head><!--/head-->
-    <body>
+    <body style="background-image: url(images/bgbalo2.png); background-size: 100% 45%">
         <jsp:include page="header.jsp"/>
+        
         <section>
             <div class="header-bottom"><!--search bar-->
                 <div class="container">
@@ -33,7 +34,7 @@
                             <div class="search_box pull-right">
                                 <form action="productservices" method="Post">
                                     <input type="text" name="searchName" placeholder="Tên sản phẩm"/>
-                                    <button style="padding: 7px; background-color: #FE980F; border-radius: 5px; border: none; color: white" type="submit">Tìm kiếm</button>
+                                    <button style="padding: 7px; background-color: #FE980F; border-radius: 5px; border: none; color: white" type="submit"><i class="fa fa-search"></i></button>
                                     <input name="service" type="hidden" value="search"/>
                                 </form>
                             </div>
@@ -42,8 +43,8 @@
                 </div>
             </div><!--/search bar-->
 
-            <div class="container">
-                <div class="row">
+            <div class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white;  margin-bottom: 20px">
+                <div class="row" style="margin-top: 20px">
                     <div class="col-sm-3">
                         <div class="left-sidebar">
                             <h2 style="margin-top: .7rem;">Danh mục</h2>
@@ -80,13 +81,29 @@
                             <c:if test="${empty listproduct}"><h4 style="text-align: center">Sản phẩm đang được cập nhật</h4></c:if>
                             <c:forEach items="${listproduct}" var="p">
                                 <div class="col-sm-3">
-                                    <div class="product-image-wrapper">
+                                    <div class="product-image-wrapper" style="box-shadow: 1px 1px 10px 1px #cccccc">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <img src="image/${p.image}" alt="" />
+                                                <img src="image/${p.image}" alt="" style="height: 180px; width: 180px"/>
                                                 <h2><fmt:formatNumber value="${p.price}"/><sup>đ</sup></h2>
                                                 <p><a href="productservices?service=details&id=${p.id}">${p.name}</a></p>
-                                                <c:if test="${currentAccount.roleId==2 || currentAccount.roleId==null}"><a href="cartservice?service=taketocart&id=${p.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a></c:if>
+                                                
+                                                
+                                                <c:if test="${currentAccount.roleId==2 || currentAccount.roleId==null}">
+                                                    <c:choose>
+                                                        <c:when test="${p.status == 'Còn hàng'}">
+                                                            <a href="cartservice?service=taketocart&id=${p.id}" class="btn btn-default add-to-cart">
+                                                    <i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <button class="btn btn-default add-to-cart" disabled="">
+                                                    <i class="fa fa-shopping-cart"></i>Hết hàng</button>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </c:if>
+                                                    
+                                                    
+                                                    
                                                 </div>
                                             </div>
                                         </div>

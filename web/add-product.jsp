@@ -49,7 +49,7 @@
                             <table>
                                 <tr style="height: 40px">
                                     <th>Tên sản phẩm: &nbsp;</th>
-                                    <td><input type="text" name="name" placeholder="Nhập tên sản phẩm" value="${product.name}" required="" class="form-control"></td>
+                                    <td><input type="text" maxlength="30" name="name" placeholder="Nhập tên sản phẩm" value="${product.name}" required="" class="form-control"></td>
                                 </tr>               
                                 <tr style="height: 40px">
                                     <th>Giá: </th>
