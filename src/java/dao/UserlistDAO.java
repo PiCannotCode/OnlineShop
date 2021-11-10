@@ -235,6 +235,19 @@ public class UserlistDAO {
         } catch (Exception e) {
         }
     }
+    
+        public void changeStatusProduct(int id) {
+        String query = "update Products set Status =? where Id=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, 0);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
 
     public static void main(String[] args) {
         UserlistDAO d = new UserlistDAO();

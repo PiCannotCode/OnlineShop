@@ -67,6 +67,9 @@ public class CheckOut extends HttpServlet {
             int QuantityLeft = d.getQuantity(Pid).getQuantity();
             int Pquantity = cart.getQuantity();
             int ChangeQuantity = QuantityLeft-Pquantity;
+            if (ChangeQuantity==0) {
+                d.changeStatusProduct(Pid);
+            }
             d.changeQuantity(ChangeQuantity, Pid);
             double Pprice = cart.getUnitPrice();
             String Pname = cart.getName();

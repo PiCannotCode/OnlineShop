@@ -25,6 +25,7 @@
             <div style="margin-bottom: 20px">
                 <h2 class="title text-center" style="margin-top: .7rem;">Danh sách người dùng</h2>
             </div>
+             <p style="text-align: center">${message}</p>
             <div>
                 <table class="table table-striped table-hover" >
                     <thead>
