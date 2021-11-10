@@ -127,6 +127,46 @@ public class NewFilter implements Filter {
             }
         }
 
+        //EditRole
+        if (url.equals("/LoadAccount") && accountLogin == null) {
+            httpresponse.sendRedirect("home");
+        } else if (url.equals("/LoadAccount") && accountLogin != null) {
+            int isadmin = accountLogin.getRoleId();
+            if (isadmin != 1) {
+                httpresponse.sendRedirect("home");
+            }
+        }
+
+        //Don hang 
+        if (url.equals("/MyOrderServlet") && accountLogin == null) {
+            httpresponse.sendRedirect("home");
+        } else if (url.equals("/MyOrderServlet") && accountLogin != null) {
+            int isadmin = accountLogin.getRoleId();
+            if (isadmin != 2) {
+                httpresponse.sendRedirect("home");
+            }
+        }
+
+        //Gio hang
+        if (url.equals("/CartDetails") && accountLogin == null) {
+            httpresponse.sendRedirect("home");
+        } else if (url.equals("/CartDetails") && accountLogin != null) {
+            int isadmin = accountLogin.getRoleId();
+            if (isadmin != 2) {
+                httpresponse.sendRedirect("home");
+            }
+        }
+
+        //Quan li don hang
+        if (url.equals("/orderListServlet") && accountLogin == null) {
+            httpresponse.sendRedirect("home");
+        } else if (url.equals("/orderListServlet") && accountLogin != null) {
+            int isadmin = accountLogin.getRoleId();
+            if (isadmin != 3) {
+                httpresponse.sendRedirect("home");
+            }
+        }
+
         //kiem tra, neu da login roi, thi ko dc vao trang login nua. se bi day ve home
         if (url.equals("/login.jsp")) {
             if (accountLogin != null) {
