@@ -167,6 +167,21 @@ public class NewFilter implements Filter {
             }
         }
 
+        //Profile
+        if (url.equals("/UserProfile") && accountLogin == null) {
+            httpresponse.sendRedirect("home");
+        }
+
+        //Edit Pro
+        if (url.equals("/EditProfile") && accountLogin == null) {
+            httpresponse.sendRedirect("home");
+        }
+
+        //change Pass
+        if (url.equals("/changePass.jsp") && accountLogin == null) {
+            httpresponse.sendRedirect("home");
+        }
+
         //kiem tra, neu da login roi, thi ko dc vao trang login nua. se bi day ve home
         if (url.equals("/login.jsp")) {
             if (accountLogin != null) {
