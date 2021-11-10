@@ -167,6 +167,26 @@ public class NewFilter implements Filter {
             }
         }
 
+        //Order Info
+        if (url.equals("/OrderInfo") && accountLogin == null) {
+            httpresponse.sendRedirect("home");
+        } else if (url.equals("/OrderInfo") && accountLogin != null) {
+            int isadmin = accountLogin.getRoleId();
+            if (isadmin != 2) {
+                httpresponse.sendRedirect("home");
+            }
+        }
+
+        //orderDetails
+        if (url.equals("/orderDetails") && accountLogin == null) {
+            httpresponse.sendRedirect("home");
+        } else if (url.equals("/orderDetails") && accountLogin != null) {
+            int isadmin = accountLogin.getRoleId();
+            if (isadmin != 3) {
+                httpresponse.sendRedirect("home");
+            }
+        }
+
         //Profile
         if (url.equals("/UserProfile") && accountLogin == null) {
             httpresponse.sendRedirect("home");
