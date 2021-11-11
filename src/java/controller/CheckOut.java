@@ -73,7 +73,7 @@ public class CheckOut extends HttpServlet {
             d.changeQuantity(ChangeQuantity, Pid);
             double Pprice = cart.getUnitPrice();
             String Pname = cart.getName();
-            d.addOrderDetail(new OrderDetail(Oid, Pid, Pname, Pquantity, Pprice));
+            d.addOrderDetail(new OrderDetail(Oid, Pid, Pname, Pquantity, price));
         }
         double totalprice = 0;
         double totalpays = 0;
