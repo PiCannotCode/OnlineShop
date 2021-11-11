@@ -63,6 +63,16 @@ public class CartService extends HttpServlet {
                     listCart = new ArrayList<>();
                     listCart.add(cart);
                     session.setAttribute("listCart", listCart);
+                    double totalprice = 0;
+                    for (Cart c1 : listCart) {
+                        int s = c1.getQuantity();
+                        totalprice = totalprice + c1.getUnitPrice() * s;
+                    }
+//                    double totalpays = (totalprice + totalprice / 10) + 50000;
+                    double totalpays = 0;
+                    totalpays = totalprice + 50000;
+                    session.setAttribute("totalprice", totalprice);
+                    session.setAttribute("totalpays", totalpays);
                 } else {
                     for (Cart c : listCart) {
                         if (c.getProductId() == id) {

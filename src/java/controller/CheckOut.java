@@ -66,8 +66,8 @@ public class CheckOut extends HttpServlet {
             int Pid = cart.getProductId();
             int QuantityLeft = d.getQuantity(Pid).getQuantity();
             int Pquantity = cart.getQuantity();
-            int ChangeQuantity = QuantityLeft-Pquantity;
-            if (ChangeQuantity==0) {
+            int ChangeQuantity = QuantityLeft - Pquantity;
+            if (ChangeQuantity == 0) {
                 d.changeStatusProduct(Pid);
             }
             d.changeQuantity(ChangeQuantity, Pid);
@@ -75,8 +75,12 @@ public class CheckOut extends HttpServlet {
             String Pname = cart.getName();
             d.addOrderDetail(new OrderDetail(Oid, Pid, Pname, Pquantity, price));
         }
-
-        request.getRequestDispatcher("home").forward(request, response);
+        double totalprice = 0;
+        double totalpays = 0;
+        session.setAttribute("totalprice", totalprice);
+        session.setAttribute("totalpays", totalpays);
+        session.removeAttribute("listCart");
+        request.getRequestDispatcher("cart.jsp").forward(request, response);
 
     }
 
