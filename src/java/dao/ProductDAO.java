@@ -176,7 +176,7 @@ public class ProductDAO extends DBContext {
     
     public boolean updateProduct(Product product) {
         try {
-            String sql = "UPDATE Products SET Name= ? ,Category_Id= ? ,Price= ? ,Description= ? ,Quantity= ? ,Status= ? ,Image= ? ,Note= ? "
+            String sql = "UPDATE Products SET Name= ? ,Category_Id= ? ,Price= ? ,Description= ? ,Quantity+= ? ,Status= ? ,Image= ? ,Note= ? "
                     + "WHERE Id= ?";
             PreparedStatement ps = getConnection().prepareStatement(sql);
             ps.setString(1, product.getName());

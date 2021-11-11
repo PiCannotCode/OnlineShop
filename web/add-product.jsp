@@ -41,24 +41,36 @@
                                     <img src="image/${product.image}" width="500" height="500" alt="Lỗi link hình ảnh">
                                 </c:if>
 
-                                    <input type="file" class="form-control" name="image" placeholder="Enter Image" <c:if test="${product eq null}"> required=""</c:if>>
+                                <input type="file" class="form-control" name="image" placeholder="Enter Image" <c:if test="${product eq null}"> required=""</c:if>>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-1"></div>
-                        <div class="col-md-5">
-                            <table>
-                                <tr style="height: 40px">
-                                    <th>Tên sản phẩm: &nbsp;</th>
-                                    <td><input type="text" maxlength="30" name="name" placeholder="Nhập tên sản phẩm" value="${product.name}" required="" class="form-control"></td>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5" style="margin-top: 30px">
+                                <table style="border-spacing: .5em; border-collapse: separate">
+                                    <tr style="height: 40px">
+                                        <th>Tên sản phẩm: &nbsp;</th>
+                                        <td><input type="text" maxlength="30" name="name" placeholder="Nhập tên sản phẩm" value="${product.name}" required="" class="form-control"></td>
                                 </tr>               
                                 <tr style="height: 40px">
                                     <th>Giá: </th>
                                     <td><input type="number" min="1" name="price" placeholder="Nhập giá" value="${product.price}" required="" class="form-control"></td>
                                 </tr>
-                                <tr style="height: 40px">
-                                    <th>Số lượng: </th>
-                                    <td><input type="number" min="0" name="quantity" placeholder="Nhập số lượng" value="${product.quantity}" required="" class="form-control"></td>
+                                <c:if test="${product ne null}">
+                                    <tr style="height: 40px">
+                                        <th>Số lượng sản phẩm hiện có: </th>
+                                        <td><input name="oldQuantity" value="${product.quantity}" hidden=""><b>&nbsp&nbsp${product.quantity}</b></td>
+                                    </tr>
+                                    <tr style="height: 40px">
+                                    <th>Thêm/Bớt sản phẩm: </th>
+                                    <td><input type="number" min="-${product.quantity}" name="quantity" placeholder="Nhập số lượng" value="0" required="" class="form-control"></td>
                                 </tr>
+                                </c:if>
+                                <c:if test="${product eq null}">
+                                <tr style="height: 40px">
+                                    <th>Số lượng sản phẩm: </th>
+                                    <td><input type="number" min="0" name="quantity" placeholder="Nhập số lượng" value="0" required="" class="form-control"></td>
+                                </tr>
+                                </c:if>
                                 <tr style="height: 40px">
                                     <th>Danh mục: </th>
                                     <td>

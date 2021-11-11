@@ -175,9 +175,10 @@ public class ProductServices extends HttpServlet {
                 int category_id = Integer.parseInt(request.getParameter("category_id"));
                 float price = Float.parseFloat(request.getParameter("price"));
                 String description = request.getParameter("description");
+                int oldQuantity = Integer.parseInt(request.getParameter("oldQuantity"));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
                 int status = 0;
-                if (quantity > 0) {
+                if ((oldQuantity+quantity) > 0) {
                     status = 1;
                 }
                 String note = request.getParameter("note");
