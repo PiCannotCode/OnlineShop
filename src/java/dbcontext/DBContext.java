@@ -20,11 +20,11 @@ public class DBContext {
         return DriverManager.getConnection(url, userID, password);
     }
 
-    private final String serverName = "DESKTOP-RQC147G";
+    private final String serverName = "LAPTOP-BPRBQO14\\SANTIEN";
     private final String dbName = "SWP391";
     private final String portNumber = "1433";
     private final String userID = "sa";
-    private final String password = "123";
+    private final String password = "123456";
 
     public static void main(String[] args) {
         new DBContext();
