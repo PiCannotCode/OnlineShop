@@ -113,19 +113,23 @@
                             <div class="total_area" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white">
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Tổng tiền hàng</label><br>
-                                    <input name="totalprice" type="text" class="form-control" value="${totalprice}" readonly="" required >
+                                    <fmt:formatNumber type="number" value="${totalprice}"/>
+                                    <input name="totalprice" type="hidden" class="form-control" value="${totalprice}" readonly="" required >                                                                
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Phí vận chuyển</label>
-                                    <input name="ship" type="text" class="form-control" value="50000" readonly="" required >
+                                    <fmt:formatNumber type="number" value="50000"/>
+                                    <input name="ship" type="hidden" class="form-control" value="50000" readonly="" required >
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>VAT</label>
-                                    <input name="vat" type="text" class="form-control" value="0" readonly="">
+                                    <fmt:formatNumber type="number" value="0"/>
+                                    <input name="vat" type="hidden" class="form-control" value="0" readonly="">
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Tổng số tiền của đơn hàng</label>
-                                    <input name="totalpays" type="text" value="${totalpays}" class="form-control" readonly="">
+                                    <fmt:formatNumber type="number" value="${totalpays}"/>
+                                    <input name="totalpays" type="hidden" value="${totalpays}" class="form-control" readonly="">
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Hình thức thanh toán</label><br>
