@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="css/personal.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body style="background-image: url(images/bgbalo2.png); background-size: 100%">
+    <body style="background-image: url(images/bgProfile.png); background-size: 100%">
         <jsp:include page="header.jsp"/>
         <div class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white;  margin-top: 20px; margin-bottom: 50px; min-height: 500px; border-radius: 5px 5px 5px 5px">
             <div class="col-sm-5">
