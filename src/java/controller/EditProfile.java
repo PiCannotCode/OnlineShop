@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,33 +38,21 @@ public class EditProfile extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String service = request.getParameter("service");
-
-            //View
-            if (service.equalsIgnoreCase("view")) {
-                int id = Integer.parseInt(request.getParameter("id"));
-                AccountDetailDAO accDetalDAO = new AccountDetailDAO();
-                AccountDetail accDetail = accDetalDAO.getAccountById(id);
-                request.setAttribute("accDetail", accDetail);
+            int id = Integer.parseInt(request.getParameter("id"));
+            String name = request.getParameter("name");
+            String phone = request.getParameter("phone");
+            int gender = Integer.parseInt(request.getParameter("gender"));
+            String address = request.getParameter("address");
+            AccountDetail accDetail = new AccountDetail(id, name, phone, gender, address);
+            AccountDetailDAO accDetailDAO = new AccountDetailDAO();
+            if (accDetailDAO.editProfile(accDetail)) {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("currentAccountDetail", accDetail);
+                request.setAttribute("message", "Sửa thông tin thành công!");
+                request.getRequestDispatcher("user-profile.jsp").forward(request, response);
+            } else {
+                request.setAttribute("error", "Sửa thông tin không thành công.");
                 request.getRequestDispatcher("editProfile.jsp").forward(request, response);
-            }
-
-            //Edit
-            if (service.equalsIgnoreCase("edit")) {
-                int id = Integer.parseInt(request.getParameter("id"));
-                String name = request.getParameter("name");
-                String phone = request.getParameter("phone");
-                int gender = Integer.parseInt(request.getParameter("gender"));
-                String address = request.getParameter("address");
-                AccountDetail accDetail = new AccountDetail(id, name, phone, gender, address);
-                AccountDetailDAO accDetailDAO = new AccountDetailDAO();
-                if (accDetailDAO.editProfile(accDetail)) {
-                    request.setAttribute("message", "Edit Profile Successfully");
-                    request.getRequestDispatcher("home").forward(request, response);
-                } else {
-                    request.setAttribute("message", "Edit Profile Fail");
-                    request.getRequestDispatcher("EditProfile?service=view&id="+id+"").forward(request, response);
-                }
             }
         }
     }

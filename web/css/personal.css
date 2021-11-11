@@ -8,10 +8,30 @@ and open the template in the editor.
     Author     : SANG
 */
 .personal-info {
-    border: 1px solid;
+    border: 2px solid;
     border-radius: .5rem;
-    padding: 8px 15px 12px;
+    padding: 20px 40px 30px;
 }
-.personal-info .table {
+.personal-info table {
     margin-bottom: 0px;
+    border-spacing: 1em;
+    border-collapse: separate;
+}
+
+.personal-info table td{
+    font-size: large;
+}
+
+.button2{
+    margin-top: 20px; 
+    margin-left: 30%
+}
+
+.button1{
+    margin-top: 20px; 
+    float: right;
+}
+
+.button2 a{
+    font-size: large;
 }

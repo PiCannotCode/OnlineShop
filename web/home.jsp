@@ -77,7 +77,7 @@
 
                     <div class="col-sm-9 padding-right">
                         <div class="features_items"><!--features_items-->
-                            <h2 class="title text-center" style="margin-top: .7rem;">Sản phẩm mới nhất</h2>
+                            <h2 class="title text-center" style="margin-top: .7rem;">Danh sách sản phẩm</h2>
                             <c:if test="${empty listproduct}"><h4 style="text-align: center">Sản phẩm đang được cập nhật</h4></c:if>
                             <c:forEach items="${listproduct}" var="p">
                                 <div class="col-sm-3">

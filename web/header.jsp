@@ -55,7 +55,7 @@
                                         </c:choose>
                                         <c:choose>
                                             <c:when test="${currentAccount != null}">
-                                            <li><a href="UserProfile?id=${currentAccount.accountDetailId}"><i class="fa fa-user"></i>Tài khoản</a></li>
+                                            <li><a href="user-profile.jsp"><i class="fa fa-user"></i>Tài khoản</a></li>
                                             <li><a href="servicesaccount?service=logout"><i class="fa fa-sign-out"></i>Đăng xuất</a></li>
                                             </c:when>
                                             <c:when test="${currentAccount == null}">
