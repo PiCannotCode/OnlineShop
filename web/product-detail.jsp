@@ -16,7 +16,7 @@
     </head>
     <body style="background-image: url(images/bgbalo2.png); background-size: 100%">      
         <jsp:include page="header.jsp"/>
-        <div id="main-contain" class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white; margin-top: 20px; margin-bottom: 20px">
+        <div id="main-contain" class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white; margin-top: 20px; margin-bottom: 20px; min-height: 500px">
             <div class="row">
                 <div class="col-md-6">
                     <div class="img mg-top-15">

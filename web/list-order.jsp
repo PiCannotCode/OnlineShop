@@ -15,7 +15,7 @@
     </head>
     <body style="background-image: url(images/bgbalo2.png); background-size: 100%">
         <jsp:include page="header.jsp"/>
-        <div class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white;  margin-top: 20px; margin-bottom: 50px">
+        <div class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white;  margin-top: 20px; margin-bottom: 50px; min-height: 500px">
             <div class="orderlist" style="margin-bottom: 20px; margin-top: 20px">
                 <b>Danh sách đơn hàng</b>
             </div>

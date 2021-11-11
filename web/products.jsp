@@ -15,7 +15,7 @@
     </head>
     <body style="background-image: url(images/bgbalo2.png); background-size: 100% 27%">
         <jsp:include page="header.jsp"/>
-        <div class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: whitesmoke; margin-top: 20px; margin-bottom: 20px">
+        <div class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: whitesmoke; margin-top: 20px; margin-bottom: 20px; min-height: 500px">
             <c:if test="${message != null}">
                 <div class="alert alert-success" role="alert" style="margin-top: 10px">
                     <p style="text-align: center">${message}</p>

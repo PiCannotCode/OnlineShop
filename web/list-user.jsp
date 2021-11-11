@@ -21,7 +21,7 @@
     </head>
     <body style="background-image: url(images/bgbalo2.png); background-size: 100%">
         <jsp:include page="header.jsp"/>
-        <div class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white; margin-top: 20px; margin-bottom: 20px">
+        <div class="container" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white; margin-top: 20px; margin-bottom: 20px; min-height: 500px">
             <div style="margin-top: 20px">
                 <h2 class="title text-center" style="margin-top: .7rem;">Danh sách người dùng</h2>
             </div>
