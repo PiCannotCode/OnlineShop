@@ -64,7 +64,7 @@
 
                             <!--LAST PRODUCT-->
                             <div class="title text-center">
-                                <p style="color: #FE980F; font-size: 18px; font-weight: 700;">Sản phẩm bán chạy nhất</p>
+                                <p style="color: #FE980F; font-size: 18px; font-weight: 700;">Sản phẩm mới nhất</p>
                                 <a href="productservices?service=details&id=${newproduct.id}"><img src="image/${newproduct.image}" style="width: 240px; padding-left:  0px;" /></a>
                             </div>
 
