@@ -29,7 +29,8 @@
                     <div class="row">
                         <div class="col-sm-2">
                             <div class="companyinfo">
-                                <h2><span>e</span>-shopper</h2>
+                                <h2><span>SHOPKINS</span></h2>
+                                <h6>Once you shop, you can't stop!</h6>
                                 <p>Cửa hàng mua bán các sản phẩm túi xách, balo thời trang</p>
                             </div>
                         </div>
@@ -38,14 +39,14 @@
                                 <div class="video-gallery text-center">
                                     <a href="#">
                                         <div class="iframe-img">
-                                            <img src="images/home/iframe1.png" alt="" />
+                                            <img src="images/blog1.jpg" alt="" />
                                         </div>
                                         <div class="overlay-icon">
                                             <i class="fa fa-play-circle-o"></i>
                                         </div>
                                     </a>
                                     <p>Blog</p>
-                                    <h2>24 SEP 2021</h2>
+                                    <h2>30 SEP 2021</h2>
                                 </div>
                             </div>
 
@@ -53,14 +54,14 @@
                                 <div class="video-gallery text-center">
                                     <a href="#">
                                         <div class="iframe-img">
-                                            <img src="images/home/iframe2.png" alt="" />
+                                            <img src="images/blog2.jpg" alt="" />
                                         </div>
                                         <div class="overlay-icon">
                                             <i class="fa fa-play-circle-o"></i>
                                         </div>
                                     </a>
                                     <p>Blog</p>
-                                    <h2>24 SEP 2021</h2>
+                                    <h2>28 SEP 2021</h2>
                                 </div>
                             </div>
 
@@ -68,22 +69,22 @@
                                 <div class="video-gallery text-center">
                                     <a href="#">
                                         <div class="iframe-img">
-                                            <img src="images/home/iframe3.png" alt="" />
+                                            <img src="images/blog3.jpg" alt="" />
                                         </div>
                                         <div class="overlay-icon">
                                             <i class="fa fa-play-circle-o"></i>
                                         </div>
                                     </a>
                                     <p>Blog</p>
-                                    <h2>24 SEP 2021</h2>
+                                    <h2>26 SEP 2021</h2>
                                 </div>
                             </div>
 
                             <div class="col-sm-3">
                                 <div class="video-gallery text-center">
-                                    <a href="#">
+                                    <a href="">
                                         <div class="iframe-img">
-                                            <img src="images/home/iframe4.png" alt="" />
+                                            <img src="images/blog4.png" alt="" />
                                         </div>
                                         <div class="overlay-icon">
                                             <i class="fa fa-play-circle-o"></i>
@@ -146,7 +147,12 @@
                         <div class="col-sm-3 col-sm-offset-1">
                             <div class="single-widget">
                                 <h2>Tư vấn mua hàng</h2>
-                                <p>1800.xxxx (Miễn phí)</p>
+                                <p>
+                                    1800.xxxx (Miễn phí)&ensp;
+                                    <a href="https://facebook.com"><i class="fa fa-facebook"></i>&nbsp;</a>
+                                    <a href="https://twitter.com"><i class="fa fa-twitter"></i>&nbsp;</a>                                   
+                                </p>
+                                
                             </div>
                         </div>
                     </div>

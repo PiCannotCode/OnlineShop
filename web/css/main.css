@@ -492,6 +492,16 @@ ul.sub-menu {
     color: #FE980F;
 }
 
+.single-widget p a{
+    background: none;
+    color: #8C8C88;
+}
+
+.single-widget p a i:hover {
+    background: none;
+    color: #C4C4C4;
+}
+
 .searchform input {
     border: 1px solid #DDDDDD;
     color: #CCCCC6;
