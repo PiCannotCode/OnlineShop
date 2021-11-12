@@ -25,7 +25,10 @@
                     <c:if test="${order.status == 1}">Đang xử lý</c:if>
                     <c:if test="${order.status == 2}">Đang giao hàng</c:if>
                     <c:if test="${order.status == 3}">Giao hàng thành công</c:if>
-                    <c:if test="${order.status == 4}">Đã hủy bỏ</c:if></p>
+                    <c:if test="${order.status == 4}">Đã hủy bỏ</c:if>
+                    <c:if test="${order.status == 5}">Đã hủy bỏ</c:if>
+                    <c:if test="${order.status == 6}">Đã hủy bỏ</c:if></p>
+                
                 </div>
                 <div class="list" style="margin-left: 30px; margin-right: 30px;">
                     <table class="table table-striped table-hover" >
