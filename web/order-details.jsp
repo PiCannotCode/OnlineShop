@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -43,8 +44,8 @@
                                 <td>${od.id}</td>
                                 <td>${od.productName}</td>
                                 <td>${od.productQuantity}</td>
-                                <td>${od.productPrice}</td>
-                                <td>${od.productPrice * od.productQuantity}</td>
+                                <td><fmt:formatNumber type="number" value="${od.productPrice}"/></td>
+                                <td><fmt:formatNumber type="number" value="${od.productPrice * od.productQuantity}"/></td>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -76,19 +77,20 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Tổng tiền hàng</label>
-                    <input class="form-control" readonly value="${order.totalPrice}">
+                    <input class="form-control" readonly value="<fmt:formatNumber type="number" value="${order.totalPrice}"/>">
                 </div>
                 <div class="form-group">
                     <label>Phí vận chuyển</label>
-                    <input class="form-control" readonly value="${order.ship}">
+                    <input class="form-control" readonly value="<fmt:formatNumber type="number" value="${order.ship}"/>">
                 </div>
                 <div class="form-group">
                     <label>Giảm giá</label>
-                    <input class="form-control" readonly value="${order.vat}">
+                    <input class="form-control" readonly value="<fmt:formatNumber type="number" value="${order.vat}"/>">
                 </div>
                 <div class="form-group">
                     <label>Tổng số tiền của đơn hàng</label>
-                    <input class="form-control" readonly value="${order.totalPay}">
+                    <input class="form-control" readonly value="<fmt:formatNumber type="number" value="${order.totalPay}"/>">
+                </div>          
                 </div>          
                 <div class="form-group">
                     <label>Hình thức thanh toán</label>

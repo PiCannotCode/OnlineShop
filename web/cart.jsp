@@ -112,29 +112,30 @@
                         <div class="col-sm-6">
                             <div class="total_area" style="box-shadow: 5px 5px 5px 1px #cccccc; background-color: white">
                                 <div class="form-group" style="margin-left: 1rem;">
-                                    <label>Tổng tiền hàng</label><br>
+                                    <label>Tổng tiền hàng:</label><br>
                                     <fmt:formatNumber type="number" value="${totalprice}"/>
-                                    <input name="totalprice" type="hidden" class="form-control" value="${totalprice}" readonly="" required >                                                                
+                                    <input name="totalprice" type="hidden" class="form-control" value="${totalprice}" readonly="" required ><sup>đ</sup>                                                                
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
-                                    <label>Phí vận chuyển</label>
+                                    <label>Phí vận chuyển:</label><br>
                                     <fmt:formatNumber type="number" value="50000"/>
-                                    <input name="ship" type="hidden" class="form-control" value="50000" readonly="" required >
+                                    <input name="ship" type="hidden" class="form-control" value="50000" readonly="" required ><sup>đ</sup>
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
-                                    <label>VAT</label>
+                                    <label>Giảm giá:</label><br>
                                     <fmt:formatNumber type="number" value="0"/>
-                                    <input name="vat" type="hidden" class="form-control" value="0" readonly="">
+                                    <input name="vat" type="hidden" class="form-control" value="0" readonly=""><sup>đ</sup>
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
-                                    <label>Tổng số tiền của đơn hàng</label>
+                                    <label>Tổng số tiền của đơn hàng:</label><br>
                                     <fmt:formatNumber type="number" value="${totalpays}"/>
-                                    <input name="totalpays" type="hidden" value="${totalpays}" class="form-control" readonly="">
+                                    <input name="totalpays" type="hidden" value="${totalpays}" class="form-control" readonly=""><sup>đ</sup>
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
-                                    <label>Hình thức thanh toán</label><br>
-                                    <input name="payments" type="radio" value="0" required checked/>Chuyển khoản ngay<br>
-                                    <input name="payments" type="radio" value="1" required />Trả tiền khi nhận được hàng
+                                    <label>Hình thức thanh toán:</label><br>
+                                    <input name="payments" type="radio" value="1" required checked/>Thanh toán khi nhận hàng<br>
+                                    <input name="payments" type="radio" value="2" required disabled/>Chuyển khoản ngay <i>(Đang cập nhật)</i>
+                                    
                                 </div>
                             </div>
                             <button class="btn btn-default check_out" onclick="return confirm('Xác nhận đặt hàng?')" style="margin-bottom: 15px; float: right">Đặt hàng</button>

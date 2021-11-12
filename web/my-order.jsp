@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,7 +38,7 @@
                             <tr>
                                 <td>${o.id}</a></td>
                                 <td>${o.date}</td>
-                                <td>${o.totalPay}</td>
+                                <td><fmt:formatNumber type="number" value="${o.totalPay}"/><sup>đ</sup></td>
                                 <c:choose>
                                     <c:when test="${o.status == 1}"><td>Đang xử lí</td></c:when>
                                     <c:when test="${o.status == 2}"><td>Đang giao hàng</td></c:when>
