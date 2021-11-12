@@ -20,6 +20,7 @@ public class Account {
     private int roleId;
     private int status;
     private String createDate;
+    private String code;
 
     public Account(int id, String email, String password, int accountDetailId, int roleId, int status, String createDate) {
         this.id = id;
@@ -38,6 +39,27 @@ public class Account {
         this.roleId = roleId;
         this.status = status;
     }
+
+    public Account(int id, String email, String password, int accountDetailId, int roleId, int status, String createDate, String code) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.accountDetailId = accountDetailId;
+        this.roleId = roleId;
+        this.status = status;
+        this.createDate = createDate;
+        this.code = code;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+    
+    
 
     public int getId() {
         return id;

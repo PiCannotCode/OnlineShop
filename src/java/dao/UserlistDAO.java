@@ -114,20 +114,30 @@ public class UserlistDAO {
         } catch (Exception e) {
         }
     }
-    
-        public void changePass2(String email, String pass) {
-        String query = "update Account set [Password]=? where Email=?";
+
+    public void changePass2(String email, String code) {
+        String query = "update Account set [code]=? where Email=?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setString(1, pass);
+            ps.setString(1, code);
             ps.setString(2, email);
             ps.executeUpdate();
         } catch (Exception e) {
         }
     }
-    
-    
+
+    public void changePass3(String pass, String code) {
+        String query = "update Account set [Password]=? where code=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, pass);
+            ps.setString(2, code);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 
     public Account getAccountbyid(int id) {
         String query = "select* from account where id = ?";
@@ -152,7 +162,7 @@ public class UserlistDAO {
             ps.setString(1, Email);
             rs = ps.executeQuery();//chay cau lenh query, nhan ket qua tra ve
             while (rs.next()) {
-                return new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7));
+                return new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8));
             }
         } catch (Exception e) {
         }
@@ -275,7 +285,6 @@ public class UserlistDAO {
         }
         String generatedString = buffer.toString();
 
-       
         return generatedString;
     }
 

@@ -7,11 +7,8 @@ package controller;
 
 import dao.UserlistDAO;
 import entity.Account;
-import entity.Email;
-import forgetPassword.EmailUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,10 +18,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author SANG
+ * @author hanoon
  */
-@WebServlet(name = "RemindPassword", urlPatterns = {"/remindpassword"})
-public class ResetPassword extends HttpServlet {
+@WebServlet(name = "Code", urlPatterns = {"/Code"})
+public class Code extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,18 +35,27 @@ public class ResetPassword extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        String code = request.getParameter("code");
+        String pass = request.getParameter("pass");
+        String repass = request.getParameter("repass");
+        String message = "";
+        UserlistDAO d = new UserlistDAO();
+        HttpSession session = request.getSession();        
+        Account a = (Account) session.getAttribute("acc");    
+        a = d.getAccountbyEmail(a.getEmail());
+        String code2 = a.getCode();
+        if (code.equals(code2)) {
+            if (pass.equals(repass)) {
+                d.changePass3(pass, code);
+                request.getRequestDispatcher("home").forward(request, response);
 
-//            String email = request.getParameter("email");
-//            String message = "";
-//            if(new AccountModel().checkEmail(email)){
-//                System.out.println(email);
-//                message = "Check new pass in your mail !";
-//            }else{
-//                message = "Email not exits !";
-//            }
-//            request.setAttribute("message", message);
-//            request.getRequestDispatcher("remind_password.jsp").forward(request, response);
+            } else {
+                request.setAttribute("message", "Mật khẩu nhập lại không đúng");
+                request.getRequestDispatcher("Code.jsp").forward(request, response);
+            }
+        } else {
+            request.setAttribute("message", "Code ko dung");
+            request.getRequestDispatcher("Code.jsp").forward(request, response);
         }
     }
 
@@ -65,6 +71,7 @@ public class ResetPassword extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**
@@ -78,34 +85,7 @@ public class ResetPassword extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            String email = request.getParameter("email");
-            UserlistDAO d = new UserlistDAO();
-            Account a = d.getAccountbyEmail(email);
-            String ran = d.givenUsingPlainJava_whenGeneratingRandomStringBounded_thenCorrect();
-            HttpSession session = request.getSession();
-            
-            if (a == null) {
-                request.setAttribute("message", "Email không tồn tại");
-                request.getRequestDispatcher("reset-password.jsp").forward(request, response);
-            } else {
-                
-                Email e = new Email();
-                d.changePass2(email, ran);
-                a = d.getAccountbyEmail(email);
-                session.setAttribute("acc", a);
-                e.setFrom("nolifesf000@gmail.com");
-                e.setFromPassword("Nolifesf1");
-                e.setTo(email);
-                e.setSubject("Reset Password Online Shopping System");
-                e.setContent("Mật khẩu của bạn là: " + ran + ". Bạn nên thay đổi mật khẩu sau khi đăng nhập lại.");
-                EmailUtils.send(e);
-                request.getRequestDispatcher("Code.jsp").forward(request, response);
-            }
-        } catch (Exception e) {
-
-        }
-        request.getRequestDispatcher("Code.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
