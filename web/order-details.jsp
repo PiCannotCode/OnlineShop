@@ -90,8 +90,7 @@
                 <div class="form-group">
                     <label>Tổng số tiền của đơn hàng</label>
                     <input class="form-control" readonly value="<fmt:formatNumber type="number" value="${order.totalPay}"/>">
-                </div>          
-                </div>          
+                </div>                   
                 <div class="form-group">
                     <label>Hình thức thanh toán</label>
                     <input class="form-control" readonly 

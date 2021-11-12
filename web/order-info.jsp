@@ -98,9 +98,9 @@
                     <input class="form-control" readonly 
                            value="<c:if test="${order.payments == 1}">Thanh toán khi nhận hàng</c:if>
                            <c:if test="${order.payments == 2}">Chuyển khoản</c:if>">
+                    </div>
                 </div>
-            </div>
-                               <a href="MyOrderServlet?id=${currentAccount.id}" class="btn" style="margin-left: 90%; margin-bottom: 20px; background-color: #FE980F; color: white">Quay lại</a>
+                <a href="MyOrderServlet?id=${currentAccount.id}" class="btn" style="margin-left: 90%; margin-bottom: 20px; background-color: #FE980F; color: white">Quay lại</a>
         </div>
         <jsp:include page="footer.jsp"/>
     </body>

@@ -133,9 +133,8 @@
                                 </div>
                                 <div class="form-group" style="margin-left: 1rem;">
                                     <label>Hình thức thanh toán:</label><br>
-                                    <input name="payments" type="radio" value="1" required checked/>Thanh toán khi nhận hàng<br>
-                                    <input name="payments" type="radio" value="2" required disabled/>Chuyển khoản ngay <i>(Đang cập nhật)</i>
-                                    
+                                    <input name="payments" type="radio" value="1" required checked/> Thanh toán khi nhận hàng<br>
+                                    <input name="payments" type="radio" value="2" required disabled/> Chuyển khoản ngay <i>(Đang cập nhật)</i>                                  
                                 </div>
                             </div>
                             <button class="btn btn-default check_out" onclick="return confirm('Xác nhận đặt hàng?')" style="margin-bottom: 15px; float: right">Đặt hàng</button>
@@ -143,9 +142,7 @@
                     </div>
                 </div>
             </section><!--/#do_action-->
-
         </form>
-
 
         <jsp:include page="footer.jsp"/>
         <script src="js/jquery.js"></script>
