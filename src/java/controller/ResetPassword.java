@@ -82,17 +82,18 @@ public class ResetPassword extends HttpServlet {
             String email = request.getParameter("email");
             UserlistDAO d = new UserlistDAO();
             Account a = d.getAccountbyEmail(email);
-            
+            String ran = d.givenUsingPlainJava_whenGeneratingRandomStringBounded_thenCorrect();
             if (a == null) {
                 request.setAttribute("message", "Email không tồn tại");
                 request.getRequestDispatcher("reset-password.jsp").forward(request, response);
             } else {
                 Email e = new Email();
+                d.changePass2(email, ran);
                 e.setFrom("nolifesf000@gmail.com");
                 e.setFromPassword("Nolifesf1");
                 e.setTo(email);
                 e.setSubject("Reset Password Online Shopping System");
-                e.setContent("Mật khẩu của bạn là: " + a.getPassword() +". Bạn nên thay đổi mật khẩu sau khi đăng nhập lại.");
+                e.setContent("Mật khẩu của bạn là: " + ran +". Bạn nên thay đổi mật khẩu sau khi đăng nhập lại.");
                 EmailUtils.send(e);
                 request.setAttribute("message", "Mật khẩu của bạn đã được gửi tới email đăng ký, vui lòng kiểm tra lại email!");
             }

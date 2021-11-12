@@ -114,6 +114,20 @@ public class UserlistDAO {
         } catch (Exception e) {
         }
     }
+    
+        public void changePass2(String email, String pass) {
+        String query = "update Account set [Password]=? where Email=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, pass);
+            ps.setString(2, email);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    
 
     public Account getAccountbyid(int id) {
         String query = "select* from account where id = ?";
@@ -224,7 +238,7 @@ public class UserlistDAO {
         return null;
     }
 
-    public void changeQuantity(int quantity,int id) {
+    public void changeQuantity(int quantity, int id) {
         String query = "update Products set Quantity =? where Id=?";
         try {
             conn = new DBContext().getConnection();
@@ -235,8 +249,8 @@ public class UserlistDAO {
         } catch (Exception e) {
         }
     }
-    
-        public void changeStatusProduct(int id) {
+
+    public void changeStatusProduct(int id) {
         String query = "update Products set Status =? where Id=?";
         try {
             conn = new DBContext().getConnection();
@@ -248,6 +262,22 @@ public class UserlistDAO {
         }
     }
 
+    public String givenUsingPlainJava_whenGeneratingRandomStringBounded_thenCorrect() {
+
+        int leftLimit = 97; // letter 'a'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 10;
+        Random random = new Random();
+        StringBuilder buffer = new StringBuilder(targetStringLength);
+        for (int i = 0; i < targetStringLength; i++) {
+            int randomLimitedInt = leftLimit + (int) (random.nextFloat() * (rightLimit - leftLimit + 1));
+            buffer.append((char) randomLimitedInt);
+        }
+        String generatedString = buffer.toString();
+
+       
+        return generatedString;
+    }
 
     public static void main(String[] args) {
         UserlistDAO d = new UserlistDAO();
@@ -255,7 +285,7 @@ public class UserlistDAO {
 ////        int t = d.getMax().getId();
 ////        System.out.println(d.token());
 //        d.addOrderDetail(new OrderDetail(18, 11, "manh", 100, 300));
-        d.changeQuantity(9, 1);
+        d.givenUsingPlainJava_whenGeneratingRandomStringBounded_thenCorrect();
     }
 
 }
