@@ -47,14 +47,14 @@ public class Code extends HttpServlet {
         if (code.equals(code2)) {
             if (pass.equals(repass)) {
                 d.changePass3(pass, code);
-                request.getRequestDispatcher("home").forward(request, response);
+                request.getRequestDispatcher("login.jsp").forward(request, response);
 
             } else {
                 request.setAttribute("message", "Mật khẩu nhập lại không đúng");
                 request.getRequestDispatcher("Code.jsp").forward(request, response);
             }
         } else {
-            request.setAttribute("message", "Code ko dung");
+            request.setAttribute("message", "Mã code không chính xác");
             request.getRequestDispatcher("Code.jsp").forward(request, response);
         }
     }
