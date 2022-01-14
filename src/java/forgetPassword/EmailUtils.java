@@ -32,8 +32,8 @@ public class EmailUtils {
         prop.put("mail.smtp.starttls.enable", "true");
 
         // creates a new session with an authenticator
-        String gmail ="nolifesf000@gmail.com";
-        String pass ="Nolifesf1";
+        String gmail ="***";
+        String pass ="***";
         Authenticator auth = new Authenticator() {
             public PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(gmail, pass);

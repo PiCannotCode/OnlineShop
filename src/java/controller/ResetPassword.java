@@ -94,8 +94,8 @@ public class ResetPassword extends HttpServlet {
                 d.changePass2(email, ran);
                 a = d.getAccountbyEmail(email);
                 session.setAttribute("acc", a);
-                e.setFrom("nolifesf000@gmail.com");
-                e.setFromPassword("Nolifesf1");
+                e.setFrom("***");
+                e.setFromPassword("***");
                 e.setTo(email);
                 e.setSubject("Reset Password Online Shopping System");
                 e.setContent("Mật khẩu của bạn là: " + ran + ". Bạn nên thay đổi mật khẩu sau khi đăng nhập lại.");
